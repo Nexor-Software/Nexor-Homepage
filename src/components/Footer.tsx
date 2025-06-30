@@ -18,7 +18,7 @@ export const Footer = () => {
             <h3 className="text-2xl font-bold text-white">
               Nexor <span className="text-[#30D6C4]">Software</span>
             </h3>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-[#B0C4D4] leading-relaxed">
               Transforming ideas into exceptional digital experiences through innovative software solutions.
             </p>
             <div className="w-12 h-1 bg-[#30D6C4] rounded-full"></div>
@@ -32,7 +32,7 @@ export const Footer = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block text-gray-400 hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform"
+                  className="block text-[#B0C4D4] hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform"
                 >
                   {link.label}
                 </a>
@@ -43,7 +43,7 @@ export const Footer = () => {
           {/* Contact */}
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white">Get in Touch</h4>
-            <div className="space-y-3 text-gray-400">
+            <div className="space-y-3 text-[#B0C4D4]">
               <p className="hover:text-[#30D6C4] transition-colors cursor-pointer">
                 hello@nexorsoftware.com
               </p>
@@ -61,10 +61,10 @@ export const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-sm">
+          <p className="text-[#B0C4D4] text-sm">
             © {currentYear} Nexor Software. All rights reserved.
           </p>
-          <div className="flex space-x-6 text-sm text-gray-400">
+          <div className="flex space-x-6 text-sm text-[#B0C4D4]">
             <a href="#privacy" className="hover:text-[#30D6C4] transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-[#30D6C4] transition-colors">Terms of Service</a>
           </div>

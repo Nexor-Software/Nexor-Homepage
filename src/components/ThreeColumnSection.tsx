@@ -55,7 +55,7 @@ export const ThreeColumnSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-center space-y-6">
-                <p className="text-gray-300 leading-relaxed text-lg">
+                <p className="text-[#B0C4D4] leading-relaxed text-lg">
                   {section.description}
                 </p>
                 <div className="space-y-3">

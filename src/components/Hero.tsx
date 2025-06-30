@@ -26,7 +26,7 @@ export const Hero = () => {
             <span className="block text-[#30D6C4] mt-2">Digital Solutions</span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed font-light">
             We craft innovative software solutions that transform businesses and empower growth through cutting-edge technology and exceptional user experiences.
           </p>
           
