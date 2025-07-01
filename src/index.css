@@ -100,6 +100,7 @@ All colors MUST be HSL.
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     font-variation-settings: normal;
     scroll-behavior: smooth;
+    letter-spacing: 0.02em;
   }
 
   /* 8pt spacing system utilities */
@@ -120,18 +121,20 @@ All colors MUST be HSL.
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.02em;
   }
 
   p {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     line-height: 1.6;
+    letter-spacing: 0.015em;
   }
 
   button {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
+    letter-spacing: 0.025em;
   }
 
   /* Golden ratio proportions */
