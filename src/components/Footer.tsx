@@ -15,10 +15,10 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-oswald font-medium text-white">
               Nexor <span className="text-[#30D6C4]">Software</span>
             </h3>
-            <p className="text-[#B0C4D4] leading-relaxed">
+            <p className="font-inter font-thin text-[#B0C4D4] leading-relaxed">
               Transforming ideas into exceptional digital experiences through innovative software solutions.
             </p>
             <div className="w-12 h-1 bg-[#30D6C4] rounded-full"></div>
@@ -26,13 +26,13 @@ export const Footer = () => {
 
           {/* Navigation */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-white">Navigation</h4>
+            <h4 className="text-lg font-oswald font-medium text-white">Navigation</h4>
             <nav className="space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block text-[#B0C4D4] hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform"
+                  className="block font-inter font-thin text-[#B0C4D4] hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform"
                 >
                   {link.label}
                 </a>
@@ -42,8 +42,8 @@ export const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-white">Get in Touch</h4>
-            <div className="space-y-3 text-[#B0C4D4]">
+            <h4 className="text-lg font-oswald font-medium text-white">Get in Touch</h4>
+            <div className="space-y-3 font-inter font-thin text-[#B0C4D4]">
               <p className="hover:text-[#30D6C4] transition-colors cursor-pointer">
                 hello@nexorsoftware.com
               </p>
@@ -61,10 +61,10 @@ export const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-[#B0C4D4] text-sm">
+          <p className="font-inter font-thin text-[#B0C4D4] text-sm">
             © {currentYear} Nexor Software. All rights reserved.
           </p>
-          <div className="flex space-x-6 text-sm text-[#B0C4D4]">
+          <div className="flex space-x-6 text-sm font-inter font-thin text-[#B0C4D4]">
             <a href="#privacy" className="hover:text-[#30D6C4] transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-[#30D6C4] transition-colors">Terms of Service</a>
           </div>

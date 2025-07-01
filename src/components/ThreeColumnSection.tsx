@@ -33,7 +33,7 @@ export const ThreeColumnSection = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-oswald font-medium text-white mb-6">
             Why Choose <span className="text-[#30D6C4]">Nexor</span>
           </h2>
           <div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
@@ -50,12 +50,12 @@ export const ThreeColumnSection = () => {
                 <div className="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
                   <section.icon className="w-8 h-8 text-[#30D6C4]" />
                 </div>
-                <CardTitle className="text-2xl text-white font-bold">
+                <CardTitle className="text-2xl font-oswald font-medium text-white">
                   {section.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-center space-y-6">
-                <p className="text-[#B0C4D4] leading-relaxed text-lg">
+                <p className="font-inter font-thin text-[#B0C4D4] leading-relaxed text-lg">
                   {section.description}
                 </p>
                 <div className="space-y-3">
@@ -65,7 +65,7 @@ export const ThreeColumnSection = () => {
                       className="flex items-center justify-center space-x-2 text-[#30D6C4] font-medium"
                     >
                       <div className="w-2 h-2 bg-[#30D6C4] rounded-full"></div>
-                      <span>{feature}</span>
+                      <span className="font-inter">{feature}</span>
                     </div>
                   ))}
                 </div>

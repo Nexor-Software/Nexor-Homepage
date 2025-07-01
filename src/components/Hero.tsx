@@ -12,7 +12,7 @@ export const Hero = () => {
       <div className="max-w-6xl mx-auto text-center relative z-10">
         {/* Logo */}
         <div className="mb-16 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-oswald font-medium text-white mb-4 tracking-tight">
             Nexor
             <span className="text-[#30D6C4] ml-2">Software</span>
           </h1>
@@ -21,19 +21,19 @@ export const Hero = () => {
 
         {/* Hero content following golden ratio proportions */}
         <div className="max-w-4xl mx-auto space-y-8 animate-fade-in delay-200">
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8">
+          <h2 className="text-4xl md:text-6xl font-oswald font-medium text-white leading-tight mb-8">
             Building Tomorrow's
             <span className="block text-[#30D6C4] mt-2">Digital Solutions</span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl font-inter font-thin text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
             We craft innovative software solutions that transform businesses and empower growth through cutting-edge technology and exceptional user experiences.
           </p>
           
           <div className="pt-8">
             <Button 
               size="lg" 
-              className="bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-semibold px-8 py-4 text-lg rounded-xl shadow-2xl hover:shadow-[#30D6C4]/25 transition-all duration-300 hover:scale-105 group"
+              className="font-jura bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-semibold px-8 py-4 text-lg rounded-xl shadow-2xl hover:shadow-[#30D6C4]/25 transition-all duration-300 hover:scale-105 group"
             >
               Get Started Today
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
