@@ -26,14 +26,14 @@ export const Hero = () => {
             <span className="block text-[#30D6C4] mt-2">Digital Solutions</span>
           </h2>
           
-          <p className="text-xl md:text-2xl font-inter font-thin text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl font-inter font-medium text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
             We craft innovative software solutions that transform businesses and empower growth through cutting-edge technology and exceptional user experiences.
           </p>
           
           <div className="pt-8">
             <Button 
               size="lg" 
-              className="font-jura bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-semibold px-8 py-4 text-lg rounded-xl shadow-2xl hover:shadow-[#30D6C4]/25 transition-all duration-300 hover:scale-105 group"
+              className="font-inter bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium px-8 py-4 text-lg rounded-xl shadow-2xl hover:shadow-[#30D6C4]/25 transition-all duration-300 hover:scale-105 group"
             >
               Get Started Today
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

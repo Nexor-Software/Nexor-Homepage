@@ -96,7 +96,7 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    font-weight: 100;
+    font-weight: 500;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     font-variation-settings: normal;
     scroll-behavior: smooth;
@@ -125,12 +125,13 @@ All colors MUST be HSL.
 
   p {
     font-family: 'Inter', sans-serif;
-    font-weight: 100;
+    font-weight: 500;
     line-height: 1.6;
   }
 
   button {
-    font-family: 'Jura', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
   }
 
   /* Golden ratio proportions */
