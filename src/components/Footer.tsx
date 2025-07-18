@@ -1,12 +1,14 @@
 
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Contact", href: "#contact" }
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Contact", href: "/contact" }
   ];
 
   return (
@@ -29,13 +31,13 @@ export const Footer = () => {
             <h4 className="text-lg font-oswald font-medium text-white">Navigation</h4>
             <nav className="space-y-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="block font-inter font-medium text-[#B0C4D4] hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -48,12 +50,12 @@ export const Footer = () => {
                 hello@nexorsoftware.com
               </p>
               <p className="hover:text-[#30D6C4] transition-colors cursor-pointer">
-                +1 (555) 123-4567
+                +49 1777830812
               </p>
               <p>
-                San Francisco, CA
+                Heidenheim
                 <br />
-                United States
+                Germany
               </p>
             </div>
           </div>
@@ -65,8 +67,8 @@ export const Footer = () => {
             © {currentYear} Nexor Software. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm font-inter font-medium text-[#B0C4D4]">
-            <a href="#privacy" className="hover:text-[#30D6C4] transition-colors">Privacy Policy</a>
-            <a href="#terms" className="hover:text-[#30D6C4] transition-colors">Terms of Service</a>
+            <Link to="/privacy-policy" className="hover:text-[#30D6C4] transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-[#30D6C4] transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

@@ -1,0 +1,87 @@
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+
+export const TermsOfService = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0C1C2C] to-[#0F2235]">
+      <Header />
+      
+      <main className="pt-24 pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-oswald font-medium text-white mb-6">
+              Terms of <span className="text-[#30D6C4]">Service</span>
+            </h1>
+            <div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
+          </div>
+
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 space-y-8">
+            <div className="text-[#B0C4D4] font-inter leading-relaxed space-y-6">
+              <div>
+                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Agreement to Terms</h2>
+                <p className="text-lg">
+                  By accessing and using Nexor Software's services, you accept and agree to be bound by the terms 
+                  and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Use License</h2>
+                <p className="text-lg mb-4">
+                  Permission is granted to temporarily download one copy of the materials on Nexor Software's website 
+                  for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-lg pl-4">
+                  <li>Modify or copy the materials</li>
+                  <li>Use the materials for any commercial purpose or for any public display</li>
+                  <li>Attempt to reverse engineer any software contained on our website</li>
+                  <li>Remove any copyright or other proprietary notations from the materials</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Service Availability</h2>
+                <p className="text-lg">
+                  We strive to provide uninterrupted service, but cannot guarantee 100% uptime. We reserve the right 
+                  to modify or discontinue services at any time without notice. We shall not be liable for any 
+                  modification, suspension, or discontinuance of service.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Limitation of Liability</h2>
+                <p className="text-lg">
+                  In no event shall Nexor Software or its suppliers be liable for any damages (including, without limitation, 
+                  damages for loss of data or profit, or due to business interruption) arising out of the use or inability 
+                  to use our services, even if authorized representative has been notified of the possibility of such damage.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Governing Law</h2>
+                <p className="text-lg">
+                  These terms and conditions are governed by and construed in accordance with applicable laws, 
+                  and you irrevocably submit to the exclusive jurisdiction of the courts in that state or location.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Contact Information</h2>
+                <p className="text-lg">
+                  If you have any questions about these Terms of Service, please contact us at legal@nexorsoftware.com 
+                  or through our contact form.
+                </p>
+              </div>
+
+              <div className="text-sm text-[#8B9CAB] pt-4 border-t border-white/10">
+                <p>Last updated: {new Date().toLocaleDateString()}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};

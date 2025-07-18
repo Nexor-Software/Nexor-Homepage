@@ -8,19 +8,13 @@ export const ThreeColumnSection = () => {
       icon: Building2,
       title: "Our Company",
       description: "Founded on innovation and driven by excellence, Nexor Software has been at the forefront of digital transformation for over a decade.",
-      features: ["Established 2012", "50+ Team Members", "Global Reach"]
+      features: ["Established 2025", "Professional Team"]
     },
     {
       icon: Code,
       title: "Services",
       description: "From web applications to enterprise solutions, we deliver comprehensive software development services tailored to your unique needs.",
-      features: ["Custom Development", "Cloud Solutions", "AI Integration"]
-    },
-    {
-      icon: Users,
-      title: "Careers",
-      description: "Join our talented team of developers, designers, and innovators who are passionate about creating exceptional digital experiences.",
-      features: ["Remote-First", "Growth Opportunities", "Competitive Benefits"]
+      features: ["Connecting dots", "Creating software", "Seamless Integration"]
     }
   ];
 
@@ -39,7 +33,7 @@ export const ThreeColumnSection = () => {
           <div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
           {sections.map((section, index) => (
             <Card 
               key={section.title}
