@@ -40,8 +40,18 @@ const Portfolio = () => {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#0C1C2C] overflow-x-hidden">
-      <Header />
+    <div className="min-h-screen bg-[#0C1C2C] overflow-x-hidden relative">
+      {/* Grain overlay */}
+      <div 
+        className="fixed inset-0 opacity-[0.015] pointer-events-none z-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          mixBlendMode: 'overlay'
+        }}
+      />
+      
+      <div className="relative z-10">
+        <Header />
       
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
@@ -78,12 +88,12 @@ const Portfolio = () => {
 
       {/* Projects Grid */}
       <section className="pb-20 px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-12">
             {filteredProjects.map((project, index) => (
-              <Card key={index} className="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105 overflow-hidden">
+              <Card key={index} className="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105 overflow-hidden w-full max-w-md">
                 <div className="relative">
-                  <div className="w-full h-48 bg-white/5 flex items-center justify-center p-2">
+                  <div className="w-full h-64 bg-white/5 flex items-center justify-center p-4">
                     <img 
                       src={project.image} 
                       alt={project.title}
@@ -98,7 +108,7 @@ const Portfolio = () => {
                 </div>
                 
                 <CardHeader>
-                  <CardTitle className="text-white font-oswald text-xl mb-2">
+                  <CardTitle className="text-white font-oswald font-normal text-xl mb-2">
                     {project.title}
                   </CardTitle>
                   <div className="flex items-center text-[#B0C4D4] text-sm font-inter mb-3">
@@ -193,7 +203,8 @@ const Portfolio = () => {
         </div>
       </section>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

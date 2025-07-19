@@ -6,24 +6,19 @@ import { Users, Target, Award, Clock } from "lucide-react";
 const About = () => {
   const stats = [
     {
-      icon: <Users className="h-8 w-8 text-[#30D6C4]" />,
-      number: "50+",
-      label: "Happy Clients"
-    },
-    {
       icon: <Target className="h-8 w-8 text-[#30D6C4]" />,
-      number: "100+",
-      label: "Projects Completed"
+      number: "10+",
+      label: "Successfully Launched Projects"
     },
     {
       icon: <Award className="h-8 w-8 text-[#30D6C4]" />,
-      number: "5+",
+      number: "4+",
       label: "Years Experience"
     },
     {
       icon: <Clock className="h-8 w-8 text-[#30D6C4]" />,
-      number: "24/7",
-      label: "Support Available"
+      number: "★★★★★",
+      label: "Excellent Support"
     }
   ];
 
@@ -57,7 +52,7 @@ const About = () => {
                 business deserves access to cutting-edge software solutions that drive growth and efficiency.
               </p>
               <p className="text-lg text-[#B0C4D4] font-inter leading-relaxed">
-                Our team of experienced developers, designers, and strategists work collaboratively to 
+                Our team of experienced software developers, designers, and video editors work collaboratively to 
                 deliver solutions that not only meet current needs but also scale for future growth.
               </p>
             </div>
