@@ -41,7 +41,7 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-oswald font-medium text-white leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
             Contact <span className="text-[#30D6C4]">Us</span>
           </h1>
           <p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
@@ -58,7 +58,7 @@ const Contact = () => {
             {/* Contact Form */}
             <Card className="bg-[#0F2235] border-[#30D6C4]/20">
               <CardHeader>
-                <CardTitle className="text-2xl font-oswald text-white">
+                <CardTitle className="text-2xl font-oswald font-normal text-white">
                   Send us a Message
                 </CardTitle>
               </CardHeader>
@@ -111,7 +111,7 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-oswald text-white mb-6">
+                <h2 className="text-3xl font-oswald font-normal text-white mb-6">
                   Get in <span className="text-[#30D6C4]">Touch</span>
                 </h2>
                 <p className="text-lg text-[#B0C4D4] font-inter leading-relaxed">

@@ -12,7 +12,7 @@ const About = () => {
     },
     {
       icon: <Award className="h-8 w-8 text-[#30D6C4]" />,
-      number: "4+",
+      number: "2+",
       label: "Years Experience"
     },
     {
@@ -29,7 +29,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-oswald font-medium text-white leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
             About <span className="text-[#30D6C4]">Nexor Software</span>
           </h1>
           <p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
@@ -43,12 +43,12 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-oswald font-medium text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-oswald font-normal text-white mb-6">
                 Our <span className="text-[#30D6C4]">Story</span>
               </h2>
               <p className="text-lg text-[#B0C4D4] mb-6 font-inter leading-relaxed">
                 Founded with a vision to bridge the gap between innovative technology and business success, 
-                Nexor Software has been at the forefront of digital transformation. We believe that every 
+                Nexor Software has been at the forefront of digital transformation for 2 years. We believe that every 
                 business deserves access to cutting-edge software solutions that drive growth and efficiency.
               </p>
               <p className="text-lg text-[#B0C4D4] font-inter leading-relaxed">
@@ -57,12 +57,12 @@ const About = () => {
               </p>
             </div>
             <div className="bg-[#0F2235] rounded-lg p-8 border border-[#30D6C4]/20">
-              <h3 className="text-2xl font-oswald text-white mb-6">Our Mission</h3>
+              <h3 className="text-2xl font-oswald font-normal text-white mb-6">Our Mission</h3>
               <p className="text-[#B0C4D4] font-inter leading-relaxed mb-4">
                 To empower businesses with innovative software solutions that drive digital transformation 
                 and create lasting value for our clients and their customers.
               </p>
-              <h3 className="text-2xl font-oswald text-white mb-6 mt-8">Our Vision</h3>
+              <h3 className="text-2xl font-oswald font-normal text-white mb-6 mt-8">Our Vision</h3>
               <p className="text-[#B0C4D4] font-inter leading-relaxed">
                 To be the leading software development partner for businesses seeking to leverage 
                 technology for competitive advantage and sustainable growth.
@@ -75,7 +75,7 @@ const About = () => {
       {/* Stats Section */}
       <section className="py-20 px-8 bg-[#0F2235]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-oswald font-medium text-white text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-oswald font-normal text-white text-center mb-12">
             Our <span className="text-[#30D6C4]">Achievements</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -85,7 +85,7 @@ const About = () => {
                   <div className="flex justify-center mb-4">
                     {stat.icon}
                   </div>
-                  <CardTitle className="text-3xl font-oswald text-[#30D6C4]">
+                  <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4]">
                     {stat.number}
                   </CardTitle>
                 </CardHeader>

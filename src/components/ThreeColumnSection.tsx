@@ -7,8 +7,8 @@ export const ThreeColumnSection = () => {
     {
       icon: Building2,
       title: "Our Company",
-      description: "Founded on innovation and driven by excellence, Nexor Software has been at the forefront of digital transformation for over a decade.",
-      features: ["Established 2025", "Professional Team"]
+      description: "Founded on innovation and driven by excellence, Nexor Software has been at the forefront of digital transformation for 2 years.",
+      features: ["Established 2023", "Professional Team"]
     },
     {
       icon: Code,
@@ -27,7 +27,7 @@ export const ThreeColumnSection = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-oswald font-medium text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-oswald font-normal text-white mb-6">
             Why Choose <span className="text-[#30D6C4]">Nexor</span>
           </h2>
           <div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
@@ -44,7 +44,7 @@ export const ThreeColumnSection = () => {
                 <div className="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
                   <section.icon className="w-8 h-8 text-[#30D6C4]" />
                 </div>
-                <CardTitle className="text-2xl font-oswald font-medium text-white">
+                <CardTitle className="text-2xl font-oswald font-normal text-white">
                   {section.title}
                 </CardTitle>
               </CardHeader>

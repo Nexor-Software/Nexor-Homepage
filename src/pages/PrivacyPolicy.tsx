@@ -9,7 +9,7 @@ export const PrivacyPolicy = () => {
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-oswald font-medium text-white mb-6">
+            <h1 className="text-4xl md:text-5xl font-oswald font-normal text-white mb-6">
               Privacy <span className="text-[#30D6C4]">Policy</span>
             </h1>
             <div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
@@ -18,7 +18,7 @@ export const PrivacyPolicy = () => {
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 space-y-8">
             <div className="text-[#B0C4D4] font-inter leading-relaxed space-y-6">
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Information We Collect</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Information We Collect</h2>
                 <p className="text-lg">
                   At Nexor Software, we collect information you provide directly to us, such as when you create an account, 
                   fill out a form, or contact us for support. This may include your name, email address, phone number, 
@@ -27,7 +27,7 @@ export const PrivacyPolicy = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">How We Use Your Information</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">How We Use Your Information</h2>
                 <p className="text-lg mb-4">We use the information we collect to:</p>
                 <ul className="list-disc list-inside space-y-2 text-lg pl-4">
                   <li>Provide, maintain, and improve our services</li>
@@ -39,7 +39,7 @@ export const PrivacyPolicy = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Information Sharing</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Information Sharing</h2>
                 <p className="text-lg">
                   We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, 
                   except as described in this privacy policy. We may share your information with trusted partners who assist 
@@ -48,7 +48,7 @@ export const PrivacyPolicy = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Data Security</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Data Security</h2>
                 <p className="text-lg">
                   We implement appropriate security measures to protect your personal information against unauthorized access, 
                   alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.
@@ -56,7 +56,7 @@ export const PrivacyPolicy = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Contact Us</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Contact Us</h2>
                 <p className="text-lg">
                   If you have any questions about this Privacy Policy, please contact us at privacy@nexorsoftware.com 
                   or through our contact form.

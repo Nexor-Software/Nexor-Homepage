@@ -10,9 +10,9 @@ const Portfolio = () => {
   const projects = [
     {
       title: "E-Tech24 Website",
-      description: "Complete website development for E-Tech24, a technology solutions provider. Modern, responsive design with optimized performance and user experience.",
+      description: "Professional website design for E-Tech24, a technology solutions provider. Created modern, responsive design concepts with focus on user experience and visual appeal.",
       image: "/FullLogo-01.svg",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+      technologies: ["Figma", "UI/UX Design", "Responsive Design"],
       category: "Websites",
       year: "2025",
       client: "E-Tech24",
@@ -23,7 +23,7 @@ const Portfolio = () => {
       title: "Terminal Software Solution",
       description: "Custom software development for terminal systems. Robust, efficient software designed for reliable terminal operations and management.",
       image: "/pt1duo software.png",
-      technologies: ["C++", "Python", "Linux", "Database Integration"],
+      technologies: ["TypeScript"],
       category: "Software",
       year: "2025",
       client: "Terminal Operations",
@@ -56,7 +56,7 @@ const Portfolio = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-oswald font-medium text-white leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
             Our <span className="text-[#30D6C4]">Portfolio</span>
           </h1>
           <p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
@@ -189,7 +189,7 @@ const Portfolio = () => {
       {/* CTA Section */}
       <section className="py-20 px-8 bg-[#0F2235]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-oswald font-medium text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-oswald font-normal text-white mb-6">
             Ready to Start Your <span className="text-[#30D6C4]">Project?</span>
           </h2>
           <p className="text-lg text-[#B0C4D4] font-inter mb-8 leading-relaxed">

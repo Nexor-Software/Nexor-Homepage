@@ -44,7 +44,7 @@ const Services = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-oswald font-medium text-white leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
             Our <span className="text-[#30D6C4]">Services</span>
           </h1>
           <p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
@@ -63,7 +63,7 @@ const Services = () => {
                   <div className="flex justify-center mb-4">
                     {service.icon}
                   </div>
-                  <CardTitle className="text-white font-oswald text-xl">
+                  <CardTitle className="text-white font-oswald font-normal text-xl">
                     {service.title}
                   </CardTitle>
                 </CardHeader>

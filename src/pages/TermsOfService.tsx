@@ -9,7 +9,7 @@ export const TermsOfService = () => {
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-oswald font-medium text-white mb-6">
+            <h1 className="text-4xl md:text-5xl font-oswald font-normal text-white mb-6">
               Terms of <span className="text-[#30D6C4]">Service</span>
             </h1>
             <div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
@@ -18,7 +18,7 @@ export const TermsOfService = () => {
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 space-y-8">
             <div className="text-[#B0C4D4] font-inter leading-relaxed space-y-6">
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Agreement to Terms</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Agreement to Terms</h2>
                 <p className="text-lg">
                   By accessing and using Nexor Software's services, you accept and agree to be bound by the terms 
                   and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
@@ -26,7 +26,7 @@ export const TermsOfService = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Use License</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Use License</h2>
                 <p className="text-lg mb-4">
                   Permission is granted to temporarily download one copy of the materials on Nexor Software's website 
                   for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
@@ -40,7 +40,7 @@ export const TermsOfService = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-oswald font-medium text-white mb-4">Service Availability</h2>
+                <h2 className="text-2xl font-oswald font-normal text-white mb-4">Service Availability</h2>
                 <p className="text-lg">
                   We strive to provide uninterrupted service, but cannot guarantee 100% uptime. We reserve the right 
                   to modify or discontinue services at any time without notice. We shall not be liable for any 
