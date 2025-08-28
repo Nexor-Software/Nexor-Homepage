@@ -77,5 +77,3 @@ bun run lint
 ```
 MIT © Nexor Software
 ```
-
-Or replace with the correct license for your organization.
