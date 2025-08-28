@@ -1,73 +1,81 @@
-# Welcome to your Lovable project
+# Nexor Software — Corporate Landing Page
 
-## Project info
+This repository contains the official corporate landing page. The site is built with Astro and powered by Bun, React components, Tailwind CSS and MDX for content. It is optimized for performance, accessibility and easy content updates.
 
-**URL**: https://lovable.dev/projects/e3f8fc47-7744-4569-bd28-63acc75d3a08
+## Features
 
-## How can I edit this code?
+- Fast, SEO-friendly, server-rendered site with Astro
+- React components for interactive UI
+- MDX-based content pages for easy editing
+- Tailwind CSS for utility-first styling
+- Built and run with Bun for speed
+- Responsive layout, accessibility best practices, and optimized assets
 
-There are several ways of editing your application.
+## Tech stack
 
-**Use Lovable**
+- Astro
+- Bun
+- React
+- Tailwind CSS
+- MDX
+- (Optional) Any deployment platform that supports static sites or Node-compatible serverless functions
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e3f8fc47-7744-4569-bd28-63acc75d3a08) and start prompting.
+## Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Bun >= 1.x installed (https://bun.sh)
+- Git
 
-**Use your preferred IDE**
+## Quickstart
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Clone the repo and start the dev server:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+git clone https://github.com/your-org/nexor-website.git
+cd nexor-website
+bun install
+bun run dev
 ```
 
-**Edit a file directly in GitHub**
+## Available commands
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Use Bun to run scripts defined in package.json:
 
-**Use GitHub Codespaces**
+- Start local development server
+```bash
+bun run dev
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Build static site for production
+```bash
+bun run build
+```
 
-## What technologies are used for this project?
+- Preview the production build locally
+```bash
+bun run preview
+```
 
-This project is built with:
+- Format code (if Prettier configured)
+```bash
+bun run format
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Run linting (if configured)
+```bash
+bun run lint
+```
 
-## How can I deploy this project?
+## Tailwind + MDX notes
 
-Simply open [Lovable](https://lovable.dev/projects/e3f8fc47-7744-4569-bd28-63acc75d3a08) and click on Share -> Publish.
+- Tailwind is configured via `tailwind.config.*` and imported into your main CSS file.
+- MDX files can import and use React components placed in `src/components`.
+- For consistent styling, wrap MDX pages with a layout that includes Tailwind classes.
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```
+MIT © Nexor Software
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Or replace with the correct license for your organization.
