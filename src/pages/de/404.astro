@@ -1,0 +1,56 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="pt-24 pb-16 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="mb-12">
+          <h1 class="text-8xl md:text-9xl font-oswald font-normal text-white mb-6">
+            <span class="text-[#30D6C4]">4</span>0<span class="text-[#30D6C4]">4</span>
+          </h1>
+          <div class="w-24 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 max-w-2xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-oswald font-normal text-white mb-6">
+            Seite nicht gefunden
+          </h2>
+          <p class="text-lg text-[#B0C4D4] font-inter leading-relaxed mb-8">
+            Entschuldigung, die gesuchte Seite existiert nicht. Sie wurde möglicherweise verschoben, gelöscht oder Sie haben eine falsche URL eingegeben.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="/de/"
+              class="inline-flex items-center px-8 py-4 bg-[#30D6C4] text-[#0C1C2C] font-oswald font-medium rounded-lg hover:bg-[#28C4B2] transition-colors duration-300 transform hover:scale-105"
+            >
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+              Zur Startseite
+            </a>
+
+            <a
+              href="/de/contact"
+              class="inline-flex items-center px-8 py-4 border border-[#30D6C4] text-[#30D6C4] font-oswald font-medium rounded-lg hover:bg-[#30D6C4] hover:text-[#0C1C2C] transition-colors duration-300"
+            >
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+              Kontakt
+            </a>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-white/10">
+            <p class="text-sm text-[#8B9CAB] font-inter">
+              Brauchen Sie Hilfe? Versuchen Sie zu suchen, wonach Sie suchen, oder schauen Sie sich unsere
+              <a href="/de/services" class="text-[#30D6C4] hover:underline ml-1">Dienstleistungen</a> an.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

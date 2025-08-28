@@ -1,0 +1,101 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, User, ArrowLeft } from "lucide-react";
+
+export async function getStaticPaths() {
+  const posts = Object.values(import.meta.glob('../../../blog/en/*.mdx', { eager: true }));
+  return posts.map(post => ({
+    params: { slug: post.frontmatter.title.toLowerCase().replace(/\s+/g, '-') },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const Content = post.default;
+const currentLocale = Astro.currentLocale || 'en';
+
+// Helper function to parse date strings
+function parseDate(dateString) {
+  return new Date(dateString);
+}
+
+// Helper function to get localized path
+function getLocalizedPath(path) {
+  const pathWithoutLocale = path.replace(/^\/(en|de)/, '');
+  return currentLocale === 'en' ? `/en${pathWithoutLocale || '/'}` : `/de${pathWithoutLocale || '/'}`;
+}
+
+const translations = {
+  en: {
+    backToBlog: "Back to Blog Overview",
+    dateLocale: 'en-US'
+  },
+  de: {
+    backToBlog: "Zurück zur Blog-Übersicht",
+    dateLocale: 'de-DE'
+  }
+};
+
+const t = translations[currentLocale];
+---
+
+<Layout>
+  <article class="pt-24 pb-16 bg-[#0C1C2C] min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <a href={getLocalizedPath('/blog')} class="inline-flex items-center text-[#30D6C4] hover:text-[#28C4B2] font-medium transition-colors group mb-6">
+          <ArrowLeft class="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+          {t.backToBlog}
+        </a>
+      </div>
+
+      <header class="mb-12">
+        {post.frontmatter.image && (
+          <div class="w-full h-64 md:h-96 bg-white/5 flex items-center justify-center p-4 mb-8 rounded-lg overflow-hidden">
+            <img
+              src={post.frontmatter.image}
+              alt={post.frontmatter.title}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        <h1 class="text-4xl md:text-5xl font-oswald font-normal text-white leading-tight mb-6">
+          {post.frontmatter.title}
+        </h1>
+
+        <p class="text-xl text-[#B0C4D4] font-inter leading-relaxed mb-8">
+          {post.frontmatter.description}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-[#B0C4D4] font-inter">
+          <div class="flex items-center">
+            <Calendar class="h-4 w-4 mr-2" />
+            <span>{parseDate(post.frontmatter.pubDate).toLocaleDateString(t.dateLocale)}</span>
+          </div>
+          {post.frontmatter.author && (
+            <div class="flex items-center">
+              <User class="h-4 w-4 mr-2" />
+              <span>{post.frontmatter.author}</span>
+            </div>
+          )}
+        </div>
+
+        {post.frontmatter.tags && (
+          <div class="flex flex-wrap gap-2 mt-6">
+            {post.frontmatter.tags.map((tag) => (
+              <Badge variant="secondary" class="bg-[#0C1C2C] text-[#30D6C4] border-[#30D6C4]/20">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div class="prose prose-lg prose-invert max-w-none">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>

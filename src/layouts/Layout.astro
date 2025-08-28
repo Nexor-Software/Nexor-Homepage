@@ -1,0 +1,66 @@
+---
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "@/index.css";
+
+const queryClient = new QueryClient();
+
+// Get current locale and define translations
+const currentLocale = Astro.currentLocale || 'en';
+const isGerman = currentLocale === 'de';
+
+const translations = {
+  en: {
+    title: "Nexor Software - Building Tomorrow's Digital Solutions",
+    description: "Transform your business with innovative software solutions from Nexor Software. Expert development, cutting-edge technology, exceptional results.",
+    author: "Nexor Software"
+  },
+  de: {
+    title: "Nexor Software - Die Zukunft der digitalen Lösungen",
+    description: "Transformieren Sie Ihr Unternehmen mit innovativen Softwarelösungen von Nexor Software. Expertenentwicklung, modernste Technologie, außergewöhnliche Ergebnisse.",
+    author: "Nexor Software"
+  }
+};
+
+const t = translations[currentLocale];
+---
+
+<html lang={currentLocale} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{t.title}</title>
+    <meta name="description" content={t.description} />
+    <meta name="author" content={t.author} />
+
+    <meta property="og:title" content={t.title} />
+    <meta property="og:description" content={t.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nexorsoftware" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom font combination -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Inter:wght@500&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen bg-[#0C1C2C] overflow-x-hidden">
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Header client:load {currentLocale} />
+        <slot />
+        <Footer client:load {currentLocale} />
+        <Toaster />
+        <Sonner />
+      </TooltipProvider>
+    </QueryClientProvider>
+  </body>
+</html>

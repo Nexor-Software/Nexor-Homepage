@@ -1,0 +1,68 @@
+---
+title: 'Getting Started with Astro'
+description: 'Learn how to build modern websites with Astro, the web framework for content-driven websites.'
+pubDate: 2025-01-30
+author: 'Nexor Team'
+tags: ['Astro', 'Web Development', 'Static Sites']
+image: '/nexor-logo.svg'
+---
+
+# Getting Started with Astro
+
+Astro is revolutionizing how we build modern websites. This guide will help you get started with Astro and understand why it's becoming so popular.
+
+## What is Astro?
+
+Astro is a web framework designed for building fast, content-focused websites. It allows you to use your favorite UI components and libraries while shipping zero JavaScript by default.
+
+## Key Features
+
+### 1. Component Islands
+
+Astro introduces the concept of "component islands" - interactive components surrounded by static HTML.
+
+```astro
+---
+// Static content
+---
+<html>
+  <body>
+    <h1>Hello World</h1>
+    <!-- Interactive island -->
+    <Counter client:load />
+  </body>
+</html>
+```
+
+### 2. Multi-Framework Support
+
+Use React, Vue, Svelte, or even plain HTML components in the same project.
+
+### 3. Built-in Optimization
+
+Astro automatically optimizes your build, splitting CSS and JavaScript only where needed.
+
+## Why Choose Astro?
+
+- **Performance**: Fast loading times with minimal JavaScript
+- **Developer Experience**: Use familiar frameworks and tools
+- **SEO-Friendly**: Server-side rendering by default
+- **Scalable**: From small blogs to large applications
+
+## Getting Started
+
+```bash
+# Create a new Astro project
+npm create astro@latest my-astro-site
+
+# Start development server
+npm run dev
+```
+
+## Conclusion
+
+Astro offers a fresh approach to web development that prioritizes performance and developer experience. Whether you're building a blog, documentation site, or complex web application, Astro provides the tools you need.
+
+---
+
+_Ready to build with Astro? [Contact us for your next project!](/contact)_
