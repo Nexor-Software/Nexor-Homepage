@@ -129,14 +129,40 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 					{/* Mobile menu button */}
 					<div className="md:hidden flex items-center space-x-2">
 						{/* Mobile Language Switcher */}
-						<Button
-							variant="ghost"
-							size="sm"
-							onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
-							<Globe className="h-5 w-5" />
-							<span className="ml-1 uppercase">{currentLocale}</span>
-						</Button>
+						<div className="relative">
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+								className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
+								<Globe className="h-5 w-5" />
+								<span className="ml-1 uppercase">{currentLocale}</span>
+							</Button>
+							{isLangMenuOpen && (
+								<div className="absolute right-0 top-full mt-1 w-24 bg-[#0F2235] border border-[#30D6C4]/20 rounded-lg shadow-lg z-50">
+									<button
+										onClick={() => {
+											switchLanguage('en');
+											setIsLangMenuOpen(false);
+										}}
+										className={`block w-full px-3 py-2 text-left text-sm hover:bg-[#30D6C4]/10 transition-colors ${
+											currentLocale === 'en' ? 'text-[#30D6C4]' : 'text-white'
+										}`}>
+										EN
+									</button>
+									<button
+										onClick={() => {
+											switchLanguage('de');
+											setIsLangMenuOpen(false);
+										}}
+										className={`block w-full px-3 py-2 text-left text-sm hover:bg-[#30D6C4]/10 transition-colors ${
+											currentLocale === 'de' ? 'text-[#30D6C4]' : 'text-white'
+										}`}>
+										DE
+									</button>
+								</div>
+							)}
+						</div>
 						<Button
 							variant="ghost"
 							size="sm"
@@ -146,28 +172,6 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 						</Button>
 					</div>
 				</div>
-
-				{/* Mobile Language Menu */}
-				{isLangMenuOpen && (
-					<div className="md:hidden border-t border-white/10 bg-[#0C1C2C]/95 backdrop-blur-sm">
-						<div className="px-2 pt-2 pb-3">
-							<button
-								onClick={() => switchLanguage('en')}
-								className={`block w-full px-3 py-2 text-left text-sm hover:bg-[#30D6C4]/10 transition-colors ${
-									currentLocale === 'en' ? 'text-[#30D6C4]' : 'text-white'
-								}`}>
-								English
-							</button>
-							<button
-								onClick={() => switchLanguage('de')}
-								className={`block w-full px-3 py-2 text-left text-sm hover:bg-[#30D6C4]/10 transition-colors ${
-									currentLocale === 'de' ? 'text-[#30D6C4]' : 'text-white'
-								}`}>
-								Deutsch
-							</button>
-						</div>
-					</div>
-				)}
 
 				{/* Mobile Navigation */}
 				{isMenuOpen && (
