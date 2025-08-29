@@ -1,14 +1,32 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# Welcome, digital explorers! 🌟
+# Nexor's homepage: Where code meets creativity
+# Please be kind to our servers - they're working hard to innovate!
 
 User-agent: *
+Crawl-delay: 1
 Allow: /
+
+# Googlebot: Our search engine friend
+User-agent: Googlebot
+Crawl-delay: 2
+Allow: /
+
+# Bingbot: Hello from the other side!
+User-agent: Bingbot
+Crawl-delay: 2
+Allow: /
+
+# Twitterbot: Sharing our tweets with the world
+User-agent: Twitterbot
+Crawl-delay: 1
+Allow: /
+
+# Facebook crawler: Connecting communities
+User-agent: facebookexternalhit
+Crawl-delay: 1
+Allow: /
+
+# All other bots: Welcome aboard!
+# Remember: Crawl responsibly, index thoughtfully
+
+Sitemap: https://nexor-software.netlify.app/sitemap-index.xml
