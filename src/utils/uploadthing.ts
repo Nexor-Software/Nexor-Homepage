@@ -1,9 +1,7 @@
 import { generateUploadButton, generateUploadDropzone } from '@uploadthing/react';
 
-import type { OurFileRouter } from '../pages/api/uploadthing';
-
-export const UploadButton = generateUploadButton<OurFileRouter>();
-export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
+export const UploadButton = generateUploadButton();
+export const UploadDropzone = generateUploadDropzone();
 
 // Mapping of local filenames to UploadThing URLs
 // These should match the files uploaded to your UploadThing account
@@ -22,27 +20,4 @@ export function getUploadThingUrl(filename: string): string {
 	// Remove leading slash if present
 	const cleanFilename = filename.startsWith('/') ? filename.slice(1) : filename;
 	return UPLOADTHING_URLS[cleanFilename] || filename; // Fallback to original path
-}
-
-// Utility to get UploadThing URLs dynamically (for future use)
-export async function getUploadThingUrls() {
-	const { utapi } = await import('../pages/api/uploadthing');
-
-	try {
-		const files = await utapi.listFiles();
-		const urlMap: Record<string, string> = {};
-
-		// Extract appId from token
-		const appId = 'oybnx5jyol';
-
-		files.files.forEach((file: any) => {
-			// Map filename to UploadThing URL
-			urlMap[file.name] = `https://${appId}.ufs.sh/f/${file.key}`;
-		});
-
-		return urlMap;
-	} catch (error) {
-		console.error('Error fetching UploadThing files:', error);
-		return {};
-	}
 }
