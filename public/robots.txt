@@ -5,26 +5,66 @@
 User-agent: *
 Crawl-delay: 1
 Allow: /
+Disallow: /de/contact
+Disallow: /en/contact
+Disallow: /de/privacy-policy
+Disallow: /en/privacy-policy
+Disallow: /de/terms-of-service
+Disallow: /en/terms-of-service
+Disallow: /de/impressum
+Disallow: /en/impressum
 
 # Googlebot: Our search engine friend
 User-agent: Googlebot
 Crawl-delay: 2
 Allow: /
+Disallow: /de/contact
+Disallow: /en/contact
+Disallow: /de/privacy-policy
+Disallow: /en/privacy-policy
+Disallow: /de/terms-of-service
+Disallow: /en/terms-of-service
+Disallow: /de/impressum
+Disallow: /en/impressum
 
 # Bingbot: Hello from the other side!
 User-agent: Bingbot
 Crawl-delay: 2
 Allow: /
+Disallow: /de/contact
+Disallow: /en/contact
+Disallow: /de/privacy-policy
+Disallow: /en/privacy-policy
+Disallow: /de/terms-of-service
+Disallow: /en/terms-of-service
+Disallow: /de/impressum
+Disallow: /en/impressum
 
 # Twitterbot: Sharing our tweets with the world
 User-agent: Twitterbot
 Crawl-delay: 1
 Allow: /
+Disallow: /de/contact
+Disallow: /en/contact
+Disallow: /de/privacy-policy
+Disallow: /en/privacy-policy
+Disallow: /de/terms-of-service
+Disallow: /en/terms-of-service
+Disallow: /de/impressum
+Disallow: /en/impressum
 
 # Facebook crawler: Connecting communities
 User-agent: facebookexternalhit
 Crawl-delay: 1
 Allow: /
+Disallow: /de/contact
+Disallow: /en/contact
+Disallow: /de/privacy-policy
+Disallow: /en/privacy-policy
+Disallow: /de/terms-of-service
+Disallow: /en/terms-of-service
+Disallow: /de/impressum
+Disallow: /en/impressum
 
 # All other bots: Welcome aboard!
 # Remember: Crawl responsibly, index thoughtfully

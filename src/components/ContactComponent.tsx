@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const ContactComponent = () => {
+
 	const contactInfo = [
 		{
 			icon: <Mail className="h-6 w-6 text-[#30D6C4]" />,

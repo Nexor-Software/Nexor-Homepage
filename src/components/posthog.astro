@@ -1,0 +1,13 @@
+---
+import { PostHogProvider } from '@posthog/react';
+---
+
+<PostHogProvider client:load
+  apiKey="phc_8aXrzs13g5HvrC84ImJoh1BLQpYbOq2zlZPTDNSdoTQ"
+  options={{
+    api_host: 'https://eu.i.posthog.com',
+    cookieless_mode: 'on_reject'
+  }}
+>
+  <slot />
+</PostHogProvider>

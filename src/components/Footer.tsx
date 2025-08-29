@@ -30,6 +30,7 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 			privacyPolicy: 'Privacy Policy',
 			termsOfService: 'Terms of Service',
 			impressum: 'Impressum',
+			cookieSettings: 'Cookie Settings',
 		},
 		de: {
 			brand: 'Nexor Software',
@@ -50,6 +51,7 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 			privacyPolicy: 'Datenschutzerklärung',
 			termsOfService: 'Nutzungsbedingungen',
 			impressum: 'Impressum',
+			cookieSettings: 'Cookie-Einstellungen',
 		},
 	};
 
@@ -125,6 +127,15 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 							className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-3 rounded-lg hover:bg-white/5 min-h-[44px]">
 							{t.impressum}
 						</a>
+						<button
+							onClick={() => {
+								if (typeof window !== 'undefined' && (window as any).openCookieBanner) {
+									(window as any).openCookieBanner();
+								}
+							}}
+							className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-3 rounded-lg hover:bg-white/5 min-h-[44px] cursor-pointer">
+							{t.cookieSettings}
+						</button>
 					</div>
 				</div>
 			</div>

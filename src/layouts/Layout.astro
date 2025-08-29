@@ -1,13 +1,10 @@
 ---
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ProvidersIsland } from "@/components/ProvidersIsland";
 import "@/index.css";
 
-const queryClient = new QueryClient();
+// providers are now inside ProvidersIsland
 
 // Get current locale and define translations
 const currentLocale = Astro.currentLocale || 'en';
@@ -95,9 +92,6 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
 
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Preconnect to Google Fonts for performance -->
@@ -138,16 +132,12 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
         ]
       })
     } />
+
   </head>
   <body class="min-h-screen bg-[#0C1C2C] overflow-x-hidden">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Header client:load {currentLocale} />
-        <slot />
-        <Footer client:load {currentLocale} />
-        <Toaster />
-        <Sonner />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <Header client:load {currentLocale} />
+    <slot />
+    <Footer client:load {currentLocale} />
+    <ProvidersIsland client:load {currentLocale} />
   </body>
 </html>
