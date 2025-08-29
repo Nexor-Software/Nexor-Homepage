@@ -132,7 +132,7 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 							variant="ghost"
 							size="sm"
 							onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-							className="text-white hover:text-[#30D6C4] hover:bg-white/10">
+							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
 							<Globe className="h-5 w-5" />
 							<span className="ml-1 uppercase">{currentLocale}</span>
 						</Button>
@@ -140,7 +140,7 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 							variant="ghost"
 							size="sm"
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
-							className="text-white hover:text-[#30D6C4] hover:bg-white/10">
+							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
 							{isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
 						</Button>
 					</div>
@@ -174,39 +174,39 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 						<div className="px-2 pt-2 pb-3 space-y-1">
 							<a
 								href={getLocalizedPath('/')}
-								className="block px-3 py-2 text-white hover:text-[#30D6C4] transition-colors font-inter"
+								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
 								onClick={() => setIsMenuOpen(false)}>
 								{t.home}
 							</a>
 							<a
 								href={getLocalizedPath('/services')}
-								className="block px-3 py-2 text-white hover:text-[#30D6C4] transition-colors font-inter"
+								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
 								onClick={() => setIsMenuOpen(false)}>
 								{t.services}
 							</a>
 							<a
 								href={getLocalizedPath('/about')}
-								className="block px-3 py-2 text-white hover:text-[#30D6C4] transition-colors font-inter"
+								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
 								onClick={() => setIsMenuOpen(false)}>
 								{t.about}
 							</a>
 							<a
 								href={getLocalizedPath('/blog')}
-								className="block px-3 py-2 text-white hover:text-[#30D6C4] transition-colors font-inter"
+								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
 								onClick={() => setIsMenuOpen(false)}>
 								{t.blog}
 							</a>
 							<a
 								href={getLocalizedPath('/portfolio')}
-								className="block px-3 py-2 text-white hover:text-[#30D6C4] transition-colors font-inter"
+								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
 								onClick={() => setIsMenuOpen(false)}>
 								{t.portfolio}
 							</a>
-							<div className="px-3 py-2">
+							<div className="px-4 py-3">
 								<a href={getLocalizedPath('/contact')}>
 									<Button
 										size="sm"
-										className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium"
+										className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium py-3 rounded-lg text-base"
 										onClick={() => setIsMenuOpen(false)}>
 										{t.getQuote}
 									</Button>

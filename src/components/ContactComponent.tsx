@@ -59,41 +59,41 @@ const ContactComponent = () => {
 							<CardContent className="space-y-6">
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 									<div>
-										<label className="block text-white font-inter mb-2">First Name</label>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">First Name</label>
 										<Input
 											placeholder="Your first name"
-											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400"
+											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 										/>
 									</div>
 									<div>
-										<label className="block text-white font-inter mb-2">Last Name</label>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">Last Name</label>
 										<Input
 											placeholder="Your last name"
-											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400"
+											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 										/>
 									</div>
 								</div>
 								<div>
-									<label className="block text-white font-inter mb-2">Email</label>
+									<label className="block text-white font-inter mb-2 text-sm md:text-base">Email</label>
 									<Input
 										type="email"
 										placeholder="your.email@example.com"
-										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400"
+										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 									/>
 								</div>
 								<div>
-									<label className="block text-white font-inter mb-2">Subject</label>
+									<label className="block text-white font-inter mb-2 text-sm md:text-base">Subject</label>
 									<Input
 										placeholder="What's this about?"
-										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400"
+										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 									/>
 								</div>
 								<div>
-									<label className="block text-white font-inter mb-2">Message</label>
+									<label className="block text-white font-inter mb-2 text-sm md:text-base">Message</label>
 									<Textarea
 										placeholder="Tell us about your project..."
 										rows={6}
-										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400"
+										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 min-h-[120px] md:min-h-[80px]"
 									/>
 								</div>
 								<Button className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium py-3 rounded-lg">

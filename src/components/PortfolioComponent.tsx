@@ -137,7 +137,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 								<Button
 									key={index}
 									onClick={() => setActiveCategory(category)}
-									className={`px-6 py-3 rounded-full font-inter font-medium transition-all duration-300 ${
+									className={`px-6 py-3 md:px-6 md:py-3 text-sm md:text-base rounded-full font-inter font-medium transition-all duration-300 min-h-[44px] md:min-h-[40px] ${
 										activeCategory === category
 											? 'bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] shadow-lg shadow-[#30D6C4]/25'
 											: 'bg-white/10 text-white border border-white/20 hover:bg-[#30D6C4]/20 hover:border-[#30D6C4]/50 hover:text-[#30D6C4]'

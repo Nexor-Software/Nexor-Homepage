@@ -56,27 +56,29 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
 
 	return (
-		<footer className="bg-[#0F2235] border-t border-white/10 py-16 px-8">
+		<footer className="bg-[#0F2235] border-t border-white/10 py-12 md:py-16 px-4 md:px-8">
 			<div className="max-w-6xl mx-auto">
-				<div className="grid md:grid-cols-3 gap-12 mb-12">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
 					{/* Brand */}
-					<div className="space-y-6">
-						<h3 className="text-2xl font-oswald font-medium text-white">
+					<div className="space-y-4 md:space-y-6 sm:col-span-2 lg:col-span-1">
+						<h3 className="text-xl md:text-2xl font-oswald font-medium text-white">
 							{t.brand.split(' ')[0]} <span className="text-[#30D6C4]">{t.brand.split(' ')[1]}</span>
 						</h3>
-						<p className="font-inter font-medium text-[#B0C4D4] leading-relaxed">{t.description}</p>
+						<p className="font-inter font-medium text-[#B0C4D4] leading-relaxed text-sm md:text-base">
+							{t.description}
+						</p>
 						<div className="w-12 h-1 bg-[#30D6C4] rounded-full"></div>
 					</div>
 
 					{/* Navigation */}
-					<div className="space-y-6">
-						<h4 className="text-lg font-oswald font-medium text-white">{t.navigation}</h4>
-						<nav className="space-y-3">
+					<div className="space-y-4 md:space-y-6">
+						<h4 className="text-base md:text-lg font-oswald font-medium text-white">{t.navigation}</h4>
+						<nav className="space-y-2 md:space-y-3">
 							{t.navLinks.map((link) => (
 								<a
 									key={link.label}
 									href={getLocalizedPath(link.href)}
-									className="block font-inter font-medium text-[#B0C4D4] hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform">
+									className="flex items-center font-inter font-medium text-[#B0C4D4] hover:text-[#30D6C4] transition-colors duration-300 hover:translate-x-1 transform py-2 px-2 -mx-2 rounded-lg hover:bg-white/5 min-h-[44px]">
 									{link.label}
 								</a>
 							))}
@@ -84,29 +86,43 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 					</div>
 
 					{/* Contact */}
-					<div className="space-y-6">
-						<h4 className="text-lg font-oswald font-medium text-white">{t.getInTouch}</h4>
-						<div className="space-y-3 font-inter font-medium text-[#B0C4D4]">
-							<p className="hover:text-[#30D6C4] transition-colors cursor-pointer">{t.email}</p>
-							<p className="hover:text-[#30D6C4] transition-colors cursor-pointer">{t.phone}</p>
-							<p>{t.location}</p>
+					<div className="space-y-4 md:space-y-6">
+						<h4 className="text-base md:text-lg font-oswald font-medium text-white">{t.getInTouch}</h4>
+						<div className="space-y-2 md:space-y-3 font-inter font-medium text-[#B0C4D4]">
+							<a
+								href={`mailto:${t.email}`}
+								className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-2 -mx-2 rounded-lg hover:bg-white/5 min-h-[44px]">
+								{t.email}
+							</a>
+							<a
+								href={`tel:${t.phone}`}
+								className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-2 -mx-2 rounded-lg hover:bg-white/5 min-h-[44px]">
+								{t.phone}
+							</a>
+							<p className="py-2 px-2 text-sm md:text-base">{t.location}</p>
 						</div>
 					</div>
 				</div>
 
 				{/* Bottom bar */}
-				<div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-					<p className="font-inter font-medium text-[#B0C4D4] text-sm">
+				<div className="pt-6 md:pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+					<p className="font-inter font-medium text-[#B0C4D4] text-xs md:text-sm text-center sm:text-left">
 						© {currentYear} Nexor Software. {t.copyright}
 					</p>
-					<div className="flex space-x-6 text-sm font-inter font-medium text-[#B0C4D4]">
-						<a href={getLocalizedPath('/privacy-policy')} className="hover:text-[#30D6C4] transition-colors">
+					<div className="flex flex-wrap justify-center sm:justify-end gap-4 md:gap-6 text-xs md:text-sm font-inter font-medium text-[#B0C4D4]">
+						<a
+							href={getLocalizedPath('/privacy-policy')}
+							className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-3 rounded-lg hover:bg-white/5 min-h-[44px]">
 							{t.privacyPolicy}
 						</a>
-						<a href={getLocalizedPath('/terms-of-service')} className="hover:text-[#30D6C4] transition-colors">
+						<a
+							href={getLocalizedPath('/terms-of-service')}
+							className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-3 rounded-lg hover:bg-white/5 min-h-[44px]">
 							{t.termsOfService}
 						</a>
-						<a href={getLocalizedPath('/impressum')} className="hover:text-[#30D6C4] transition-colors">
+						<a
+							href={getLocalizedPath('/impressum')}
+							className="flex items-center hover:text-[#30D6C4] transition-colors py-2 px-3 rounded-lg hover:bg-white/5 min-h-[44px]">
 							{t.impressum}
 						</a>
 					</div>

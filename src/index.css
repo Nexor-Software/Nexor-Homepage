@@ -167,6 +167,37 @@ All colors MUST be HSL.
 	::-webkit-scrollbar-thumb:hover {
 		background: #28c4b2;
 	}
+
+	/* Mobile-specific improvements */
+	@media (max-width: 768px) {
+		/* Ensure minimum touch targets */
+		button,
+		a,
+		input,
+		textarea,
+		select {
+			min-height: 44px;
+		}
+
+		/* Improve readability on small screens */
+		body {
+			font-size: 16px;
+			line-height: 1.6;
+		}
+
+		/* Better spacing for mobile */
+		.space-y-4 > * + * {
+			margin-top: 1rem;
+		}
+
+		.space-y-6 > * + * {
+			margin-top: 1.5rem;
+		}
+
+		.space-y-8 > * + * {
+			margin-top: 2rem;
+		}
+	}
 }
 
 /* Prose styling for blog content */

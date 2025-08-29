@@ -28,7 +28,7 @@ function parseDate(dateString) {
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
-          <Card class="group bg-[#0F2235]/80 backdrop-blur-sm border-[#30D6C4]/20 hover:border-[#30D6C4]/50 hover:bg-[#0F2235] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#30D6C4]/10 overflow-hidden">
+          <Card class="group bg-[#0F2235]/80 backdrop-blur-sm border-[#30D6C4]/20 hover:border-[#30D6C4]/50 hover:bg-[#0F2235] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#30D6C4]/10 overflow-hidden min-h-[400px] md:min-h-[350px] flex flex-col">
             {post.frontmatter.image && (
               <div class="w-full h-48 bg-gradient-to-br from-[#30D6C4]/5 to-transparent flex items-center justify-center p-4 overflow-hidden">
                 <img
@@ -39,12 +39,12 @@ function parseDate(dateString) {
               </div>
             )}
             <CardHeader class="pb-4">
-              <div class="flex items-center text-[#B0C4D4] text-sm font-inter mb-4">
+              <div class="flex flex-wrap items-center text-[#B0C4D4] text-sm font-inter mb-4 gap-2">
                 <Calendar class="h-4 w-4 mr-2 text-[#30D6C4]" />
                 <span>{parseDate(post.frontmatter.pubDate).toLocaleDateString('de-DE')}</span>
                 {post.frontmatter.author && (
                   <>
-                    <User class="h-4 w-4 ml-4 mr-2 text-[#30D6C4]" />
+                    <User class="h-4 w-4 ml-2 mr-2 text-[#30D6C4]" />
                     <span>{post.frontmatter.author}</span>
                   </>
                 )}
@@ -55,14 +55,14 @@ function parseDate(dateString) {
                 </a>
               </CardTitle>
             </CardHeader>
-            <CardContent class="pt-0">
-              <p class="text-[#B0C4D4] font-inter mb-6 line-clamp-3 leading-relaxed">
+            <CardContent class="pt-0 flex-1 flex flex-col">
+              <p class="text-[#B0C4D4] font-inter mb-6 line-clamp-3 leading-relaxed flex-1">
                 {post.frontmatter.description}
               </p>
               {post.frontmatter.tags && (
                 <div class="flex flex-wrap gap-2 mb-6">
                   {post.frontmatter.tags.map((tag) => (
-                    <Badge variant="secondary" class="bg-[#0C1C2C]/80 text-[#30D6C4] border-[#30D6C4]/30 hover:bg-[#30D6C4]/10 transition-colors duration-300">
+                    <Badge variant="secondary" class="bg-[#0C1C2C]/80 text-[#30D6C4] border-[#30D6C4]/30 hover:bg-[#30D6C4]/10 transition-colors duration-300 text-xs">
                       {tag}
                     </Badge>
                   ))}
@@ -70,7 +70,7 @@ function parseDate(dateString) {
               )}
               <a
                 href={`/blog/${post.frontmatter.title.toLowerCase().replace(/\s+/g, '-')}`}
-                class="inline-flex items-center text-[#30D6C4] hover:text-white font-medium transition-all duration-300 group/link"
+                class="inline-flex items-center text-[#30D6C4] hover:text-white font-medium transition-all duration-300 group/link mt-auto"
               >
                 Weiterlesen
                 <ArrowRight class="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform duration-300" />
