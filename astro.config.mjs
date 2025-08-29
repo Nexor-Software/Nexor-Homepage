@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import path from 'path';
 
@@ -27,7 +26,7 @@ export default defineConfig({
 		'/privacy-policy': '/de/privacy-policy',
 		'/terms-of-service': '/de/terms-of-service',
 	},
-	integrations: [react(), tailwind(), mdx()],
+	integrations: [react(), mdx()],
 	resolve: {
 		alias: {
 			'@': path.resolve(process.cwd(), './src'),

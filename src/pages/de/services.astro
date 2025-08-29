@@ -6,107 +6,127 @@ import { Code, Smartphone, Globe, Database, Cloud, Shield } from "lucide-react";
 
 <Layout>
   {/* Hero Section */}
-  <section class="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
-    <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
+  <section class="relative pt-32 pb-20 px-8 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
+    <div class="relative max-w-6xl mx-auto text-center">
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
+        <span class="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
+        Dienstleistungen
+      </div>
+      <h1 class="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
         Unsere <span class="text-[#30D6C4]">Dienstleistungen</span>
       </h1>
-      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
+      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
         Wir bieten umfassende Softwarelösungen, um Ihr Unternehmen zu transformieren und digitale Innovation voranzutreiben.
       </p>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
     </div>
   </section>
 
   {/* Services Grid */}
-  <section class="py-20 px-8">
-    <div class="max-w-6xl mx-auto">
+  <section class="py-24 px-8 bg-[#0C1C2C]">
+    <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <Card class="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105">
-          <CardHeader class="text-center">
+        <Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
+          <CardHeader className="text-center">
             <div class="flex justify-center mb-4">
-              <Code class="h-12 w-12 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Code className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-white font-oswald font-normal text-xl">
+            <CardTitle className="text-white font-oswald font-normal text-xl">
               Individuelle Softwareentwicklung
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription class="text-[#B0C4D4] font-inter text-center">
+            <CardDescription className="text-[#B0C4D4] font-inter text-center">
               Maßgeschneiderte Softwarelösungen, die auf Ihre spezifischen Geschäftsanforderungen und Arbeitsabläufe zugeschnitten sind.
             </CardDescription>
           </CardContent>
         </Card>
-        <Card class="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105">
-          <CardHeader class="text-center">
+        <Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
+          <CardHeader className="text-center">
             <div class="flex justify-center mb-4">
-              <Smartphone class="h-12 w-12 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Smartphone className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-white font-oswald font-normal text-xl">
+            <CardTitle className="text-white font-oswald font-normal text-xl">
               Mobile App Entwicklung
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription class="text-[#B0C4D4] font-inter text-center">
+            <CardDescription className="text-[#B0C4D4] font-inter text-center">
               Native und plattformübergreifende mobile Anwendungen für iOS und Android Plattformen.
             </CardDescription>
           </CardContent>
         </Card>
-        <Card class="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105">
-          <CardHeader class="text-center">
+        <Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
+          <CardHeader className="text-center">
             <div class="flex justify-center mb-4">
-              <Globe class="h-12 w-12 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Globe className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-white font-oswald font-normal text-xl">
+            <CardTitle className="text-white font-oswald font-normal text-xl">
               Webentwicklung
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription class="text-[#B0C4D4] font-inter text-center">
+            <CardDescription className="text-[#B0C4D4] font-inter text-center">
               Moderne, responsive Websites und Webanwendungen mit modernsten Technologien.
             </CardDescription>
           </CardContent>
         </Card>
-        <Card class="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105">
-          <CardHeader class="text-center">
+        <Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
+          <CardHeader className="text-center">
             <div class="flex justify-center mb-4">
-              <Database class="h-12 w-12 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Database className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-white font-oswald font-normal text-xl">
+            <CardTitle className="text-white font-oswald font-normal text-xl">
               Datenbanklösungen
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription class="text-[#B0C4D4] font-inter text-center">
+            <CardDescription className="text-[#B0C4D4] font-inter text-center">
               Datenbankdesign, Optimierung und Verwaltung für effiziente Datenspeicherung und -abrufe.
             </CardDescription>
           </CardContent>
         </Card>
-        <Card class="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105">
-          <CardHeader class="text-center">
+        <Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
+          <CardHeader className="text-center">
             <div class="flex justify-center mb-4">
-              <Cloud class="h-12 w-12 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Cloud className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-white font-oswald font-normal text-xl">
+            <CardTitle className="text-white font-oswald font-normal text-xl">
               Cloud-Integration
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription class="text-[#B0C4D4] font-inter text-center">
+            <CardDescription className="text-[#B0C4D4] font-inter text-center">
               Cloud-Migration, -Bereitstellung und -Verwaltungsdienste für skalierbare Lösungen.
             </CardDescription>
           </CardContent>
         </Card>
-        <Card class="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105">
-          <CardHeader class="text-center">
+        <Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
+          <CardHeader className="text-center">
             <div class="flex justify-center mb-4">
-              <Shield class="h-12 w-12 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Shield className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-white font-oswald font-normal text-xl">
+            <CardTitle className="text-white font-oswald font-normal text-xl">
               Sicherheitslösungen
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription class="text-[#B0C4D4] font-inter text-center">
+            <CardDescription className="text-[#B0C4D4] font-inter text-center">
               Umfassende Sicherheitsaudits und Implementierung robuster Sicherheitsmaßnahmen.
             </CardDescription>
           </CardContent>

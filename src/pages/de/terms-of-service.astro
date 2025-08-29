@@ -3,17 +3,33 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-  <main class="pt-24 pb-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-oswald font-normal text-white mb-6">
-          Nutzungs<span className="text-[#30D6C4]">bedingungen</span>
-        </h1>
-        <div class="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
+  {/* Hero Section */}
+  <section class="relative pt-32 pb-20 px-8 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
+    <div class="relative max-w-6xl mx-auto text-center">
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
+        <span class="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
+        Rechtliches
       </div>
+      <h1 class="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
+        Nutzungs<span class="text-[#30D6C4]">bedingungen</span>
+      </h1>
+      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
+        Regeln für die Nutzung unserer Website und Dienstleistungen.
+      </p>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
+    </div>
+  </section>
 
-      <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 space-y-8">
-        <div class="text-[#B0C4D4] font-inter leading-relaxed space-y-6">
+  {/* Content Section */}
+  <section class="py-24 px-8 bg-[#0C1C2C]">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative">
+        <div class="absolute inset-0 bg-[#30D6C4]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+        <div class="relative bg-[#0F2235]/50 backdrop-blur-sm border border-[#30D6C4]/10 rounded-2xl p-8 md:p-12 space-y-8 shadow-2xl">
+          <div class="text-[#B0C4D4] font-inter leading-relaxed space-y-6">
           <div>
             <h2 class="text-2xl font-oswald font-normal text-white mb-4">Nutzungsbedingungen</h2>
             <p class="text-lg mb-6">
@@ -85,5 +101,5 @@ import Layout from "@/layouts/Layout.astro";
         </div>
       </div>
     </div>
-  </main>
+  </section>
 </Layout>

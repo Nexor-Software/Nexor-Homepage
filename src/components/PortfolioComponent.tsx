@@ -110,9 +110,16 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 
 			<div className="relative z-10">
 				{/* Hero Section */}
-				<section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
-					<div className="max-w-6xl mx-auto text-center">
-						<h1 className="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
+				<section className="relative pt-32 pb-20 px-8 overflow-hidden">
+					<div className="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
+					<div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
+					<div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
+					<div className="relative max-w-6xl mx-auto text-center">
+						<div className="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
+							<span className="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
+							{currentLocale === 'en' ? 'Portfolio' : 'Portfolio'}
+						</div>
+						<h1 className="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
 							{currentLocale === 'en' ? (
 								<>
 									Our <span className="text-[#30D6C4]">Portfolio</span>
@@ -123,14 +130,15 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 								</>
 							)}
 						</h1>
-						<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
+						<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
 							{t.subtitle}
 						</p>
+						<div className="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
 					</div>
 				</section>
 
 				{/* Filter Section */}
-				<section className="py-12 px-8">
+				<section className="py-16 px-8 bg-[#0C1C2C]">
 					<div className="max-w-6xl mx-auto">
 						<div className="flex flex-wrap justify-center gap-4 mb-12">
 							{categories.map((category, index) => (
@@ -140,7 +148,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 									className={`px-6 py-3 md:px-6 md:py-3 text-sm md:text-base rounded-full font-inter font-medium transition-all duration-300 min-h-[44px] md:min-h-[40px] ${
 										activeCategory === category
 											? 'bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] shadow-lg shadow-[#30D6C4]/25'
-											: 'bg-white/10 text-white border border-white/20 hover:bg-[#30D6C4]/20 hover:border-[#30D6C4]/50 hover:text-[#30D6C4]'
+											: 'bg-[#0F2235]/50 backdrop-blur-sm text-white border border-[#30D6C4]/20 hover:bg-[#30D6C4]/20 hover:border-[#30D6C4]/50 hover:text-[#30D6C4] hover:shadow-lg hover:shadow-[#30D6C4]/10'
 									}`}>
 									{category}
 								</Button>
@@ -150,13 +158,13 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 				</section>
 
 				{/* Projects Grid */}
-				<section className="pb-20 px-8">
+				<section className="pb-24 px-8 bg-[#0C1C2C]">
 					<div className="max-w-7xl mx-auto">
 						<div className="flex flex-wrap justify-center gap-12">
 							{filteredProjects.map((project, index) => (
 								<Card
 									key={index}
-									className="bg-[#0F2235] border-[#30D6C4]/20 hover:border-[#30D6C4]/40 transition-all duration-300 hover:scale-105 overflow-hidden w-full max-w-md">
+									className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden w-full max-w-md group">
 									<div className="relative">
 										<div className="w-full h-64 bg-white/5 flex items-center justify-center p-4">
 											<img src={project.image} alt={project.title} className="w-4/5 h-4/5 object-contain" />
@@ -171,9 +179,9 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 									<CardHeader>
 										<CardTitle className="text-white font-oswald font-normal text-xl mb-2">{project.title}</CardTitle>
 										<div className="flex items-center text-[#B0C4D4] text-sm font-inter mb-3">
-											<Calendar className="h-4 w-4 mr-2" />
+											<Calendar className="h-4 w-4 mr-2 text-[#30D6C4]" />
 											<span>{project.year}</span>
-											<Users className="h-4 w-4 ml-4 mr-2" />
+											<Users className="h-4 w-4 ml-4 mr-2 text-[#30D6C4]" />
 											<span>{project.client}</span>
 										</div>
 									</CardHeader>
@@ -186,7 +194,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 											{project.technologies.map((tech, techIndex) => (
 												<span
 													key={techIndex}
-													className="bg-[#0C1C2C] text-[#30D6C4] px-2 py-1 rounded text-xs font-medium">
+													className="bg-[#0C1C2C]/60 text-[#30D6C4] border border-[#30D6C4]/20 px-2 py-1 rounded text-xs font-medium hover:bg-[#30D6C4]/10 transition-colors duration-300">
 													{tech}
 												</span>
 											))}
@@ -198,7 +206,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 												<a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
 													<Button
 														size="sm"
-														className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium">
+														className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium hover:shadow-lg hover:shadow-[#30D6C4]/25 transition-all duration-300">
 														<ExternalLink className="h-4 w-4 mr-2" />
 														{t.viewLive}
 													</Button>
@@ -214,7 +222,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 													<Button
 														size="sm"
 														variant="outline"
-														className="border-[#30D6C4]/40 text-[#30D6C4] hover:bg-[#30D6C4]/10">
+														className="border-[#30D6C4]/40 text-[#30D6C4] hover:bg-[#30D6C4]/10 hover:border-[#30D6C4]/60 transition-all duration-300">
 														<Github className="h-4 w-4" />
 													</Button>
 												</a>
@@ -236,8 +244,9 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 				</section>
 
 				{/* CTA Section */}
-				<section className="py-20 px-8 bg-[#0F2235]">
+				<section className="py-24 px-8 bg-[#0F2235]">
 					<div className="max-w-4xl mx-auto text-center">
+						<div className="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto mb-8"></div>
 						<h2 className="text-3xl md:text-4xl font-oswald font-normal text-white mb-6">
 							{currentLocale === 'en' ? (
 								<>
@@ -251,7 +260,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 						</h2>
 						<p className="text-lg text-[#B0C4D4] font-inter mb-8 leading-relaxed">{t.readySubtitle}</p>
 						<a href={getLocalizedPath('/contact')}>
-							<Button className="bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium px-8 py-3 rounded-lg">
+							<Button className="bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium px-8 py-3 rounded-lg hover:shadow-lg hover:shadow-[#30D6C4]/25 transition-all duration-300 hover:scale-105">
 								{t.startProject}
 							</Button>
 						</a>

@@ -3,27 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Target, Award, Clock } from "lucide-react";
 
-const currentLocale = Astro.currentLocale || 'en';
-const isGerman = currentLocale === 'de';
+const currentLocale = 'de';
 
 const translations = {
-  en: {
-    title: "About",
-    subtitle: "We are passionate about creating innovative software solutions that empower businesses to thrive in the digital age.",
-    storyTitle: "Our",
-    storyTitleHighlight: "Story",
-    storyPara1: "Founded with a vision to bridge the gap between innovative technology and business success, Nexor Software has been at the forefront of digital transformation for 2 years. We believe that every business deserves access to cutting-edge software solutions that drive growth and efficiency.",
-    storyPara2: "Our team of experienced software developers, designers, and video editors work collaboratively to deliver solutions that not only meet current needs but also scale for future growth.",
-    missionTitle: "Our Mission",
-    missionText: "To empower businesses with innovative software solutions that drive digital transformation and create lasting value for our clients and their customers.",
-    visionTitle: "Our Vision",
-    visionText: "To be the leading software development partner for businesses seeking to leverage technology for competitive advantage and sustainable growth.",
-    achievementsTitle: "Our",
-    achievementsTitleHighlight: "Achievements",
-    projectsLabel: "Successfully Launched Projects",
-    experienceLabel: "Years Experience",
-    supportLabel: "Excellent Support"
-  },
   de: {
     title: "Über",
     subtitle: "Wir sind leidenschaftlich dabei, innovative Softwarelösungen zu entwickeln, die Unternehmen dabei helfen, im digitalen Zeitalter zu gedeihen.",
@@ -48,20 +30,28 @@ const t = translations[currentLocale];
 
 <Layout>
   {/* Hero Section */}
-  <section class="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
-    <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
+  <section class="relative pt-32 pb-20 px-8 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
+    <div class="relative max-w-6xl mx-auto text-center">
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
+        <span class="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
+        Über uns
+      </div>
+      <h1 class="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
         {t.title} <span class="text-[#30D6C4]">Nexor Software</span>
       </h1>
-      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
+      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
         {t.subtitle}
       </p>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
     </div>
   </section>
 
   {/* Our Story */}
-  <section class="py-20 px-8">
-    <div class="max-w-6xl mx-auto">
+  <section class="py-24 px-8 bg-[#0C1C2C]">
+    <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="text-3xl md:text-4xl font-oswald font-normal text-white mb-6">
@@ -74,33 +64,41 @@ const t = translations[currentLocale];
             {t.storyPara2}
           </p>
         </div>
-        <div class="bg-[#0F2235] rounded-lg p-8 border border-[#30D6C4]/20">
-          <h3 class="text-2xl font-oswald font-normal text-white mb-6">{t.missionTitle}</h3>
-          <p class="text-[#B0C4D4] font-inter leading-relaxed mb-4">
-            {t.missionText}
-          </p>
-          <h3 class="text-2xl font-oswald font-normal text-white mb-6 mt-8">{t.visionTitle}</h3>
-          <p class="text-[#B0C4D4] font-inter leading-relaxed">
-            {t.visionText}
-          </p>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-[#30D6C4]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+          <div class="relative bg-[#0F2235]/50 backdrop-blur-sm border border-[#30D6C4]/10 hover:border-[#30D6C4]/30 rounded-2xl p-8 shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2">
+            <h3 class="text-2xl font-oswald font-normal text-white mb-6">{t.missionTitle}</h3>
+            <p class="text-[#B0C4D4] font-inter leading-relaxed mb-4">
+              {t.missionText}
+            </p>
+            <h3 class="text-2xl font-oswald font-normal text-white mb-6 mt-8">{t.visionTitle}</h3>
+            <p class="text-[#B0C4D4] font-inter leading-relaxed">
+              {t.visionText}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   {/* Stats Section */}
-  <section class="py-20 px-8 bg-[#0F2235]">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-oswald font-normal text-white text-center mb-12">
-        {t.achievementsTitle} <span class="text-[#30D6C4]">{t.achievementsTitleHighlight}</span>
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <Card class="bg-[#0C1C2C] border-[#30D6C4]/20 text-center">
+  <section class="py-24 px-8 bg-[#0F2235]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-20">
+        <h2 class="text-3xl md:text-4xl font-oswald font-normal text-white mb-6">
+          {t.achievementsTitle} <span class="text-[#30D6C4]">{t.achievementsTitleHighlight}</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Card className="bg-[#0C1C2C]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 text-center hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
           <CardHeader>
             <div class="flex justify-center mb-4">
-              <Target class="h-8 w-8 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Target className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-3xl font-oswald font-normal text-[#30D6C4]">
+            <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4]">
               10+
             </CardTitle>
           </CardHeader>
@@ -108,12 +106,14 @@ const t = translations[currentLocale];
             <p class="text-white font-inter">{t.projectsLabel}</p>
           </CardContent>
         </Card>
-        <Card class="bg-[#0C1C2C] border-[#30D6C4]/20 text-center">
+        <Card className="bg-[#0C1C2C]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 text-center hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
           <CardHeader>
             <div class="flex justify-center mb-4">
-              <Award class="h-8 w-8 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Award className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-3xl font-oswald font-normal text-[#30D6C4]">
+            <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4]">
               2+
             </CardTitle>
           </CardHeader>
@@ -121,12 +121,14 @@ const t = translations[currentLocale];
             <p class="text-white font-inter">{t.experienceLabel}</p>
           </CardContent>
         </Card>
-        <Card class="bg-[#0C1C2C] border-[#30D6C4]/20 text-center">
+        <Card className="bg-[#0C1C2C]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 text-center hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group md:col-span-2 lg:col-span-1">
           <CardHeader>
             <div class="flex justify-center mb-4">
-              <Clock class="h-8 w-8 text-[#30D6C4]" />
+              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+                <Clock className="h-8 w-8 text-[#30D6C4]" />
+              </div>
             </div>
-            <CardTitle class="text-3xl font-oswald font-normal text-[#30D6C4]">
+            <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4] text-center">
               ★★★★★
             </CardTitle>
           </CardHeader>

@@ -2,9 +2,11 @@
 import Layout from "@/layouts/Layout.astro";
 import { Hero } from "@/components/Hero";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
+import { CustomerReview } from "@/components/CustomerReview";
 ---
 
 <Layout>
   <Hero client:load currentLocale="de" />
   <ThreeColumnSection client:load currentLocale="de" />
+  <CustomerReview client:load currentLocale="de" authorImage="/Armen_Chulyakov.png" />
 </Layout>

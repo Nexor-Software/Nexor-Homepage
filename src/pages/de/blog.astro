@@ -3,8 +3,14 @@ import Layout from "@/layouts/Layout.astro";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight } from "lucide-react";
+import { getCollection } from 'astro:content';
 
-const posts = Object.values(import.meta.glob('../../blog/de/*.mdx', { eager: true }));
+const posts = await getCollection('blog');
+
+// Filter posts based on current locale
+const filteredPosts = posts.filter((post) => {
+  return post.id.includes('/de/') || post.id.includes('de/');
+});
 
 const currentLocale = Astro.currentLocale || 'de';
 
@@ -40,72 +46,156 @@ const t = translations[currentLocale];
 ---
 
 <Layout>
-  <section class="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
-    <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
+  {/* Hero Section */}
+  <section class="relative pt-32 pb-20 px-8 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
+    <div class="relative max-w-6xl mx-auto text-center">
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
+        <span class="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
+        Neueste Einblicke
+      </div>
+      <h1 class="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
         {t.title} <span class="text-[#30D6C4]">{t.titleHighlight}</span>
       </h1>
-      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
+      <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
         {t.subtitle}
       </p>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
     </div>
   </section>
 
-  <section class="py-20 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <Card class="group bg-[#0F2235]/80 backdrop-blur-sm border-[#30D6C4]/20 hover:border-[#30D6C4]/50 hover:bg-[#0F2235] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#30D6C4]/10 overflow-hidden">
-            {post.frontmatter.image && (
-              <div class="w-full h-48 bg-gradient-to-br from-[#30D6C4]/5 to-transparent flex items-center justify-center p-4 overflow-hidden">
-                <img
-                  src={post.frontmatter.image}
-                  alt={post.frontmatter.title}
-                  class="w-full h-full object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-500"
-                />
+  {/* Blog Posts Section */}
+  <section class="py-24 px-8 bg-[#0C1C2C]">
+    <div class="max-w-7xl mx-auto">
+      {filteredPosts.length === 0 ? (
+        <div class="text-center py-20">
+          <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Calendar className="h-8 w-8 text-[#30D6C4]" />
+          </div>
+          <h3 class="text-2xl font-oswald font-normal text-white mb-4">Noch keine Artikel</h3>
+          <p class="text-[#B0C4D4] font-inter">Schauen Sie bald wieder vorbei für unsere neuesten Einblicke und Updates.</p>
+        </div>
+      ) : (
+        <>
+          {/* Featured Post */}
+          {filteredPosts.length > 0 && (
+            <div class="mb-20">
+              <div class="flex items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-oswald font-normal text-white mr-4">Hervorgehoben</h2>
+                <div class="flex-1 h-px bg-gradient-to-r from-[#30D6C4]/50 to-transparent"></div>
               </div>
-            )}
-            <CardHeader class="pb-4">
-              <div class="flex items-center text-[#B0C4D4] text-sm font-inter mb-4">
-                <Calendar class="h-4 w-4 mr-2 text-[#30D6C4]" />
-                <span>{parseDate(post.frontmatter.pubDate).toLocaleDateString(t.dateLocale)}</span>
-                {post.frontmatter.author && (
-                  <>
-                    <User class="h-4 w-4 ml-4 mr-2 text-[#30D6C4]" />
-                    <span>{post.frontmatter.author}</span>
-                  </>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                  <div class="flex items-center text-[#B0C4D4] text-sm font-inter mb-4">
+                    <Calendar className="h-4 w-4 mr-2 text-[#30D6C4]" />
+                    <span>{parseDate(filteredPosts[0].data.pubDate).toLocaleDateString(t.dateLocale)}</span>
+                    {filteredPosts[0].data.author && (
+                      <>
+                        <User className="h-4 w-4 ml-4 mr-2 text-[#30D6C4]" />
+                        <span>{filteredPosts[0].data.author}</span>
+                      </>
+                    )}
+                  </div>
+                  <h3 class="text-3xl md:text-4xl font-oswald font-normal text-white mb-6 leading-tight">
+                    <a href={getLocalizedPath(`/blog/${filteredPosts[0].data.title.toLowerCase().replace(/\s+/g, '-')}`)} class="hover:text-[#30D6C4] transition-colors duration-300">
+                      {filteredPosts[0].data.title}
+                    </a>
+                  </h3>
+                  <p class="text-lg text-[#B0C4D4] font-inter mb-8 leading-relaxed">
+                    {filteredPosts[0].data.description}
+                  </p>
+                  {filteredPosts[0].data.tags && (
+                    <div class="flex flex-wrap gap-3 mb-8">
+                      {filteredPosts[0].data.tags.slice(0, 3).map((tag) => (
+                        <Badge variant="secondary" className="bg-[#30D6C4]/10 text-[#30D6C4] border-[#30D6C4]/30 hover:bg-[#30D6C4]/20 transition-colors duration-300 px-3 py-1">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                  <a
+                    href={getLocalizedPath(`/blog/${filteredPosts[0].data.title.toLowerCase().replace(/\s+/g, '-')}`)}
+                    class="inline-flex items-center px-6 py-3 bg-[#30D6C4] hover:bg-[#30D6C4]/90 text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#30D6C4]/25 group"
+                  >
+                    {t.readMore}
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </a>
+                </div>
+                {filteredPosts[0].data.image && (
+                  <div class="order-1 lg:order-2">
+                    <div class="relative group">
+                      <div class="absolute inset-0 bg-[#30D6C4]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+                      <img
+                        src={filteredPosts[0].data.image}
+                        alt={filteredPosts[0].data.title}
+                        class="relative w-full h-80 lg:h-96 object-cover rounded-2xl shadow-2xl group-hover:shadow-[#30D6C4]/20 transition-all duration-500"
+                      />
+                    </div>
+                  </div>
                 )}
               </div>
-              <CardTitle class="text-white font-oswald font-normal text-xl mb-3 group-hover:text-[#30D6C4] transition-colors duration-300">
-                <a href={getLocalizedPath(`/blog/${post.frontmatter.title.toLowerCase().replace(/\s+/g, '-')}`)} class="hover:text-[#30D6C4] transition-colors">
-                  {post.frontmatter.title}
-                </a>
-              </CardTitle>
-            </CardHeader>
-            <CardContent class="pt-0">
-              <p class="text-[#B0C4D4] font-inter mb-6 line-clamp-3 leading-relaxed">
-                {post.frontmatter.description}
-              </p>
-              {post.frontmatter.tags && (
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {post.frontmatter.tags.map((tag) => (
-                    <Badge variant="secondary" class="bg-[#0C1C2C]/80 text-[#30D6C4] border-[#30D6C4]/30 hover:bg-[#30D6C4]/10 transition-colors duration-300">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              )}
-              <a
-                href={getLocalizedPath(`/blog/${post.frontmatter.title.toLowerCase().replace(/\s+/g, '-')}`)}
-                class="inline-flex items-center text-[#30D6C4] hover:text-white font-medium transition-all duration-300 group/link"
-              >
-                {t.readMore}
-                <ArrowRight class="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform duration-300" />
-              </a>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+            </div>
+          )}
+
+          {/* All Posts Grid */}
+          {filteredPosts.length > 1 && (
+            <>
+              <div class="flex items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-oswald font-normal text-white mr-4">Alle Artikel</h2>
+                <div class="flex-1 h-px bg-gradient-to-r from-[#30D6C4]/50 to-transparent"></div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredPosts.slice(1).map((post) => (
+                  <article class="group bg-[#0F2235]/50 backdrop-blur-sm border border-[#30D6C4]/10 hover:border-[#30D6C4]/30 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2">
+                    {post.data.image && (
+                      <div class="relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0F2235]/80 to-transparent z-10"></div>
+                        <img
+                          src={post.data.image}
+                          alt={post.data.title}
+                          class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    )}
+                    <div class="p-6">
+                      <div class="flex items-center text-[#B0C4D4] text-sm font-inter mb-4">
+                        <Calendar className="h-4 w-4 mr-2 text-[#30D6C4]" />
+                        <span>{parseDate(post.data.pubDate).toLocaleDateString(t.dateLocale)}</span>
+                      </div>
+                      <h3 class="text-xl font-oswald font-normal text-white mb-3 group-hover:text-[#30D6C4] transition-colors duration-300 leading-tight">
+                        <a href={getLocalizedPath(`/blog/${post.data.title.toLowerCase().replace(/\s+/g, '-')}`)} class="hover:text-[#30D6C4] transition-colors">
+                          {post.data.title}
+                        </a>
+                      </h3>
+                      <p class="text-[#B0C4D4] font-inter mb-6 line-clamp-3 leading-relaxed">
+                        {post.data.description}
+                      </p>
+                      {post.data.tags && (
+                        <div class="flex flex-wrap gap-2 mb-6">
+                          {post.data.tags.slice(0, 2).map((tag) => (
+                            <Badge variant="secondary" className="bg-[#0C1C2C]/60 text-[#30D6C4] border-[#30D6C4]/20 hover:bg-[#30D6C4]/10 transition-colors duration-300 text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                      <a
+                        href={getLocalizedPath(`/blog/${post.data.title.toLowerCase().replace(/\s+/g, '-')}`)}
+                        class="inline-flex items-center text-[#30D6C4] hover:text-white font-medium transition-all duration-300 group/link"
+                      >
+                        {t.readMore}
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform duration-300" />
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </>
+          )}
+        </>
+      )}
     </div>
   </section>
 </Layout>

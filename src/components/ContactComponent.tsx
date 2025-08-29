@@ -35,24 +35,32 @@ const ContactComponent = () => {
 	return (
 		<div className="min-h-screen bg-[#0C1C2C] overflow-x-hidden">
 			{/* Hero Section */}
-			<section className="pt-24 pb-16 px-8 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]">
-				<div className="max-w-6xl mx-auto text-center">
-					<h1 className="text-4xl md:text-6xl font-oswald font-normal text-white leading-tight mb-6">
+			<section className="relative pt-32 pb-20 px-8 overflow-hidden">
+				<div className="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
+				<div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
+				<div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
+				<div className="relative max-w-6xl mx-auto text-center">
+					<div className="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
+						<span className="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
+						Kontakt
+					</div>
+					<h1 className="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
 						Contact <span className="text-[#30D6C4]">Us</span>
 					</h1>
-					<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-3xl mx-auto leading-relaxed">
+					<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
 						Ready to start your next project? Get in touch with our team and let's discuss how we can help transform
 						your business.
 					</p>
+					<div className="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
 				</div>
 			</section>
 
 			{/* Contact Section */}
-			<section className="py-20 px-8">
-				<div className="max-w-6xl mx-auto">
+			<section className="py-24 px-8 bg-[#0C1C2C]">
+				<div className="max-w-7xl mx-auto">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 						{/* Contact Form */}
-						<Card className="bg-[#0F2235] border-[#30D6C4]/20">
+						<Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 group">
 							<CardHeader>
 								<CardTitle className="text-2xl font-oswald font-normal text-white">Send us a Message</CardTitle>
 							</CardHeader>
@@ -116,10 +124,14 @@ const ContactComponent = () => {
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								{contactInfo.map((info, index) => (
-									<Card key={index} className="bg-[#0F2235] border-[#30D6C4]/20">
+									<Card
+										key={index}
+										className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
 										<CardContent className="p-6">
 											<div className="flex items-start space-x-4">
-												<div className="flex-shrink-0">{info.icon}</div>
+												<div className="shrink-0 w-12 h-12 bg-[#30D6C4]/10 rounded-xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+													{info.icon}
+												</div>
 												<div>
 													<h3 className="text-white font-inter font-medium mb-2">{info.title}</h3>
 													{info.link ? (

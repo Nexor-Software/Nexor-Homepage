@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Building2, Code, Users } from 'lucide-react';
+import { Building2, Code, Users, Award, Zap, Shield } from 'lucide-react';
 
 interface ThreeColumnSectionProps {
 	currentLocale?: string;
@@ -17,6 +17,10 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			servicesDescription:
 				'From web applications to enterprise solutions, we deliver comprehensive software development services tailored to your unique needs.',
 			servicesFeatures: ['Connecting dots', 'Creating software', 'Seamless Integration'],
+			qualityTitle: 'Quality & Innovation',
+			qualityDescription:
+				'We combine cutting-edge technology with proven methodologies to deliver solutions that exceed expectations and drive real results.',
+			qualityFeatures: ['Modern Tech Stack', 'Agile Development', 'Quality Assurance'],
 		},
 		de: {
 			title: 'Warum',
@@ -28,6 +32,10 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			servicesDescription:
 				'Von Webanwendungen bis hin zu Unternehmenslösungen bieten wir umfassende Softwareentwicklungs-Services, die auf Ihre individuellen Bedürfnisse zugeschnitten sind.',
 			servicesFeatures: ['Verbindungen schaffen', 'Software entwickeln', 'Nahtlose Integration'],
+			qualityTitle: 'Qualität & Innovation',
+			qualityDescription:
+				'Wir kombinieren modernste Technologie mit bewährten Methoden, um Lösungen zu liefern, die Erwartungen übertreffen und echte Ergebnisse liefern.',
+			qualityFeatures: ['Moderne Tech Stack', 'Agile Entwicklung', 'Qualitätssicherung'],
 		},
 	};
 
@@ -46,6 +54,12 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			description: t.servicesDescription,
 			features: t.servicesFeatures,
 		},
+		{
+			icon: Award,
+			title: t.qualityTitle,
+			description: t.qualityDescription,
+			features: t.qualityFeatures,
+		},
 	];
 
 	return (
@@ -63,7 +77,7 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 					<div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>
 				</div>
 
-				<div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+				<div className="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
 					{sections.map((section, index) => (
 						<Card
 							key={section.title}

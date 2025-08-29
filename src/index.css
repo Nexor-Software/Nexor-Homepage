@@ -1,6 +1,69 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+	--font-family-oswald: 'Oswald', sans-serif;
+	--font-family-inter: 'Inter', sans-serif;
+
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+	--color-popover: hsl(var(--popover));
+	--color-popover-foreground: hsl(var(--popover-foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+	--color-sidebar: hsl(var(--sidebar-background));
+	--color-sidebar-foreground: hsl(var(--sidebar-foreground));
+	--color-sidebar-primary: hsl(var(--sidebar-primary));
+	--color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+	--color-sidebar-accent: hsl(var(--sidebar-accent));
+	--color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+	--color-sidebar-border: hsl(var(--sidebar-border));
+	--color-sidebar-ring: hsl(var(--sidebar-ring));
+
+	--border-radius-lg: var(--radius);
+	--border-radius-md: calc(var(--radius) - 2px);
+	--border-radius-sm: calc(var(--radius) - 4px);
+
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+	--animate-fade-in: fade-in 0.6s ease-out forwards;
+	--animate-scale-in: scale-in 0.4s ease-out forwards;
+
+	--spacing-18: 4.5rem;
+	--spacing-72: 18rem;
+	--spacing-84: 21rem;
+	--spacing-96: 24rem;
+
+	--container-center: true;
+	--container-padding: 2rem;
+	--breakpoint-2xl: 1400px;
+
+	--typography-prose-body-line-height: 1.75;
+	--typography-prose-p-margin-top: 1.25em;
+	--typography-prose-p-margin-bottom: 1.25em;
+	--typography-prose-li-margin-top: 0.5em;
+	--typography-prose-li-margin-bottom: 0.5em;
+	--typography-prose-headings-margin-top: 1.8em;
+	--typography-prose-headings-margin-bottom: 0.8em;
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+	max-width: 1400px;
+}
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -89,11 +152,12 @@ All colors MUST be HSL.
 
 @layer base {
 	* {
-		@apply border-border;
+		border-color: hsl(var(--border));
 	}
 
 	body {
-		@apply bg-background text-foreground;
+		background-color: hsl(var(--background));
+		color: hsl(var(--foreground));
 		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 		font-weight: 400;
 		font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
@@ -204,6 +268,36 @@ All colors MUST be HSL.
 .prose {
 	color: #b0c4d4;
 	font-family: 'Inter', sans-serif;
+	/* Use the design-system variable if available, fall back to 1.75 */
+	line-height: var(--typography-prose-body-line-height, 1.75);
+}
+
+/* Paragraph and list spacing inside prose */
+.prose p {
+	margin-top: var(--typography-prose-p-margin-top, 1.25em);
+	margin-bottom: var(--typography-prose-p-margin-bottom, 1.25em);
+}
+
+.prose li {
+	margin-top: var(--typography-prose-li-margin-top, 0.5em);
+	margin-bottom: var(--typography-prose-li-margin-bottom, 0.5em);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+	margin-top: var(--typography-prose-headings-margin-top, 1.8em);
+	margin-bottom: var(--typography-prose-headings-margin-bottom, 0.8em);
+}
+
+/* Slightly larger line-height on medium+ screens for better readability */
+@media (min-width: 768px) {
+	.prose {
+		line-height: 1.95;
+	}
 }
 
 .prose h1,
