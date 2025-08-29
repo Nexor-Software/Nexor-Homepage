@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
+import node from '@astrojs/node';
 import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
+	output: 'server',
 	server: {
 		host: '::',
 		port: 8080,
@@ -27,9 +29,15 @@ export default defineConfig({
 		'/terms-of-service': '/de/terms-of-service',
 	},
 	integrations: [react(), mdx()],
+	adapter: node({
+		mode: 'standalone'
+	}),
 	resolve: {
 		alias: {
 			'@': path.resolve(process.cwd(), './src'),
 		},
+	},
+	image: {
+		domains: ['oybnx5jyol.ufs.sh'],
 	},
 });

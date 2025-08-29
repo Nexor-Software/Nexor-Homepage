@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github, Calendar, Users } from 'lucide-react';
+import { getUploadThingUrl } from '@/utils/uploadthing';
 
 interface PortfolioComponentProps {
 	currentLocale?: string;
@@ -74,7 +75,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					title: 'Terminal Software Lösung',
 					description:
 						'Maßgeschneiderte Softwareentwicklung für Terminalsysteme. Robuste, effiziente Software für zuverlässige Terminalbetriebe und -verwaltung.',
-					technologies: ['TypeScript'],
+					technologies: ['TypeScript', 'Electron', 'C#'],
 					category: 'Software',
 					year: '2025',
 					client: 'Terminal Operations',
@@ -86,7 +87,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
 	const projects = t.projects.map((project, index) => ({
 		...project,
-		image: index === 0 ? '/FullLogo-01.svg' : '/pt1duo software.png',
+		image: getUploadThingUrl(index === 0 ? 'FullLogo-01.svg' : 'pt1duo software.png'),
 		link: index === 0 ? 'http://e-tech24.de/' : null,
 		github: null,
 	}));

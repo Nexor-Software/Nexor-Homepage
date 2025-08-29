@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { getUploadThingUrl } from '@/utils/uploadthing';
 
 interface HeroProps {
 	currentLocale?: string;
@@ -52,7 +53,7 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 				<div className="mb-16 animate-fade-in">
 					<div className="flex justify-center mb-6">
 						<img
-							src="/nexor-logo-large.png"
+							src={getUploadThingUrl('nexor-logo-large.png')}
 							alt="Nexor Software"
 							className="h-48 md:h-64 lg:h-72 w-auto max-w-full drop-shadow-2xl"
 						/>

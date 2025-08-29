@@ -3,6 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowLeft } from "lucide-react";
 
+// Enable prerendering for static generation
+export const prerender = true;
+
 interface Post {
   frontmatter: {
     title: string;
