@@ -3,10 +3,16 @@ import Layout from "@/layouts/Layout.astro";
 import { Hero } from "@/components/Hero";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { CustomerReview } from "@/components/CustomerReview";
+import { Galaxy } from "@/components/ui/shadcn-io/galaxy/index";
+import { BackgroundBeamsWithCollision } from "@/components/ui/shadcn-io/background-beams-with-collision/index";
 ---
 
 <Layout>
+  <Galaxy client:load className="fixed inset-0 -z-10" hueShift={175} saturation={0.6} speed={0.35} rotationSpeed={0.035} glowIntensity={0.25} />
   <Hero client:load currentLocale="de" />
-  <ThreeColumnSection client:load currentLocale="de" />
-  <CustomerReview client:load currentLocale="de" authorImage="https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwye3u8obkOh3Y6H9Zi8vfcJNALEun0KRklg4j5" />
+  <div class="w-full h-px bg-[#30D6C4]"></div>
+  <BackgroundBeamsWithCollision client:load>
+    <ThreeColumnSection client:load currentLocale="de" />
+    <CustomerReview client:load currentLocale="de" authorImage="https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwye3u8obkOh3Y6H9Zi8vfcJNALEun0KRklg4j5" />
+  </BackgroundBeamsWithCollision>
 </Layout>

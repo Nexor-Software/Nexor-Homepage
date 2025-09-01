@@ -31,7 +31,7 @@ export const CustomerReview = ({ currentLocale = 'en', authorImage }: CustomerRe
 	const stars = Array.from({ length: 5 }, (_, i) => i + 1);
 
 	return (
-		<section className="py-24 px-8 bg-gradient-to-b from-[#0F2235] to-[#0C1C2C] relative">
+		<section className="py-24 px-8 relative">
 			{/* Background elements */}
 			<div className="absolute inset-0 opacity-5">
 				<div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-[#30D6C4]/10 to-transparent transform -skew-y-3"></div>

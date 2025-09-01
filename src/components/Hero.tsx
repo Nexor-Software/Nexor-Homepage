@@ -32,7 +32,7 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
 
 	return (
-		<section className="relative min-h-screen flex items-center justify-center px-8 py-16 pt-24 bg-[#0C1C2C]">
+		<section className="relative min-h-screen flex items-center justify-center px-8 py-16 pt-24 bg-transparent">
 			{/* Background geometric elements for visual interest */}
 			<div className="absolute top-1/4 left-1/6 w-32 h-32 bg-[#30D6C4]/8 rounded-full blur-3xl animate-pulse"></div>
 			<div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-[#30D6C4]/5 rounded-full blur-3xl animate-pulse delay-1000"></div>

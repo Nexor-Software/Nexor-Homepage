@@ -1,4 +1,7 @@
 @import 'tailwindcss';
+/* ---break---
+*/
+@custom-variant dark (&:is(.dark *));
 
 @theme {
 	--font-family-oswald: 'Oswald', sans-serif;
@@ -367,5 +370,52 @@ All colors MUST be HSL.
 
 	.delay-1000 {
 		animation-delay: 1000ms;
+	}
+}
+/* ---break---
+*/
+@theme inline {
+	--animate-beam-move: beam-move 8s linear infinite;
+  @keyframes beam-move {
+  0% {
+    transform: translateX(0);
+		}
+  100% {
+    transform: translateX(100vw);
+		}
+	}
+  @keyframes beam-move {
+  0% {
+    transform: translateX(0);
+		}
+  100% {
+    transform: translateX(100vw);
+		}
+	}
+  @keyframes beam-move {
+  0% {
+    transform: translateX(0);
+		}
+  100% {
+    transform: translateX(100vw);
+		}
+	}
+  @keyframes beam-move {
+  0% {
+    transform: translateX(0);
+		}
+  100% {
+    transform: translateX(100vw);
+		}
+	}
+}
+/* ---break---
+*/
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+	}
+  body {
+    @apply bg-background text-foreground;
 	}
 }
