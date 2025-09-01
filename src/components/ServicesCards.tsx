@@ -73,10 +73,10 @@ export const ServicesCards = ({ currentLocale = 'en' }: ServicesCardsProps) => {
 										<service.icon className="h-8 w-8 text-[#30D6C4]" />
 									</div>
 								</div>
-								<CardTitle className="text-white font-oswald font-normal text-xl">{service.title}</CardTitle>
+								<CardTitle className="text-white font-oswald text-2xl">{service.title}</CardTitle>
 							</CardHeader>
 							<CardContent>
-								<CardDescription className="text-[#B0C4D4] font-inter text-center">
+								<CardDescription className="text-[#B0C4D4] font-inter text-center leading-relaxed text-lg">
 									{service.description}
 								</CardDescription>
 							</CardContent>
