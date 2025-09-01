@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react';
+import { CardContainer, CardBody, CardItem } from '@/components/ui/shadcn-io/3d-card';
 
 interface CustomerReviewProps {
 	currentLocale?: string;
@@ -44,45 +45,50 @@ export const CustomerReview = ({ currentLocale = 'en', authorImage }: CustomerRe
 				</div>
 
 				<div className="max-w-2xl mx-auto">
-					<div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-						<div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+					<CardContainer className="h-full" containerClassName="h-full">
+						<CardBody className="group relative bg-white/5 backdrop-blur-sm rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full w-full border-transparent hover:border-[#30D6C4]/50 border-2">
+							<CardItem translateZ="20" className="w-full h-full relative p-8">
+								<div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute inset-0 bg-[#30D6C4]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
 
-						<div className="relative z-10">
-							{/* Star Rating */}
-							<div className="flex justify-center mb-6">
-								<div className="flex space-x-1">
-									{stars.map((star) => (
-										<Star key={star} className="w-6 h-6 text-[#30D6C4] fill-[#30D6C4]" />
-									))}
-								</div>
-							</div>
-
-							{/* Review Title */}
-							<h3 className="text-2xl font-bold text-white mb-4 font-['Oswald'] text-center">{t.reviewTitle}</h3>
-
-							{/* Review Text */}
-							<p className="text-gray-300 mb-8 leading-relaxed text-center text-lg">"{t.reviewText}"</p>
-
-							{/* Author Info */}
-							<div className="flex items-center justify-center space-x-4">
-								{authorImage ? (
-									<img
-										src={authorImage}
-										alt={t.authorName}
-										className="w-12 h-12 rounded-full object-cover border-2 border-[#30D6C4]/30"
-									/>
-								) : (
-									<div className="w-12 h-12 bg-gradient-to-br from-[#30D6C4]/20 to-[#30D6C4]/10 rounded-full flex items-center justify-center">
-										<span className="text-[#30D6C4] font-bold text-lg">{t.authorName.charAt(0)}</span>
+								<div className="relative z-10">
+									{/* Star Rating */}
+									<div className="flex justify-center mb-6">
+										<div className="flex space-x-1">
+											{stars.map((star) => (
+												<Star key={star} className="w-6 h-6 text-[#30D6C4] fill-[#30D6C4]" />
+											))}
+										</div>
 									</div>
-								)}
-								<div className="text-left">
-									<p className="text-white font-semibold">{t.authorName}</p>
-									<p className="text-gray-400 text-sm">{t.authorRole}</p>
+
+									{/* Review Title */}
+									<h3 className="text-2xl font-bold text-white mb-4 font-['Oswald'] text-center">{t.reviewTitle}</h3>
+
+									{/* Review Text */}
+									<p className="text-gray-300 mb-8 leading-relaxed text-center text-lg">"{t.reviewText}"</p>
+
+									{/* Author Info */}
+									<div className="flex items-center justify-center space-x-4">
+										{authorImage ? (
+											<img
+												src={authorImage}
+												alt={t.authorName}
+												className="w-12 h-12 rounded-full object-cover border-2 border-[#30D6C4]/30"
+											/>
+										) : (
+											<div className="w-12 h-12 bg-gradient-to-br from-[#30D6C4]/20 to-[#30D6C4]/10 rounded-full flex items-center justify-center">
+												<span className="text-[#30D6C4] font-bold text-lg">{t.authorName.charAt(0)}</span>
+											</div>
+										)}
+										<div className="text-left">
+											<p className="text-white font-semibold">{t.authorName}</p>
+											<p className="text-gray-400 text-sm">{t.authorRole}</p>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					</div>
+							</CardItem>
+						</CardBody>
+					</CardContainer>
 				</div>
 			</div>
 		</section>

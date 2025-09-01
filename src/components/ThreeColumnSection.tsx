@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContainer, CardBody, CardItem } from '@/components/ui/shadcn-io/3d-card';
 import { Building2, Code, Users, Award, Zap, Shield } from 'lucide-react';
 
 interface ThreeColumnSectionProps {
@@ -79,30 +80,38 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 
 				<div className="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
 					{sections.map((section, index) => (
-						<Card
-							key={section.title}
-							className={`bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/8 transition-all duration-500 rounded-2xl shadow-2xl hover:shadow-[#30D6C4]/10 hover:scale-105 animate-fade-in group`}
-							style={{ animationDelay: `${index * 200}ms` }}>
-							<CardHeader className="text-center pb-6">
-								<div className="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
-									<section.icon className="w-8 h-8 text-[#30D6C4]" />
-								</div>
-								<CardTitle className="text-2xl font-oswald font-normal text-white">{section.title}</CardTitle>
-							</CardHeader>
-							<CardContent className="text-center space-y-6">
-								<p className="font-inter font-medium text-[#B0C4D4] leading-relaxed text-lg">{section.description}</p>
-								<div className="space-y-3">
-									{section.features.map((feature) => (
-										<div
-											key={feature}
-											className="flex items-center justify-center space-x-2 text-[#30D6C4] font-medium">
-											<div className="w-2 h-2 bg-[#30D6C4] rounded-full"></div>
-											<span className="font-inter">{feature}</span>
+						<CardContainer key={section.title} className="h-full" containerClassName="h-full">
+							<CardBody
+								className={`bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl hover:shadow-[#30D6C4]/10 hover:scale-105 animate-fade-in group h-full w-full relative`}>
+								<div className="absolute inset-0 bg-[#30D6C4]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+								<CardItem
+									translateZ="20"
+									className="w-full h-full relative z-10 border-transparent hover:border-[#30D6C4]/50 border-2 transition-colors duration-300"
+									style={{ animationDelay: `${index * 200}ms` }}>
+									<CardHeader className="text-center pb-6">
+										<div className="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+											<section.icon className="w-8 h-8 text-[#30D6C4]" />
 										</div>
-									))}
-								</div>
-							</CardContent>
-						</Card>
+										<CardTitle className="text-2xl font-oswald font-normal text-white">{section.title}</CardTitle>
+									</CardHeader>
+									<CardContent className="text-center space-y-6">
+										<p className="font-inter font-medium text-[#B0C4D4] leading-relaxed text-lg">
+											{section.description}
+										</p>
+										<div className="space-y-3">
+											{section.features.map((feature) => (
+												<div
+													key={feature}
+													className="flex items-center justify-center space-x-2 text-[#30D6C4] font-medium">
+													<div className="w-2 h-2 bg-[#30D6C4] rounded-full"></div>
+													<span className="font-inter">{feature}</span>
+												</div>
+											))}
+										</div>
+									</CardContent>
+								</CardItem>
+							</CardBody>
+						</CardContainer>
 					))}
 				</div>
 			</div>

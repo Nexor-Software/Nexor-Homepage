@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AboutStatsCards } from "@/components/AboutStatsCards";
+import { AboutMissionVisionCard } from "@/components/AboutMissionVisionCard";
 import { Target, Award, Clock } from "lucide-react";
 
 const currentLocale = 'en';
@@ -65,17 +66,14 @@ const t = translations[currentLocale];
           </p>
         </div>
         <div class="relative group">
-          <div class="absolute inset-0 bg-[#30D6C4]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-          <div class="relative bg-[#0F2235]/50 backdrop-blur-sm border border-[#30D6C4]/10 hover:border-[#30D6C4]/30 rounded-2xl p-8 shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2">
-            <h3 class="text-2xl font-oswald font-normal text-white mb-6">{t.missionTitle}</h3>
-            <p class="text-[#B0C4D4] font-inter leading-relaxed mb-4">
-              {t.missionText}
-            </p>
-            <h3 class="text-2xl font-oswald font-normal text-white mb-6 mt-8">{t.visionTitle}</h3>
-            <p class="text-[#B0C4D4] font-inter leading-relaxed">
-              {t.visionText}
-            </p>
-          </div>
+          <AboutMissionVisionCard
+            client:load
+            currentLocale={currentLocale}
+            missionTitle={t.missionTitle}
+            missionText={t.missionText}
+            visionTitle={t.visionTitle}
+            visionText={t.visionText}
+          />
         </div>
       </div>
     </div>
@@ -90,53 +88,7 @@ const t = translations[currentLocale];
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <Card className="bg-[#0C1C2C]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 text-center hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
-          <CardHeader>
-            <div class="flex justify-center mb-4">
-              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
-                <Target className="h-8 w-8 text-[#30D6C4]" />
-              </div>
-            </div>
-            <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4]">
-              10+
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p class="text-white font-inter">{t.projectsLabel}</p>
-          </CardContent>
-        </Card>
-        <Card className="bg-[#0C1C2C]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 text-center hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group">
-          <CardHeader>
-            <div class="flex justify-center mb-4">
-              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
-                <Award className="h-8 w-8 text-[#30D6C4]" />
-              </div>
-            </div>
-            <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4]">
-              2+
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p class="text-white font-inter">{t.experienceLabel}</p>
-          </CardContent>
-        </Card>
-        <Card className="bg-[#0C1C2C]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 text-center hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 group md:col-span-2 lg:col-span-1">
-          <CardHeader>
-            <div class="flex justify-center mb-4">
-              <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
-                <Clock className="h-8 w-8 text-[#30D6C4]" />
-              </div>
-            </div>
-            <CardTitle className="text-3xl font-oswald font-normal text-[#30D6C4]">
-              ★★★★★
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p class="text-white font-inter">{t.supportLabel}</p>
-          </CardContent>
-        </Card>
-      </div>
+      <AboutStatsCards client:load currentLocale={currentLocale} />
     </div>
   </section>
 </Layout>
