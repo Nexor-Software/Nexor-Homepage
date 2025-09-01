@@ -6,93 +6,49 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-	experimental: {
-		multiSite: true,
+	output: 'static',
+	site: 'https://nexor-software.netlify.app', // Update this with your actual domain
+	i18n: {
+		defaultLocale: 'de',
+		locales: ['de', 'en'],
+		routing: {
+			prefixDefaultLocale: true,
+		},
 	},
-	sites: [
-		{
-			output: 'static',
-			site: 'https://nexor-software.netlify.app', // Update this with your actual domain
+	redirects: {
+		'/': '/de',
+		'/about': '/de/about',
+		'/services': '/de/services',
+		'/blog': '/de/blog',
+		'/portfolio': '/de/portfolio',
+		'/contact': '/de/contact',
+		'/privacy-policy': '/de/privacy-policy',
+		'/terms-of-service': '/de/terms-of-service',
+	},
+	integrations: [
+		react(),
+		mdx(),
+		sitemap({
 			i18n: {
 				defaultLocale: 'de',
-				locales: ['de', 'en'],
-				routing: {
-					prefixDefaultLocale: true,
+				locales: {
+					de: 'de-DE',
+					en: 'en-US',
 				},
 			},
-			redirects: {
-				'/': '/de',
-				'/about': '/de/about',
-				'/services': '/de/services',
-				'/blog': '/de/blog',
-				'/portfolio': '/de/portfolio',
-				'/contact': '/de/contact',
-				'/privacy-policy': '/de/privacy-policy',
-				'/terms-of-service': '/de/terms-of-service',
-			},
-			integrations: [
-				react(),
-				mdx(),
-				sitemap({
-					i18n: {
-						defaultLocale: 'de',
-						locales: {
-							de: 'de-DE',
-							en: 'en-US',
-						},
-					},
-				}),
-			],
-			resolve: {
-				alias: {
-					'@': path.resolve(process.cwd(), './src'),
-				},
-			},
-			image: {
-				domains: ['oybnx5jyol.ufs.sh'],
-			},
-		},
-		{
-			output: 'static',
-			site: 'https://devserver-develop--nexor-software.netlify.app/', // Replace with your new base URL
-			i18n: {
-				defaultLocale: 'de',
-				locales: ['de', 'en'],
-				routing: {
-					prefixDefaultLocale: true,
-				},
-			},
-			redirects: {
-				'/': '/de',
-				'/about': '/de/about',
-				'/services': '/de/services',
-				'/blog': '/de/blog',
-				'/portfolio': '/de/portfolio',
-				'/contact': '/de/contact',
-				'/privacy-policy': '/de/privacy-policy',
-				'/terms-of-service': '/de/terms-of-service',
-			},
-			integrations: [
-				react(),
-				mdx(),
-				sitemap({
-					i18n: {
-						defaultLocale: 'de',
-						locales: {
-							de: 'de-DE',
-							en: 'en-US',
-						},
-					},
-				}),
-			],
-			resolve: {
-				alias: {
-					'@': path.resolve(process.cwd(), './src'),
-				},
-			},
-			image: {
-				domains: ['oybnx5jyol.ufs.sh'],
-			},
-		},
+		}),
 	],
+	resolve: {
+		alias: {
+			'@': path.resolve(process.cwd(), './src'),
+		},
+	},
+	image: {
+		domains: ['oybnx5jyol.ufs.sh'],
+	},
+	vite: {
+		server: {
+			allowedHosts: ['devserver-develop--nexor-software.netlify.app'],
+		},
+	},
 });
