@@ -17,14 +17,14 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 			title1: "Building Tomorrow's",
 			title2: 'Digital Solutions',
 			description:
-				'We craft innovative software solutions that transform businesses and empower growth through cutting-edge technology and exceptional user experiences.',
+				'We develop and intelligently connect your systems to help you achieve maximum comfort and value from your digital infrastructure.',
 			buttonText: 'Get Started Today',
 		},
 		de: {
 			title1: 'Die Zukunft',
 			title2: 'digitaler Lösungen',
 			description:
-				'Wir entwickeln innovative Softwarelösungen, die Unternehmen transformieren und Wachstum durch modernste Technologie und außergewöhnliche Nutzererfahrungen ermöglichen.',
+				'Wir entwickeln und vernetzen Ihre Systeme intelligent miteinander, damit Sie maximalen Komfort und Nutzen aus Ihrer digitalen Infrastruktur erzielen.',
 			buttonText: 'Jetzt starten',
 		},
 	};
