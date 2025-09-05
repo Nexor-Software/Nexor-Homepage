@@ -82,7 +82,7 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 
 				{/* Hero content following golden ratio proportions */}
 				<div className="max-w-4xl mx-auto space-y-8 animate-fade-in delay-200">
-					<h2 className="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
+					<h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-oswald font-normal text-white leading-tight mb-8">
 						<BlurText text={t.title1} animateBy="letters" direction="top" delay={50} />
 						<span className="block text-[#30D6C4] mt-4 drop-shadow-lg">
 							<BlurText

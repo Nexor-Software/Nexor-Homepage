@@ -5,30 +5,94 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import HeroTitle from './HeroTitle';
 
-const ContactComponent = () => {
+interface ContactComponentProps {
+	currentLocale?: string;
+}
+
+const ContactComponent = ({ currentLocale = 'de' }: ContactComponentProps) => {
+	const translations = {
+		en: {
+			badge: 'Contact',
+			heroTitle: ['Contact Us'],
+			heroText:
+				"Ready to start your next project? Get in touch with our team and let's discuss how we can help transform your business.",
+			formTitle: 'Send us a Message',
+			firstName: 'First Name',
+			lastName: 'Last Name',
+			email: 'Email',
+			subject: 'Subject',
+			message: 'Message',
+			firstNamePlaceholder: 'Your first name',
+			lastNamePlaceholder: 'Your last name',
+			emailPlaceholder: 'your.email@example.com',
+			subjectPlaceholder: "What's this about?",
+			messagePlaceholder: 'Tell us about your project...',
+			sendMessage: 'Send Message',
+			getInTouch: 'Get in Touch',
+			getInTouchPart1: 'Get in',
+			getInTouchPart2: 'Touch',
+			getInTouchText:
+				"We're here to help you bring your ideas to life. Whether you have a question about our services, need a quote for your project, or just want to say hello, we'd love to hear from you.",
+			emailTitle: 'Email',
+			phoneTitle: 'Phone',
+			addressTitle: 'Address',
+			businessHoursTitle: 'Business Hours',
+			businessHours: 'Mon - Fri: 9:00 - 18:00\nSat - Sun: Closed',
+		},
+		de: {
+			badge: 'Kontakt',
+			heroTitle: ['Kontaktiere uns'],
+			heroText:
+				'Bereit für Ihr nächstes Projekt? Kontaktieren Sie unser Team und lassen Sie uns besprechen, wie wir Ihr Unternehmen transformieren können.',
+			formTitle: 'Senden Sie uns eine Nachricht',
+			firstName: 'Vorname',
+			lastName: 'Nachname',
+			email: 'E-Mail',
+			subject: 'Betreff',
+			message: 'Nachricht',
+			firstNamePlaceholder: 'Ihr Vorname',
+			lastNamePlaceholder: 'Ihr Nachname',
+			emailPlaceholder: 'ihre.email@beispiel.com',
+			subjectPlaceholder: 'Worum geht es?',
+			messagePlaceholder: 'Erzählen Sie uns von Ihrem Projekt...',
+			sendMessage: 'Nachricht senden',
+			getInTouch: 'Kontakt aufnehmen',
+			getInTouchPart1: 'Kontakt',
+			getInTouchPart2: 'aufnehmen',
+			getInTouchText:
+				'Wir sind hier, um Ihnen zu helfen, Ihre Ideen zum Leben zu erwecken. Ob Sie eine Frage zu unseren Dienstleistungen haben, ein Angebot für Ihr Projekt benötigen oder einfach nur Hallo sagen möchten, wir freuen uns auf Ihre Nachricht.',
+			emailTitle: 'E-Mail',
+			phoneTitle: 'Telefon',
+			addressTitle: 'Adresse',
+			businessHoursTitle: 'Geschäftszeiten',
+			businessHours: 'Mo - Fr: 9:00 - 18:00\nSa - So: Geschlossen',
+		},
+	};
+
+	const t = translations[currentLocale as keyof typeof translations] || translations.de;
 	const contactInfo = [
 		{
 			icon: <Mail className="h-6 w-6 text-[#30D6C4]" />,
-			title: 'Email',
+			title: t.emailTitle,
 			content: 'info@nexorsoftware.com',
 			link: 'mailto:info@nexorsoftware.com',
 		},
 		{
 			icon: <Phone className="h-6 w-6 text-[#30D6C4]" />,
-			title: 'Phone',
+			title: t.phoneTitle,
 			content: '+49 1777830812',
 			link: 'tel:+491777830812',
 		},
 		{
 			icon: <MapPin className="h-6 w-6 text-[#30D6C4]" />,
-			title: 'Address',
+			title: t.addressTitle,
 			content: 'Heidenheim\nGermany',
 			link: null,
 		},
 		{
 			icon: <Clock className="h-6 w-6 text-[#30D6C4]" />,
-			title: 'Business Hours',
-			content: 'Mon - Fri: 9:00 - 18:00\nSat - Sun: Closed',
+			title: t.businessHoursTitle,
+			content: t.businessHours,
 			link: null,
 		},
 	];
@@ -43,12 +107,11 @@ const ContactComponent = () => {
 				<div className="relative max-w-6xl mx-auto flex flex-col items-center">
 					<div className="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
 						<span className="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
-						Kontakt
+						{t.badge}
 					</div>
-					<HeroTitle text={['Contact ', 'Us']} textColors={['#ffffff', '#30D6C4']} />
+					<HeroTitle text={t.heroTitle} textColors={['#30D6C4']} />
 					<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
-						Ready to start your next project? Get in touch with our team and let's discuss how we can help transform
-						your business.
+						{t.heroText}
 					</p>
 					<div className="w-24 h-1 bg-gradient-to-r from-[#30D6C4] to-transparent mx-auto"></div>
 				</div>
@@ -61,50 +124,50 @@ const ContactComponent = () => {
 						{/* Contact Form */}
 						<Card className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 group">
 							<CardHeader>
-								<CardTitle className="text-2xl font-oswald font-normal text-white">Send us a Message</CardTitle>
+								<CardTitle className="text-2xl font-oswald font-normal text-white">{t.formTitle}</CardTitle>
 							</CardHeader>
 							<CardContent className="space-y-6">
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 									<div>
-										<label className="block text-white font-inter mb-2 text-sm md:text-base">First Name</label>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.firstName}</label>
 										<Input
-											placeholder="Your first name"
+											placeholder={t.firstNamePlaceholder}
 											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 										/>
 									</div>
 									<div>
-										<label className="block text-white font-inter mb-2 text-sm md:text-base">Last Name</label>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.lastName}</label>
 										<Input
-											placeholder="Your last name"
+											placeholder={t.lastNamePlaceholder}
 											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 										/>
 									</div>
 								</div>
 								<div>
-									<label className="block text-white font-inter mb-2 text-sm md:text-base">Email</label>
+									<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.email}</label>
 									<Input
 										type="email"
-										placeholder="your.email@example.com"
+										placeholder={t.emailPlaceholder}
 										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 									/>
 								</div>
 								<div>
-									<label className="block text-white font-inter mb-2 text-sm md:text-base">Subject</label>
+									<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.subject}</label>
 									<Input
-										placeholder="What's this about?"
+										placeholder={t.subjectPlaceholder}
 										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
 									/>
 								</div>
 								<div>
-									<label className="block text-white font-inter mb-2 text-sm md:text-base">Message</label>
+									<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.message}</label>
 									<Textarea
-										placeholder="Tell us about your project..."
+										placeholder={t.messagePlaceholder}
 										rows={6}
 										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 min-h-[120px] md:min-h-[80px]"
 									/>
 								</div>
 								<Button className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium py-3 rounded-lg">
-									Send Message
+									{t.sendMessage}
 								</Button>
 							</CardContent>
 						</Card>
@@ -113,12 +176,9 @@ const ContactComponent = () => {
 						<div className="space-y-8">
 							<div>
 								<h2 className="text-3xl font-oswald font-normal text-white mb-6">
-									Get in <span className="text-[#30D6C4]">Touch</span>
+									{t.getInTouchPart1} <span className="text-[#30D6C4]">{t.getInTouchPart2}</span>
 								</h2>
-								<p className="text-lg text-[#B0C4D4] font-inter leading-relaxed">
-									We're here to help you bring your ideas to life. Whether you have a question about our services, need
-									a quote for your project, or just want to say hello, we'd love to hear from you.
-								</p>
+								<p className="text-lg text-[#B0C4D4] font-inter leading-relaxed">{t.getInTouchText}</p>
 							</div>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
