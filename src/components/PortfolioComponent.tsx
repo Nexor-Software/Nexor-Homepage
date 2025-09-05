@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github, Calendar, Users } from 'lucide-react';
 import { getUploadThingUrl } from '@/utils/uploadthing';
+import HeroTitle from './HeroTitle';
 
 interface PortfolioComponentProps {
 	currentLocale?: string;
@@ -115,22 +116,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					<div className="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
 					<div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
 					<div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
-					<div className="relative max-w-6xl mx-auto text-center">
+					{/* Smooth transition gradient overlay - much more gradual */}
+					<div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-transparent to-[#0F2235] pointer-events-none"></div>
+					<div className="relative max-w-6xl mx-auto flex flex-col items-center">
 						<div className="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
 							<span className="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
 							{currentLocale === 'en' ? 'Portfolio' : 'Portfolio'}
 						</div>
-						<h1 className="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
-							{currentLocale === 'en' ? (
-								<>
-									Our <span className="text-[#30D6C4]">Portfolio</span>
-								</>
-							) : (
-								<>
-									Unser <span className="text-[#30D6C4]">Portfolio</span>
-								</>
-							)}
-						</h1>
+						<HeroTitle
+							text={currentLocale === 'en' ? ['Our Portfolio'] : ['Unser Portfolio']}
+							textColors={['#30D6C4']}
+						/>
 						<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
 							{t.subtitle}
 						</p>
@@ -159,7 +155,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 				</section>
 
 				{/* Projects Grid */}
-				<section className="pb-24 px-8 bg-[#0C1C2C]">
+				<section className="pb-24 px-8 bg-gradient-to-b from-[#0F2235] via-[#0F2235] to-[#0C1C2C] relative">
 					<div className="max-w-7xl mx-auto">
 						<div className="flex flex-wrap justify-center gap-12">
 							{filteredProjects.map((project, index) => (

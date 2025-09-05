@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { getCollection } from 'astro:content';
+import HeroTitle from "@/components/HeroTitle";
 
 const posts = await getCollection('blog');
 
@@ -51,14 +52,14 @@ const t = translations[currentLocale];
     <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
-    <div class="relative max-w-6xl mx-auto text-center">
+    {/* Smooth transition gradient overlay - much more gradual */}
+    <div class="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-transparent to-[#0F2235] pointer-events-none"></div>
+    <div class="relative max-w-6xl mx-auto flex flex-col items-center">
       <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
         <span class="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
         Latest Insights
       </div>
-      <h1 class="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
-        {t.title} <span class="text-[#30D6C4]">{t.titleHighlight}</span>
-      </h1>
+      <HeroTitle client:load text={["Our Blog"]} textColors={["#30D6C4"]} />
       <p class="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
         {t.subtitle}
       </p>
@@ -67,7 +68,7 @@ const t = translations[currentLocale];
   </section>
 
   {/* Blog Posts Section */}
-  <section class="py-24 px-8 bg-[#0C1C2C]">
+  <section class="py-24 px-8 bg-gradient-to-b from-[#0F2235] via-[#0F2235] to-[#0C1C2C] relative">
     <div class="max-w-7xl mx-auto">
       {filteredPosts.length === 0 ? (
         <div class="text-center py-20">

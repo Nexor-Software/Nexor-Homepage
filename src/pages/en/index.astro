@@ -3,9 +3,11 @@ import Layout from "@/layouts/Layout.astro";
 import { Hero } from "@/components/Hero";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { CustomerReview } from "@/components/CustomerReview";
+import { LoadingScreen } from "@/components/LoadingScreen";
 ---
 
 <Layout>
+  <LoadingScreen client:load currentLocale="en" />
   <Hero client:load currentLocale="en" />
   <ThreeColumnSection client:load currentLocale="en" />
   <CustomerReview client:load currentLocale="en" authorImage="https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwye3u8obkOh3Y6H9Zi8vfcJNALEun0KRklg4j5" />

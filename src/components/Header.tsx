@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getUploadThingUrl } from '@/utils/uploadthing';
@@ -10,6 +10,19 @@ interface HeaderProps {
 export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+	const [isTransparent, setIsTransparent] = useState(true);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const heroHeight = window.innerHeight + 580; // Account for added padding and gradient
+			setIsTransparent(window.scrollY < heroHeight -120); // More gradual transition
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		handleScroll(); // Check initial state
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	// Helper function to get localized path
 	function getLocalizedPath(path) {
@@ -51,7 +64,12 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
 
 	return (
-		<header className="fixed top-0 left-0 right-0 z-50 bg-[#0C1C2C]/95 backdrop-blur-sm border-b border-white/10">
+		<header
+			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
+				isTransparent
+					? 'bg-transparent border-b border-white/20'
+					: 'bg-[#0C1C2C]/95 backdrop-blur-sm border-b border-white/10'
+			}`}>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-20">
 					{/* Logo */}
@@ -175,7 +193,12 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 
 				{/* Mobile Navigation */}
 				{isMenuOpen && (
-					<div className="md:hidden border-t border-white/10 bg-[#0C1C2C]/95 backdrop-blur-sm">
+					<div
+						className={`md:hidden border-t transition-all duration-700 ease-in-out ${
+							isTransparent
+								? 'border-white/20 bg-black/20 backdrop-blur-sm'
+								: 'border-white/10 bg-[#0C1C2C]/95 backdrop-blur-sm'
+						}`}>
 						<div className="px-2 pt-2 pb-3 space-y-1">
 							<a
 								href={getLocalizedPath('/')}

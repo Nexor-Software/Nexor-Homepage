@@ -63,15 +63,15 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 	];
 
 	return (
-		<section className="py-24 px-8 bg-gradient-to-b from-[#0C1C2C] to-[#0F2235] relative">
+		<section className="py-16 px-8 bg-gradient-to-b from-[#0F2235] via-[#0F2235] to-[#0F2235] relative">
 			{/* Subtle background pattern */}
 			<div className="absolute inset-0 opacity-5">
 				<div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-[#30D6C4]/10 to-transparent transform -skew-y-3"></div>
 			</div>
 
 			<div className="max-w-7xl mx-auto relative z-10">
-				<div className="text-center mb-20">
-					<h2 className="text-4xl md:text-5xl font-oswald font-normal text-white mb-6">
+				<div className="text-center mb-20 bg-transparent border-none outline-none">
+					<h2 className="text-4xl md:text-5xl font-oswald font-normal text-white mb-6 bg-transparent border-none outline-none">
 						{t.title} <span className="text-[#30D6C4]">Nexor</span>
 					</h2>
 					<div className="w-16 h-1 bg-[#30D6C4] mx-auto rounded-full"></div>

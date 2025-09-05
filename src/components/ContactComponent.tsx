@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import HeroTitle from './HeroTitle';
 
 const ContactComponent = () => {
-
 	const contactInfo = [
 		{
 			icon: <Mail className="h-6 w-6 text-[#30D6C4]" />,
@@ -40,14 +40,12 @@ const ContactComponent = () => {
 				<div className="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
 				<div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(48,214,196,0.1),transparent_50%)]"></div>
 				<div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(48,214,196,0.05),transparent_50%)]"></div>
-				<div className="relative max-w-6xl mx-auto text-center">
+				<div className="relative max-w-6xl mx-auto flex flex-col items-center">
 					<div className="inline-flex items-center px-4 py-2 rounded-full bg-[#30D6C4]/10 border border-[#30D6C4]/20 text-[#30D6C4] text-sm font-medium mb-8">
 						<span className="w-2 h-2 bg-[#30D6C4] rounded-full mr-2 animate-pulse"></span>
 						Kontakt
 					</div>
-					<h1 className="text-5xl md:text-7xl font-oswald font-normal text-white leading-tight mb-8">
-						Contact <span className="text-[#30D6C4]">Us</span>
-					</h1>
+					<HeroTitle text={['Contact ', 'Us']} textColors={['#ffffff', '#30D6C4']} />
 					<p className="text-xl md:text-2xl font-inter text-[#B0C4D4] max-w-4xl mx-auto leading-relaxed mb-12">
 						Ready to start your next project? Get in touch with our team and let's discuss how we can help transform
 						your business.
