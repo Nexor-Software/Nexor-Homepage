@@ -11,8 +11,8 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			title: 'Why Choose',
 			companyTitle: 'Our Company',
 			companyDescription:
-				'Founded on innovation and driven by excellence, Nexor Software has been at the forefront of digital transformation for 2 years.',
-			companyFeatures: ['Established 2023', 'Professional Team'],
+				'Founded in 2025 with the conviction that high-quality software solutions shouldn\'t be overpriced. Nexor Software develops modern, affordable alternatives to outdated market standards.',
+			companyFeatures: ['Established 2025', 'Professional Team'],
 			servicesTitle: 'Services',
 			servicesDescription:
 				'From web applications to enterprise solutions, we deliver comprehensive software development services tailored to your unique needs.',
@@ -26,8 +26,8 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			title: 'Warum',
 			companyTitle: 'Unser Unternehmen',
 			companyDescription:
-				'Gegründet auf Innovation und angetrieben von Exzellenz, steht Nexor Software seit 2 Jahren an der Spitze der digitalen Transformation.',
-			companyFeatures: ['Gegründet 2023', 'Professionelles Team'],
+				'Gegründet aus der Überzeugung, dass hochwertige Softwarelösungen nicht überteuert sein müssen. Nexor Software entwickelt moderne, erschwingliche Alternativen zu veralteten Markstandards.',
+			companyFeatures: ['Gegründet 2025', 'Professionelles Team'],
 			servicesTitle: 'Dienstleistungen',
 			servicesDescription:
 				'Von Webanwendungen bis hin zu Unternehmenslösungen bieten wir umfassende Softwareentwicklungs-Services, die auf Ihre individuellen Bedürfnisse zugeschnitten sind.',
