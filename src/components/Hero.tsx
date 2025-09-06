@@ -39,11 +39,11 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 			<div className="absolute inset-0 pointer-events-none">
 				<DarkVeil
 					hueShift={48.5}
-					noiseIntensity={0.03}
+					noiseIntensity={0.05}
 					scanlineIntensity={0.05}
 					scanlineFrequency={8}
-					speed={0.4}
-					warpAmount={0.02}
+					speed={1.5}
+					warpAmount={0.7}
 					resolutionScale={1}
 					offsetX={1}
 					offsetY={-1}
