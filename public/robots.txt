@@ -69,4 +69,4 @@ Disallow: /en/impressum
 # All other bots: Welcome aboard!
 # Remember: Crawl responsibly, index thoughtfully
 
-Sitemap: https://nexor-software.netlify.app/sitemap-index.xml
+Sitemap: https://nexor-software.de/sitemap-index.xml

@@ -7,7 +7,7 @@ import path from 'path';
 // https://astro.build/config
 export default defineConfig({
 	output: 'static',
-	site: 'https://nexor-software.netlify.app', // Update this with your actual domain
+	site: 'https://nexor-software.de', // Update this with your actual domain
 	i18n: {
 		defaultLocale: 'de',
 		locales: ['de', 'en'],
@@ -16,7 +16,6 @@ export default defineConfig({
 		},
 	},
 	redirects: {
-		'/': '/de',
 		'/about': '/de/about',
 		'/services': '/de/services',
 		'/blog': '/de/blog',
