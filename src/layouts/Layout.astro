@@ -97,8 +97,10 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <!-- Preconnect to Google Fonts for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preconnect to image host -->
+    <link rel="preconnect" href="https://oybnx5jyol.ufs.sh" crossorigin>
     <!-- Custom font combination -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Inter:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={
@@ -135,9 +137,9 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
 
   </head>
   <body class="min-h-screen bg-[#0C1C2C] overflow-x-hidden">
-    <Header client:load {currentLocale} />
+    <Header client:idle {currentLocale} />
     <slot />
-    <Footer client:load {currentLocale} />
-    <ProvidersIsland client:load {currentLocale} />
+    <Footer client:idle {currentLocale} />
+    <ProvidersIsland client:idle {currentLocale} />
   </body>
 </html>

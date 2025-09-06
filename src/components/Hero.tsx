@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { getUploadThingUrl } from '@/utils/uploadthing';
-import DarkVeil from '@/components/DarkVeil';
-import BlurText from '@/components/BlurText';
+import { lazy, Suspense } from 'react';
+
+const DarkVeil = lazy(() => import('@/components/DarkVeil'));
+const BlurText = lazy(() => import('@/components/BlurText'));
 
 interface HeroProps {
 	currentLocale?: string;
@@ -37,17 +39,19 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 		<section className="relative min-h-screen flex items-center justify-center px-8 py-16 pt-24 pb-48 bg-[#0C1C2C]">
 			{/* Dark Veil background */}
 			<div className="absolute inset-0 pointer-events-none">
-				<DarkVeil
-					hueShift={48.5}
-					noiseIntensity={0.05}
-					scanlineIntensity={0.05}
-					scanlineFrequency={8}
-					speed={1.5}
-					warpAmount={0.7}
-					resolutionScale={1}
-					offsetX={1}
-					offsetY={-1}
-				/>
+				<Suspense fallback={<div className="absolute inset-0 bg-[#0C1C2C]"></div>}>
+					<DarkVeil
+						hueShift={48.5}
+						noiseIntensity={0.02}
+						scanlineIntensity={0.02}
+						scanlineFrequency={4}
+						speed={0.5}
+						warpAmount={0.3}
+						resolutionScale={1}
+						offsetX={1}
+						offsetY={-1}
+					/>
+				</Suspense>
 			</div>
 			{/* Background geometric elements for visual interest */}
 			<div className="absolute top-1/4 left-1/6 w-32 h-32 bg-[#30D6C4]/8 rounded-full blur-3xl animate-pulse"></div>
@@ -75,6 +79,9 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 							src={getUploadThingUrl('nexor-logo-large.png')}
 							alt="Nexor Software"
 							className="h-48 md:h-64 lg:h-72 w-auto max-w-full drop-shadow-2xl"
+							loading="eager"
+							width="288"
+							height="288"
 						/>
 					</div>
 					<div className="w-24 h-1 bg-[#30D6C4] mx-auto rounded-full shadow-lg shadow-[#30D6C4]/30"></div>
@@ -83,15 +90,19 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 				{/* Hero content following golden ratio proportions */}
 				<div className="max-w-4xl mx-auto space-y-8 animate-fade-in delay-200">
 					<h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-oswald font-normal text-white leading-tight mb-8">
-						<BlurText text={t.title1} animateBy="letters" direction="top" delay={50} />
+						<Suspense fallback={<span>{t.title1}</span>}>
+							<BlurText text={t.title1} animateBy="letters" direction="top" delay={30} />
+						</Suspense>
 						<span className="block text-[#30D6C4] mt-4 drop-shadow-lg">
-							<BlurText
-								text={t.title2}
-								animateBy="letters"
-								direction="top"
-								delay={70}
-								initialDelay={(t.title1.length - 1) * 50 + 220}
-							/>
+							<Suspense fallback={<span>{t.title2}</span>}>
+								<BlurText
+									text={t.title2}
+									animateBy="letters"
+									direction="top"
+									delay={40}
+									initialDelay={(t.title1.length - 1) * 30 + 150}
+								/>
+							</Suspense>
 						</span>
 					</h2>
 

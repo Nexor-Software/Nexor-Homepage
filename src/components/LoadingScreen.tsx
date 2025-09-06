@@ -42,12 +42,14 @@ export const LoadingScreen = ({ currentLocale = 'en' }: LoadingScreenProps) => {
 				<img
 					src={getUploadThingUrl('nexor-logo-large.png')}
 					alt="Nexor Software"
-					className="h-32 md:h-40 lg:h-48 w-auto max-w-full drop-shadow-2xl mb-6 transition-opacity duration-800"
+					className="h-24 md:h-32 lg:h-40 w-auto max-w-full drop-shadow-2xl mb-6 transition-opacity duration-800"
 					style={{ opacity }}
+					width="160"
+					height="160"
 				/>
 				{/* Subtle accent line */}
 				<div
-					className="w-16 h-0.5 bg-[#30D6C4] mx-auto rounded-full shadow-lg shadow-[#30D6C4]/30 transition-opacity duration-800"
+					className="w-12 h-0.5 bg-[#30D6C4] mx-auto rounded-full shadow-lg shadow-[#30D6C4]/30 transition-opacity duration-800"
 					style={{ opacity }}></div>
 			</div>
 

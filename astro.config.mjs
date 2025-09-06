@@ -45,4 +45,22 @@ export default defineConfig({
 	image: {
 		domains: ['oybnx5jyol.ufs.sh'],
 	},
+	vite: {
+		build: {
+			rollupOptions: {
+				output: {
+					manualChunks: {
+						'ui-components': [
+							'@radix-ui/react-dialog',
+							'@radix-ui/react-tooltip',
+							'@radix-ui/react-toast',
+							'@radix-ui/react-card',
+						],
+						animation: ['motion', 'gsap'],
+						ogl: ['ogl'],
+					},
+				},
+			},
+		},
+	},
 });
