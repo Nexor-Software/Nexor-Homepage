@@ -57,6 +57,28 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <!-- Preconnect to external origins for faster loading -->
+    <link rel="preconnect" href="https://oybnx5jyol.ufs.sh" crossorigin>
+    <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- DNS prefetch for additional performance -->
+    <link rel="dns-prefetch" href="https://oybnx5jyol.ufs.sh">
+    <link rel="dns-prefetch" href="https://eu.i.posthog.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Preload critical LCP image -->
+    <link rel="preload" href="https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwyzjH393fOsLQhVHiI0NT7km4ubKyvFM9Bfeol" as="image" fetchpriority="high" />
+
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
     <!-- Language Alternates -->
     <link rel="alternate" hreflang="de" href={alternateDe} />
     <link rel="alternate" hreflang="en" href={alternateEn} />

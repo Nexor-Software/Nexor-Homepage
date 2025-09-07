@@ -50,15 +50,56 @@ export default defineConfig({
 			rollupOptions: {
 				output: {
 					manualChunks: {
-						'ui-components': [
+						// UI component libraries
+						'radix-ui-core': [
 							'@radix-ui/react-dialog',
 							'@radix-ui/react-tooltip',
 							'@radix-ui/react-toast',
-							'@radix-ui/react-card',
+							'@radix-ui/react-dropdown-menu',
+							'@radix-ui/react-popover',
 						],
-						animation: ['motion', 'gsap'],
-						ogl: ['ogl'],
+						'radix-ui-forms': [
+							'@radix-ui/react-checkbox',
+							'@radix-ui/react-radio-group',
+							'@radix-ui/react-select',
+							'@radix-ui/react-slider',
+							'@radix-ui/react-switch',
+						],
+						'radix-ui-navigation': [
+							'@radix-ui/react-navigation-menu',
+							'@radix-ui/react-tabs',
+							'@radix-ui/react-accordion',
+						],
+						'radix-ui-layout': [
+							'@radix-ui/react-collapsible',
+							'@radix-ui/react-scroll-area',
+							'@radix-ui/react-separator',
+						],
+						// Animation libraries
+						'animation-motion': ['motion'],
+						'animation-gsap': ['gsap'],
+						// WebGL
+						'webgl-ogl': ['ogl'],
+						// Analytics and state management
+						'analytics-posthog': ['@posthog/react'],
+						'state-management': ['@tanstack/react-query'],
+						// Utilities
+						'utils-lucide': ['lucide-react'],
+						'utils-uploadthing': ['uploadthing', '@uploadthing/react'],
 					},
+				},
+				treeshake: {
+					moduleSideEffects: false,
+					propertyReadSideEffects: false,
+					tryCatchDeoptimization: false,
+				},
+			},
+			minify: 'terser',
+			terserOptions: {
+				compress: {
+					drop_console: true,
+					drop_debugger: true,
+					pure_funcs: ['console.log', 'console.info', 'console.debug'],
 				},
 			},
 		},

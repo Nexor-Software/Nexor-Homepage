@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { X, Cookie } from 'lucide-react';
-import { usePostHog } from '@posthog/react';
 
 interface CookieConsentBannerProps {
 	currentLocale?: string;
 }
 
 export const CookieConsentBanner = ({ currentLocale = 'en' }: CookieConsentBannerProps) => {
-	const posthog = usePostHog();
 	const [consentStatus, setConsentStatus] = useState<'pending' | 'granted' | 'denied'>('pending');
 	const [isVisible, setIsVisible] = useState(false);
-	const [isPostHogReady, setIsPostHogReady] = useState(false);
+	const [posthog, setPosthog] = useState<any>(null);
 
 	useEffect(() => {
 		// Check localStorage first for consent status
@@ -24,35 +22,36 @@ export const CookieConsentBanner = ({ currentLocale = 'en' }: CookieConsentBanne
 			return;
 		}
 
-		// Check if PostHog is loaded and ready
-		if (posthog && typeof posthog.get_explicit_consent_status === 'function') {
-			setIsPostHogReady(true);
-			const status = posthog.get_explicit_consent_status();
-			setConsentStatus(status);
-
-			// Show banner on first visit or when manually triggered
-			if (status === 'pending') {
-				setIsVisible(true);
-			}
-		} else {
-			// If PostHog is not ready yet, try again after a delay
-			const timer = setTimeout(() => {
-				if (posthog && typeof posthog.get_explicit_consent_status === 'function') {
-					setIsPostHogReady(true);
-					const status = posthog.get_explicit_consent_status();
+		// Try to get PostHog instance from window
+		const checkPostHog = () => {
+			if ((window as any).posthog) {
+				setPosthog((window as any).posthog);
+				const status = (window as any).posthog.get_explicit_consent_status?.();
+				if (status) {
 					setConsentStatus(status);
 					if (status === 'pending') {
 						setIsVisible(true);
 					}
 				}
-			}, 1000);
+			}
+		};
 
-			return () => clearTimeout(timer);
+		// Check immediately
+		checkPostHog();
+
+		// Also check after a delay in case PostHog loads later
+		const timer = setTimeout(checkPostHog, 1000);
+
+		// Show banner if no stored consent and PostHog not ready
+		if (!storedConsent) {
+			setIsVisible(true);
 		}
-	}, [posthog]);
+
+		return () => clearTimeout(timer);
+	}, []);
 
 	const handleAccept = () => {
-		if (posthog && isPostHogReady && typeof posthog.opt_in_capturing === 'function') {
+		if (posthog && typeof posthog.opt_in_capturing === 'function') {
 			posthog.opt_in_capturing();
 		}
 		localStorage.setItem('cookieConsent', 'granted');
@@ -61,7 +60,7 @@ export const CookieConsentBanner = ({ currentLocale = 'en' }: CookieConsentBanne
 	};
 
 	const handleDecline = () => {
-		if (posthog && isPostHogReady && typeof posthog.opt_out_capturing === 'function') {
+		if (posthog && typeof posthog.opt_out_capturing === 'function') {
 			posthog.opt_out_capturing();
 		}
 		localStorage.setItem('cookieConsent', 'denied');

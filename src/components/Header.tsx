@@ -15,7 +15,7 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const heroHeight = window.innerHeight + 580; // Account for added padding and gradient
-			setIsTransparent(window.scrollY < heroHeight -120); // More gradual transition
+			setIsTransparent(window.scrollY < heroHeight - 120); // More gradual transition
 		};
 
 		window.addEventListener('scroll', handleScroll);
@@ -74,8 +74,13 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 				<div className="flex items-center justify-between h-20">
 					{/* Logo */}
 					<a href={getLocalizedPath('/')} className="flex items-center space-x-3">
-						<img src={getUploadThingUrl('nexor-logo.svg')} alt="Nexor Logo" className="h-16 w-16" />
-						<img src={getUploadThingUrl('Nexor-text.avif')} alt="Nexor Software" className="h-48 w-auto" />
+						<img src={getUploadThingUrl('nexor-logo.svg')} alt="Nexor Logo" className="h-16 w-16" loading="eager" />
+						<img
+							src={getUploadThingUrl('Nexor-text.avif')}
+							alt="Nexor Software"
+							className="h-48 w-auto"
+							loading="eager"
+						/>
 					</a>
 
 					{/* Desktop Navigation */}

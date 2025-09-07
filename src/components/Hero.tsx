@@ -80,6 +80,7 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 							alt="Nexor Software"
 							className="h-48 md:h-64 lg:h-72 w-auto max-w-full drop-shadow-2xl"
 							loading="eager"
+							fetchPriority="high"
 							width="288"
 							height="288"
 						/>

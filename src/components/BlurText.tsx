@@ -42,7 +42,7 @@ const BlurText: React.FC<BlurTextProps> = ({
 	animationTo,
 	easing = (t: number) => t,
 	onAnimationComplete,
-	stepDuration = 0.35,
+	stepDuration = 0.25,
 	initialDelay = 0,
 }) => {
 	const elements = animateBy === 'words' ? text.split(' ') : text.split('');
@@ -66,21 +66,11 @@ const BlurText: React.FC<BlurTextProps> = ({
 
 	const defaultFrom = useMemo(
 		() =>
-			direction === 'top' ? { filter: 'blur(10px)', opacity: 0, y: -50 } : { filter: 'blur(10px)', opacity: 0, y: 50 },
+			direction === 'top' ? { filter: 'blur(6px)', opacity: 0, y: -15 } : { filter: 'blur(6px)', opacity: 0, y: 15 },
 		[direction]
 	);
 
-	const defaultTo = useMemo(
-		() => [
-			{
-				filter: 'blur(5px)',
-				opacity: 0.5,
-				y: direction === 'top' ? 5 : -5,
-			},
-			{ filter: 'blur(0px)', opacity: 1, y: 0 },
-		],
-		[direction]
-	);
+	const defaultTo = useMemo(() => [{ filter: 'blur(0px)', opacity: 1, y: 0 }], []);
 
 	const fromSnapshot = animationFrom ?? defaultFrom;
 	const toSnapshots = animationTo ?? defaultTo;
