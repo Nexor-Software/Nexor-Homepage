@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { getUploadThingUrl } from '@/utils/uploadthing';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 
 const DarkVeil = lazy(() => import('@/components/DarkVeil'));
 const BlurText = lazy(() => import('@/components/BlurText'));
@@ -11,6 +11,13 @@ interface HeroProps {
 }
 
 export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
+	const logoRef = useRef<HTMLImageElement>(null);
+
+	useEffect(() => {
+		if (logoRef.current) {
+			logoRef.current.setAttribute('fetchpriority', 'high');
+		}
+	}, []);
 	const getLocalizedPath = (path: string) => {
 		const pathWithoutLocale = path.replace(/^\/(en|de)/, '');
 		return currentLocale === 'en' ? `/en${pathWithoutLocale || '/'}` : `/de${pathWithoutLocale || '/'}`;
@@ -76,11 +83,11 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 				<div className="mb-16 animate-fade-in">
 					<div className="flex justify-center mb-6">
 						<img
+							ref={logoRef}
 							src={getUploadThingUrl('Nexor-logo-large-helle-Schrift.avif')}
 							alt="Nexor Software"
 							className="h-48 md:h-64 lg:h-72 w-auto max-w-full drop-shadow-2xl"
 							loading="eager"
-							fetchPriority="high"
 							width="288"
 							height="288"
 						/>

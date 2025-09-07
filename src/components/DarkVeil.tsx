@@ -130,14 +130,21 @@ export default function DarkVeil({
 		const mesh = new Mesh(gl, { geometry, program });
 
 		const resize = () => {
-			const w = parent.clientWidth,
-				h = parent.clientHeight;
-			renderer.setSize(w * resolutionScale, h * resolutionScale);
-			program.uniforms.uResolution.value.set(w, h);
+			// Defer measurement to avoid forced reflow
+			requestAnimationFrame(() => {
+				const w = parent.clientWidth,
+					h = parent.clientHeight;
+				renderer.setSize(w * resolutionScale, h * resolutionScale);
+				program.uniforms.uResolution.value.set(w, h);
+			});
 		};
 
-		window.addEventListener('resize', resize);
-		resize();
+		// Use ResizeObserver for better performance instead of window resize listener
+		const resizeObserver = new ResizeObserver(resize);
+		resizeObserver.observe(parent);
+
+		// Initial resize call deferred to avoid forced reflow
+		requestAnimationFrame(resize);
 
 		const start = performance.now();
 		let frame = 0;
@@ -158,7 +165,7 @@ export default function DarkVeil({
 
 		return () => {
 			cancelAnimationFrame(frame);
-			window.removeEventListener('resize', resize);
+			resizeObserver.disconnect();
 		};
 	}, [
 		hueShift,
