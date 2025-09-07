@@ -13,20 +13,12 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 	const [isTransparent, setIsTransparent] = useState(true);
 
 	useEffect(() => {
-		let ticking = false;
-
 		const handleScroll = () => {
-			if (!ticking) {
-				requestAnimationFrame(() => {
-					const heroHeight = window.innerHeight + 580; // Account for added padding and gradient
-					setIsTransparent(window.scrollY < heroHeight - 120); // More gradual transition
-					ticking = false;
-				});
-				ticking = true;
-			}
+			const heroHeight = window.innerHeight + 580; // Account for added padding and gradient
+			setIsTransparent(window.scrollY < heroHeight - 120); // More gradual transition
 		};
 
-		window.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('scroll', handleScroll);
 		handleScroll(); // Check initial state
 
 		return () => window.removeEventListener('scroll', handleScroll);
