@@ -76,7 +76,7 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 				<div className="mb-16 animate-fade-in">
 					<div className="flex justify-center mb-6">
 						<img
-							src={getUploadThingUrl('nexor-logo-large.png')}
+							src={getUploadThingUrl('Nexor-logo-large-helle-Schrift.avif')}
 							alt="Nexor Software"
 							className="h-48 md:h-64 lg:h-72 w-auto max-w-full drop-shadow-2xl"
 							loading="eager"

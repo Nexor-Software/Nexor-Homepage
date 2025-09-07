@@ -40,7 +40,7 @@ export const LoadingScreen = ({ currentLocale = 'en' }: LoadingScreenProps) => {
 			{/* Logo centered */}
 			<div className="text-center">
 				<img
-					src={getUploadThingUrl('nexor-logo-large.png')}
+					src={getUploadThingUrl('Nexor-logo-large-helle-Schrift.avif')}
 					alt="Nexor Software"
 					className="h-24 md:h-32 lg:h-40 w-auto max-w-full drop-shadow-2xl mb-6 transition-opacity duration-800"
 					style={{ opacity }}

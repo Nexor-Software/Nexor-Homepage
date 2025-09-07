@@ -75,7 +75,7 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 					{/* Logo */}
 					<a href={getLocalizedPath('/')} className="flex items-center space-x-3">
 						<img src={getUploadThingUrl('nexor-logo.svg')} alt="Nexor Logo" className="h-16 w-16" />
-						<img src={getUploadThingUrl('Nexor-text.png')} alt="Nexor Software" className="h-48 w-auto" />
+						<img src={getUploadThingUrl('Nexor-text.avif')} alt="Nexor Software" className="h-48 w-auto" />
 					</a>
 
 					{/* Desktop Navigation */}
