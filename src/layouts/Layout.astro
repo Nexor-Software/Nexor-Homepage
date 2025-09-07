@@ -72,12 +72,18 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <!-- Preload critical LCP image -->
     <link rel="preload" href="https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwyzjH393fOsLQhVHiI0NT7km4ubKyvFM9Bfeol" as="image" fetchpriority="high" />
 
-    <!-- Preload critical fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <!-- Non-blocking font loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- Preload critical JavaScript chunks -->
+    <link rel="modulepreload" href="/_astro/Hero.uUkWsvcV.js">
+    <link rel="modulepreload" href="/_astro/index.yVUaf_Kw.js">
+    <link rel="modulepreload" href="/_astro/jsx-runtime.B5FYG-KX.js">
+    <link rel="modulepreload" href="/_astro/client.CKt7ecyT.js">
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/_astro/about.B0IG5tBo.css" as="style">
 
     <!-- Language Alternates -->
     <link rel="alternate" hreflang="de" href={alternateDe} />
@@ -116,13 +122,8 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Preconnect to Google Fonts for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Preconnect to image host -->
     <link rel="preconnect" href="https://oybnx5jyol.ufs.sh" crossorigin>
-    <!-- Custom font combination -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Inter:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={
