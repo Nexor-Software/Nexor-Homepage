@@ -2,14 +2,25 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import HeroTitle from './HeroTitle';
+import { useState, useRef, useEffect } from 'react';
+// Import the server actions wrapper (Astro will tree-shake server code from client bundle)
+// No direct actions import (astro:actions actions object not exported in current version); we'll POST to action endpoint manually.
 
 interface ContactComponentProps {
 	currentLocale?: string;
 }
 
 const ContactComponent = ({ currentLocale = 'de' }: ContactComponentProps) => {
+	const [isLoading, setIsLoading] = useState(false);
+	const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+	const [msgLength, setMsgLength] = useState(0);
+	const startTsRef = useRef<string>('');
+	useEffect(() => {
+		startTsRef.current = Date.now().toString();
+	}, []);
 	const translations = {
 		en: {
 			badge: 'Contact',
@@ -67,9 +78,34 @@ const ContactComponent = ({ currentLocale = 'de' }: ContactComponentProps) => {
 			businessHoursTitle: 'Geschäftszeiten',
 			businessHours: 'Mo - Fr: 9:00 - 18:00\nSa - So: Geschlossen',
 		},
+		_enhanced: {
+			en: {
+				successTitle: 'Message Sent',
+				successBody: 'Thanks! Your message was delivered successfully. We will reply shortly.',
+				errorTitle: 'Send Failed',
+				errorBody: 'We could not send your message. Please try again later or email us directly.',
+				validating: 'Validating…',
+				sending: 'Sending…',
+				defaultSuccess: 'Message sent successfully!',
+				defaultError: 'Failed to send message.',
+			},
+			de: {
+				successTitle: 'Nachricht gesendet',
+				successBody: 'Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt. Wir melden uns in Kürze.',
+				errorTitle: 'Senden fehlgeschlagen',
+				errorBody:
+					'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder senden Sie uns direkt eine E-Mail.',
+				validating: 'Validierung…',
+				sending: 'Wird gesendet…',
+				defaultSuccess: 'Nachricht erfolgreich gesendet!',
+				defaultError: 'Nachricht konnte nicht gesendet werden.',
+			},
+		},
 	};
 
-	const t = translations[currentLocale as keyof typeof translations] || translations.de;
+	const localeKey = (currentLocale === 'en' ? 'en' : 'de') as 'en' | 'de';
+	const t = translations[localeKey];
+	const em = (translations as any)._enhanced[localeKey];
 	const contactInfo = [
 		{
 			icon: <Mail className="h-6 w-6 text-[#30D6C4]" />,
@@ -127,48 +163,176 @@ const ContactComponent = ({ currentLocale = 'de' }: ContactComponentProps) => {
 								<CardTitle className="text-2xl font-oswald font-normal text-white">{t.formTitle}</CardTitle>
 							</CardHeader>
 							<CardContent className="space-y-6">
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+								{message && (
+									<Alert
+										className={`relative overflow-hidden border ${
+											message.type === 'success'
+												? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-100'
+												: 'border-rose-400/30 bg-rose-400/10 text-rose-100'
+										} animate-in fade-in slide-in-from-top-2 duration-300`}>
+										<div className="absolute inset-0 opacity-10 pointer-events-none">
+											<div
+												className={`w-full h-full ${
+													message.type === 'success'
+														? 'bg-gradient-to-br from-emerald-400 via-transparent to-transparent'
+														: 'bg-gradient-to-br from-rose-400 via-transparent to-transparent'
+												}`}></div>
+										</div>
+										<AlertTitle className="flex items-center gap-2 relative z-10">
+											{message.type === 'success' ? (
+												<svg
+													className="h-4 w-4 text-emerald-300"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													strokeWidth="2"
+													strokeLinecap="round"
+													strokeLinejoin="round">
+													<path d="M9 12l2 2 4-4" />
+													<path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+												</svg>
+											) : (
+												<svg
+													className="h-4 w-4 text-rose-300"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													strokeWidth="2"
+													strokeLinecap="round"
+													strokeLinejoin="round">
+													<circle cx="12" cy="12" r="10" />
+													<path d="M15 9l-6 6" />
+													<path d="M9 9l6 6" />
+												</svg>
+											)}
+											{message.type === 'success' ? em.successTitle : em.errorTitle}
+										</AlertTitle>
+										<AlertDescription className="relative z-10 text-sm leading-relaxed">
+											{message.type === 'success' ? em.successBody : em.errorBody}
+											{message.text && message.text !== em.defaultSuccess && message.text !== em.defaultError && (
+												<p className="mt-2 opacity-80">{message.text}</p>
+											)}
+										</AlertDescription>
+									</Alert>
+								)}
+								<form
+									onSubmit={async (e) => {
+										e.preventDefault();
+										setIsLoading(true);
+										setMessage(null);
+										const formData = new FormData(e.target as HTMLFormElement);
+										formData.append('_ts', startTsRef.current || Date.now().toString());
+										try {
+											const actionUrl = '/_actions/send';
+											const response = await fetch(actionUrl, { method: 'POST', body: formData });
+											let raw: any = {};
+											try {
+												raw = await response.json();
+											} catch {
+												/* ignore */
+											}
+
+											// Astro action responses usually shaped as { data: {...} } or { error: {...} }
+											const payload = raw?.data ?? raw; // fallback to top-level
+
+											if (!response.ok || raw?.error) {
+												const errMsg = raw?.error?.message || payload?.message || em.defaultError;
+												setMessage({ type: 'error', text: errMsg });
+												return;
+											}
+
+											const success = payload?.success === true || typeof payload?.id === 'string';
+											const msg = payload?.message || 'Message sent successfully!';
+
+											if (success) {
+												setMessage({ type: 'success', text: msg });
+												(e.target as HTMLFormElement).reset();
+												return;
+											}
+
+											// Fallback heuristic: if we got no error and we have any keys, assume success
+											const hasContent = Object.keys(payload || {}).length > 0;
+											if (hasContent) {
+												setMessage({ type: 'success', text: msg });
+												(e.target as HTMLFormElement).reset();
+											} else {
+												setMessage({ type: 'error', text: em.defaultError });
+											}
+										} catch (error: any) {
+											console.error('Form submission error:', error);
+											const errorMessage = error?.message || 'Failed to send message. Please try again.';
+											setMessage({ type: 'error', text: errorMessage });
+										} finally {
+											setIsLoading(false);
+										}
+									}}
+									className="space-y-6">
+									<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+										<div>
+											<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.firstName}</label>
+											<Input
+												name="firstName"
+												placeholder={t.firstNamePlaceholder}
+												className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
+												required
+											/>
+										</div>
+										<div>
+											<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.lastName}</label>
+											<Input
+												name="lastName"
+												placeholder={t.lastNamePlaceholder}
+												className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
+												required
+											/>
+										</div>
+									</div>
 									<div>
-										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.firstName}</label>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.email}</label>
 										<Input
-											placeholder={t.firstNamePlaceholder}
+											name="email"
+											type="email"
+											placeholder={t.emailPlaceholder}
 											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
+											required
 										/>
 									</div>
 									<div>
-										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.lastName}</label>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.subject}</label>
 										<Input
-											placeholder={t.lastNamePlaceholder}
+											name="subject"
+											placeholder={t.subjectPlaceholder}
 											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
+											required
 										/>
 									</div>
-								</div>
-								<div>
-									<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.email}</label>
-									<Input
-										type="email"
-										placeholder={t.emailPlaceholder}
-										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
-									/>
-								</div>
-								<div>
-									<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.subject}</label>
-									<Input
-										placeholder={t.subjectPlaceholder}
-										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 h-12 md:h-10"
-									/>
-								</div>
-								<div>
-									<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.message}</label>
-									<Textarea
-										placeholder={t.messagePlaceholder}
-										rows={6}
-										className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 min-h-[120px] md:min-h-[80px]"
-									/>
-								</div>
-								<Button className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium py-3 rounded-lg">
-									{t.sendMessage}
-								</Button>
+									<div>
+										<label className="block text-white font-inter mb-2 text-sm md:text-base">{t.message}</label>
+										<Textarea
+											name="message"
+											placeholder={t.messagePlaceholder}
+											rows={6}
+											className="bg-[#0C1C2C] border-[#30D6C4]/20 text-white placeholder:text-gray-400 min-h-[120px] md:min-h-[80px]"
+											maxLength={5000}
+											onChange={(ev) => setMsgLength(ev.target.value.length)}
+											required
+										/>
+										<div className="flex justify-end text-xs text-gray-400 mt-1">{msgLength} / 5000</div>
+									</div>
+									{/* Honeypot field (hidden from users) */}
+									<div className="hidden" aria-hidden="true">
+										<label>
+											Company
+											<input type="text" name="company" tabIndex={-1} autoComplete="off" />
+										</label>
+									</div>
+									<Button
+										type="submit"
+										disabled={isLoading}
+										className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium py-3 rounded-lg disabled:opacity-50">
+										{isLoading ? 'Sending...' : t.sendMessage}
+									</Button>
+								</form>
 							</CardContent>
 						</Card>
 

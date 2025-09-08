@@ -11,18 +11,29 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
 	const [isTransparent, setIsTransparent] = useState(true);
+	const [isHomepage, setIsHomepage] = useState(false);
 
 	useEffect(() => {
 		const handleScroll = () => {
+			if (!isHomepage) {
+				setIsTransparent(false);
+				return;
+			}
 			const heroHeight = window.innerHeight + 580; // Account for added padding and gradient
 			setIsTransparent(window.scrollY < heroHeight - 120); // More gradual transition
 		};
+
+		// Check if current page is homepage
+		const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+		const pathWithoutLocale = currentPath.replace(/^\/(en|de)/, '') || '/';
+		const homepage = pathWithoutLocale === '/';
+		setIsHomepage(homepage);
 
 		window.addEventListener('scroll', handleScroll);
 		handleScroll(); // Check initial state
 
 		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+	}, [isHomepage]);
 
 	// Helper function to get localized path
 	function getLocalizedPath(path) {

@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
 		"@astrojs/mdx": "^4.3.4",
+		"@astrojs/netlify": "^6.5.9",
 		"@astrojs/react": "^4.3.0",
 		"@astrojs/sitemap": "^3.5.1",
 		"@hookform/resolvers": "^3.10.0",
@@ -64,6 +65,7 @@
 		"react-hook-form": "^7.62.0",
 		"react-resizable-panels": "^2.1.9",
 		"recharts": "^2.15.4",
+		"resend": "^6.0.2",
 		"tailwind-merge": "^2.6.0",
 		"tailwindcss-animate": "^1.0.7",
 		"uploadthing": "^7.7.4",

@@ -2,11 +2,14 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import netlify from '@astrojs/netlify';
 import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-	output: 'static',
+	output: 'server',
+	actions: true,
+	adapter: netlify(),
 	site: 'https://nexor-software.de', // Update this with your actual domain
 	i18n: {
 		defaultLocale: 'de',
