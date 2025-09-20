@@ -26,8 +26,8 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			title: 'Warum',
 			companyTitle: 'Unser Unternehmen',
 			companyDescription:
-				'Gegründet aus der Überzeugung, dass hochwertige Softwarelösungen nicht überteuert sein müssen. Nexor Software entwickelt moderne, erschwingliche Alternativen zu veralteten Markstandards.',
-			companyFeatures: ['Gegründet 2025', 'Professionelles Team'],
+				'Gegründet aus der Überzeugung, dass hochwertige Softwarelösungen nicht überteuert sein müssen. Nexor Software entwickelt moderne, erschwingliche Alternativen zu veralteten Marktstandards.',
+			companyFeatures: ['Gegründet 2025'],
 			servicesTitle: 'Dienstleistungen',
 			servicesDescription:
 				'Von Webanwendungen bis hin zu Unternehmenslösungen bieten wir umfassende Softwareentwicklungs-Services, die auf Ihre individuellen Bedürfnisse zugeschnitten sind.',
@@ -35,7 +35,7 @@ export const ThreeColumnSection = ({ currentLocale = 'en' }: ThreeColumnSectionP
 			qualityTitle: 'Qualität & Innovation',
 			qualityDescription:
 				'Wir kombinieren modernste Technologie mit bewährten Methoden, um Lösungen zu liefern, die Erwartungen übertreffen und echte Ergebnisse liefern.',
-			qualityFeatures: ['Moderne Tech Stack', 'Agile Entwicklung', 'Qualitätssicherung'],
+			qualityFeatures: ['Moderner Tech Stack', 'Agile Entwicklung', 'Qualitätssicherung'],
 		},
 	};
 
