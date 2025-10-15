@@ -110,8 +110,8 @@ const ContactComponent = ({ currentLocale = 'de' }: ContactComponentProps) => {
 		{
 			icon: <Mail className="h-6 w-6 text-[#30D6C4]" />,
 			title: t.emailTitle,
-			content: 'info@nexorsoftware.com',
-			link: 'mailto:info@nexorsoftware.com',
+			content: 'info@nexor-software.de',
+			link: 'mailto:info@nexor-software.de',
 		},
 		{
 			icon: <Phone className="h-6 w-6 text-[#30D6C4]" />,
