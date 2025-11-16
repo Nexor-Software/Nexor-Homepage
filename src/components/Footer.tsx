@@ -18,7 +18,6 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 			navLinks: [
 				{ label: 'About', href: '/about' },
 				{ label: 'Services', href: '/services' },
-				{ label: 'Blog', href: '/blog' },
 				{ label: 'Portfolio', href: '/portfolio' },
 				{ label: 'Contact', href: '/contact' },
 			],
@@ -39,7 +38,6 @@ export const Footer = ({ currentLocale = 'en' }: FooterProps) => {
 			navLinks: [
 				{ label: 'Über uns', href: '/about' },
 				{ label: 'Dienstleistungen', href: '/services' },
-				{ label: 'Blog', href: '/blog' },
 				{ label: 'Portfolio', href: '/portfolio' },
 				{ label: 'Kontakt', href: '/contact' },
 			],

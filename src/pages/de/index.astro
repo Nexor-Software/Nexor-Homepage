@@ -4,11 +4,16 @@ import { Hero } from "@/components/Hero";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { CustomerReview } from "@/components/CustomerReview";
 import { LoadingScreen } from "@/components/LoadingScreen";
+import { getUploadThingUrl } from "@/utils/uploadthing";
 ---
 
 <Layout>
   <LoadingScreen client:idle currentLocale="de" />
   <Hero client:load currentLocale="de" />
   <ThreeColumnSection client:idle currentLocale="de" />
-  <CustomerReview client:visible currentLocale="de" authorImage="https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwyUgfCzZGwaJ32OZYclv0HPDmAoWTguzqx9RpB" />
+  <CustomerReview
+    client:visible
+    currentLocale="de"
+    authorImage={getUploadThingUrl('Armen_Chulyakov-min.png')}
+  />
 </Layout>
