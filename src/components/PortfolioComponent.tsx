@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Calendar, Users } from 'lucide-react';
+import { ExternalLink, Calendar, Users } from 'lucide-react';
 import { getUploadThingUrl } from '@/utils/uploadthing';
 import HeroTitle from './HeroTitle';
 
@@ -21,7 +21,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 			subtitle:
 				"Explore our latest projects and see how we've helped businesses transform their digital presence with innovative solutions.",
 			all: 'All',
-			websites: 'Websites',
+			websites: 'Website',
 			software: 'Software',
 			viewLive: 'View Live',
 			privateProject: 'Private Project',
@@ -34,9 +34,11 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					description:
 						'Professional website design for E-Tech24, a technology solutions provider. Created modern, responsive design concepts with focus on user experience and visual appeal.',
 					technologies: ['Figma', 'UI/UX Design', 'Responsive Design'],
-					category: 'Websites',
+					category: 'Website',
 					year: '2025',
 					client: 'E-Tech24',
+					image: 'FullLogo-01.svg',
+					link: 'https://e-tech24.de/',
 				},
 				{
 					title: 'Terminal Software Solution',
@@ -45,7 +47,19 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					technologies: ['TypeScript'],
 					category: 'Software',
 					year: '2025',
-					client: 'Terminal Operations',
+					client: 'E-Tech24',
+					image: 'pt1duo software.png',
+				},
+				{
+					title: 'Nexor Terminal Dashboard',
+					description:
+						'Dashboard for monitoring the status and revenue of every terminal running the Nexor Terminal Software suite.',
+					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
+					category: 'Website',
+					year: '2025',
+					client: 'Nexor Software',
+					image: 'Nexor-logo-large-helle-Schrift.avif',
+					link: 'https://dashboard.nexor-software.de',
 				},
 			],
 		},
@@ -54,7 +68,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 			subtitle:
 				'Entdecken Sie unsere neuesten Projekte und sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre digitale Präsenz mit innovativen Lösungen zu transformieren.',
 			all: 'Alle',
-			websites: 'Webseiten',
+			websites: 'Webseite',
 			software: 'Software',
 			viewLive: 'Live ansehen',
 			privateProject: 'Privates Projekt',
@@ -68,9 +82,11 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					description:
 						'Professionelles Webdesign für E-Tech24, einen Technologielösungsanbieter. Moderne, responsive Designkonzepte mit Fokus auf Benutzerfreundlichkeit und visuelle Attraktivität erstellt.',
 					technologies: ['Figma', 'UI/UX Design', 'Responsive Design'],
-					category: 'Webseiten',
+					category: 'Webseite',
 					year: '2025',
 					client: 'E-Tech24',
+					image: 'FullLogo-01.svg',
+					link: 'https://e-tech24.de/',
 				},
 				{
 					title: 'Terminal Software Lösung',
@@ -79,18 +95,29 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					technologies: ['TypeScript', 'Electron', 'C#'],
 					category: 'Software',
 					year: '2025',
-					client: 'Terminal Operations',
+					client: 'E-Tech24',
+					image: 'pt1duo software.png',
+				},
+				{
+					title: 'Nexor Terminal Dashboard',
+					description:
+						'Dashboard zur Überwachung vom Status und Umsatzes aller Terminals mit Nexor Terminal Software.',
+					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
+					category: 'Webseite',
+					year: '2025',
+					client: 'Nexor Software',
+					image: 'Nexor-logo-large-helle-Schrift.avif',
+					link: 'https://dashboard.nexor-software.de',
 				},
 			],
 		},
 	};
 
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
-	const projects = t.projects.map((project, index) => ({
+	const projects = t.projects.map((project) => ({
 		...project,
-		image: getUploadThingUrl(index === 0 ? 'FullLogo-01.svg' : 'pt1duo software.png'),
-		link: index === 0 ? 'http://e-tech24.de/' : null,
-		github: null,
+		image: getUploadThingUrl(project.image || 'placeholder.svg'),
+		link: project.link ?? null,
 	}));
 
 	const categories = [t.all, t.websites, t.software];
@@ -197,43 +224,25 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 											))}
 										</div>
 
-										{/* Action Buttons */}
-										<div className="flex gap-3">
-											{project.link ? (
-												<a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
-													<Button
-														size="sm"
-														className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium hover:shadow-lg hover:shadow-[#30D6C4]/25 transition-all duration-300">
+											{/* Action Button */}
+											<div className="flex">
+												{project.link ? (
+													<a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
+														<Button
+															size="sm"
+															className="w-full bg-[#30D6C4] text-[#0C1C2C] hover:bg-[#28C4B2] font-medium hover:shadow-lg hover:shadow-[#30D6C4]/25 transition-all duration-300">
 														<ExternalLink className="h-4 w-4 mr-2" />
 														{t.viewLive}
 													</Button>
 												</a>
 											) : (
-												<Button size="sm" disabled className="flex-1 bg-gray-600 text-gray-400 cursor-not-allowed">
-													<ExternalLink className="h-4 w-4 mr-2" />
-													{t.privateProject}
-												</Button>
-											)}
-											{project.github ? (
-												<a href={project.github} target="_blank" rel="noopener noreferrer">
-													<Button
-														size="sm"
-														variant="outline"
-														className="border-[#30D6C4]/40 text-[#30D6C4] hover:bg-[#30D6C4]/10 hover:border-[#30D6C4]/60 transition-all duration-300">
-														<Github className="h-4 w-4" />
+													<Button size="sm" disabled className="flex-1 bg-gray-600 text-gray-400 cursor-not-allowed">
+														<ExternalLink className="h-4 w-4 mr-2" />
+														{t.privateProject}
 													</Button>
-												</a>
-											) : (
-												<Button
-													size="sm"
-													variant="outline"
-													disabled
-													className="border-gray-600/40 text-gray-400 cursor-not-allowed">
-													<Github className="h-4 w-4" />
-												</Button>
-											)}
-										</div>
-									</CardContent>
+												)}
+											</div>
+										</CardContent>
 								</Card>
 							))}
 						</div>

@@ -58,7 +58,6 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			home: 'Home',
 			services: 'Services',
 			about: 'About',
-			blog: 'Blog',
 			portfolio: 'Portfolio',
 			getQuote: 'Get Quote',
 		},
@@ -66,7 +65,6 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			home: 'Startseite',
 			services: 'Dienstleistungen',
 			about: 'Über uns',
-			blog: 'Blog',
 			portfolio: 'Portfolio',
 			getQuote: 'Angebot anfordern',
 		},
@@ -110,11 +108,6 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 							href={getLocalizedPath('/about')}
 							className="text-white hover:text-[#30D6C4] transition-colors font-inter text-lg">
 							{t.about}
-						</a>
-						<a
-							href={getLocalizedPath('/blog')}
-							className="text-white hover:text-[#30D6C4] transition-colors font-inter text-lg">
-							{t.blog}
 						</a>
 						<a
 							href={getLocalizedPath('/portfolio')}
@@ -233,12 +226,6 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
 								onClick={() => setIsMenuOpen(false)}>
 								{t.about}
-							</a>
-							<a
-								href={getLocalizedPath('/blog')}
-								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
-								onClick={() => setIsMenuOpen(false)}>
-								{t.blog}
 							</a>
 							<a
 								href={getLocalizedPath('/portfolio')}
