@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Calendar, Users } from 'lucide-react';
-import { getUploadThingUrl } from '@/utils/uploadthing';
+import { getPublicAssetUrl } from '@/utils/assets';
 import HeroTitle from './HeroTitle';
 
 interface PortfolioComponentProps {
@@ -116,7 +116,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
 	const projects = t.projects.map((project) => ({
 		...project,
-		image: getUploadThingUrl(project.image || 'placeholder.svg'),
+		image: getPublicAssetUrl(project.image || 'placeholder.svg'),
 		link: project.link ?? null,
 	}));
 

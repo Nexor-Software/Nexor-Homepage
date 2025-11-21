@@ -2,14 +2,11 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import netlify from '@astrojs/netlify';
 import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-	output: 'server',
-	actions: true,
-	adapter: netlify(),
+	output: 'static',
 	site: 'https://nexor-software.de', // Update this with your actual domain
 	i18n: {
 		defaultLocale: 'de',
@@ -46,7 +43,7 @@ export default defineConfig({
 		},
 	},
 	image: {
-		domains: ['oybnx5jyol.ufs.sh'],
+		domains: ['nexorstorage-public-yjtox.sevalla.storage'],
 	},
 	vite: {
 		build: {
@@ -88,7 +85,6 @@ export default defineConfig({
 						'state-management': ['@tanstack/react-query'],
 						// Utilities
 						'utils-lucide': ['lucide-react'],
-						'utils-uploadthing': ['uploadthing', '@uploadthing/react'],
 					},
 				},
 				treeshake: {

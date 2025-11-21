@@ -4,7 +4,7 @@ import { Hero } from "@/components/Hero";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { CustomerReview } from "@/components/CustomerReview";
 import { LoadingScreen } from "@/components/LoadingScreen";
-import { getUploadThingUrl } from "@/utils/uploadthing";
+import { getPublicAssetUrl } from "@/utils/assets";
 ---
 
 <Layout>
@@ -14,6 +14,6 @@ import { getUploadThingUrl } from "@/utils/uploadthing";
   <CustomerReview
     client:visible
     currentLocale="en"
-    authorImage={getUploadThingUrl('Armen_Chulyakov-min.png')}
+    authorImage={getPublicAssetUrl('Armen-Chulyakov.png')}
   />
 </Layout>

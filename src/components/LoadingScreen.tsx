@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getUploadThingUrl } from '@/utils/uploadthing';
+import { getPublicAssetUrl } from '@/utils/assets';
 
 interface LoadingScreenProps {
 	currentLocale?: string;
@@ -40,7 +40,7 @@ export const LoadingScreen = ({ currentLocale = 'en' }: LoadingScreenProps) => {
 			{/* Logo centered */}
 			<div className="text-center">
 				<img
-					src={getUploadThingUrl('Nexor-logo-large-helle-Schrift.avif')}
+					src={getPublicAssetUrl('Nexor-logo-large-helle-Schrift.avif')}
 					alt="Nexor Software"
 					className="h-24 md:h-32 lg:h-40 w-auto max-w-full drop-shadow-2xl mb-6 transition-opacity duration-800"
 					style={{ opacity }}

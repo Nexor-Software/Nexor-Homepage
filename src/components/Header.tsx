@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getUploadThingUrl } from '@/utils/uploadthing';
+import { getPublicAssetUrl } from '@/utils/assets';
 
 interface HeaderProps {
 	currentLocale?: string;
@@ -83,9 +83,9 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 				<div className="flex items-center justify-between h-20">
 					{/* Logo */}
 					<a href={getLocalizedPath('/')} className="flex items-center space-x-3">
-						<img src={getUploadThingUrl('nexor-logo.svg')} alt="Nexor Logo" className="h-16 w-16" loading="eager" />
+						<img src={getPublicAssetUrl('nexor-logo.svg')} alt="Nexor Logo" className="h-16 w-16" loading="eager" />
 						<img
-							src={getUploadThingUrl('Nexor-text.avif')}
+							src={getPublicAssetUrl('Nexor-text.avif')}
 							alt="Nexor Software"
 							className="h-48 w-auto"
 							loading="eager"

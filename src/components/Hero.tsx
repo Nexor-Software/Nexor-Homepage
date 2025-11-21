@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { getUploadThingUrl } from '@/utils/uploadthing';
+import { getPublicAssetUrl } from '@/utils/assets';
 import { lazy, Suspense } from 'react';
 
 const DarkVeil = lazy(() => import('@/components/DarkVeil'));
@@ -76,7 +76,7 @@ export const Hero = ({ currentLocale = 'en' }: HeroProps) => {
 				<div className="mb-16 animate-fade-in">
 					<div className="flex justify-center mb-6">
 						<img
-							src={getUploadThingUrl('Nexor-logo-large-helle-Schrift.avif')}
+							src={getPublicAssetUrl('Nexor-logo-large-helle-Schrift.avif')}
 							alt="Nexor Software"
 							className="h-48 md:h-64 lg:h-72 w-auto max-w-full drop-shadow-2xl"
 							loading="eager"
