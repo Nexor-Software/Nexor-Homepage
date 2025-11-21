@@ -1,0 +1,15 @@
+{
+  "name": "Nexor Software",
+  "short_name": "Nexor",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C1C2C",
+  "theme_color": "#0C1C2C",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
