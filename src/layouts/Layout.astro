@@ -139,31 +139,41 @@ const robotsContent = noindex
     <script type="application/ld+json" set:html={
       JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Nexor Software",
-        "url": "https://nexor-software.de",
-        "logo": "https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwy7MCKQ9mF8fnHEAdhYXjRW1Vrzbo6iOZBevJ4",
-        "description": t.description,
-        "foundingDate": "2024",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "DE"
-        },
-        "sameAs": [
-          "https://github.com/Nexor-Software",
-          //"https://twitter.com/nexorsoftware"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Customer Service",
-          "availableLanguage": ["German", "English"]
-        },
-        "knowsAbout": [
-          "Software Development",
-          "Web Development",
-          "Mobile Applications",
-          "Digital Solutions",
-          "Technology Consulting"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Nexor Software",
+            "url": "https://nexor-software.de",
+            "logo": "https://oybnx5jyol.ufs.sh/f/AeQfLJScGDwy7MCKQ9mF8fnHEAdhYXjRW1Vrzbo6iOZBevJ4",
+            "description": t.description,
+            "foundingDate": "2025",
+            "address": {
+              "@type": "Heidenheim an der Brenz",
+              "addressCountry": "DE"
+            },
+            "sameAs": [
+              "https://github.com/Nexor-Software",
+              //"https://twitter.com/nexorsoftware"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "Customer Service",
+              "availableLanguage": ["German", "English"]
+            },
+            "knowsAbout": [
+              "Software Development",
+              "Web Development",
+              "Mobile Applications",
+              "Digital Solutions",
+              "Technology Consulting"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Nexor Software",
+            "alternateName": "Nexor Software",
+            "url": "https://nexor-software.de"
+          }
         ]
       })
     } />
