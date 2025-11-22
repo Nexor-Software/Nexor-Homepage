@@ -1,8 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ContactComponent from "@/components/ContactComponent";
+
+const pageTitle = "Kontakt | Nexor Software";
+const pageDescription =
+  "Kontaktieren Sie Nexor Software für Angebote, Projekte und Fragen rund um digitale Lösungen.";
+const pageKeywords = "Kontakt Nexor Software, Angebot anfragen, Softwareberatung";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg">
   <ContactComponent client:load currentLocale={Astro.currentLocale} />
 </Layout>

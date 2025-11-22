@@ -4,11 +4,8 @@ import { Footer } from "@/components/Footer";
 import { ProvidersIsland } from "@/components/ProvidersIsland";
 import "@/index.css";
 
-// providers are now inside ProvidersIsland
-
 // Get current locale and define translations
 const currentLocale = Astro.currentLocale || 'en';
-const isGerman = currentLocale === 'de';
 
 const translations = {
   en: {
@@ -25,16 +22,38 @@ const translations = {
   }
 };
 
+const {
+  pageTitle,
+  pageDescription,
+  pageKeywords,
+  pageOgImage,
+  pageCanonicalPath,
+  noindex = false,
+} = Astro.props;
+
 const t = translations[currentLocale];
+const baseUrl = Astro.site?.origin || new URL(Astro.request.url).origin;
+const requestPath = new URL(Astro.request.url).pathname;
+const pathWithoutLocale = requestPath.replace(/^\/(de|en)/, '') || '/';
 
-// Get current URL for canonical and Open Graph
-const canonicalUrl = new URL(Astro.request.url);
-canonicalUrl.pathname = canonicalUrl.pathname.replace(/^\/(de|en)/, `/${currentLocale}`);
-const canonicalHref = canonicalUrl.href;
+const title = pageTitle ?? t.title;
+const description = pageDescription ?? t.description;
+const keywords = pageKeywords ?? t.keywords;
+const ogImagePath = pageOgImage ?? '/og-default.svg';
+const ogImageUrl = ogImagePath.startsWith('http') ? ogImagePath : new URL(ogImagePath, baseUrl).href;
 
-// Alternate language URLs
-const alternateEn = canonicalUrl.href.replace(`/${currentLocale}`, '/en');
-const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
+const canonicalPath =
+  pageCanonicalPath ??
+  `/${currentLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+const canonicalHref = new URL(canonicalPath, baseUrl).href;
+
+const alternateDe = new URL(`/de${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`, baseUrl).href;
+const alternateEn = new URL(`/en${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`, baseUrl).href;
+const alternateXDefault = alternateDe;
+
+const robotsContent = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 ---
 
 <html lang={currentLocale} class="dark">
@@ -43,13 +62,13 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>{t.title}</title>
-    <meta name="title" content={t.title} />
-    <meta name="description" content={t.description} />
-    <meta name="keywords" content={t.keywords} />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content={t.author} />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
+    <meta name="robots" content={robotsContent} />
+    <meta name="googlebot" content={robotsContent} />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalHref} />
@@ -79,14 +98,14 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <!-- Language Alternates -->
     <link rel="alternate" hreflang="de" href={alternateDe} />
     <link rel="alternate" hreflang="en" href={alternateEn} />
-    <link rel="alternate" hreflang="x-default" href={alternateDe} />
+    <link rel="alternate" hreflang="x-default" href={alternateXDefault} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalHref} />
-    <meta property="og:title" content={t.title} />
-    <meta property="og:description" content={t.description} />
-    <meta property="og:image" content="https://nexorstorage-public-yjtox.sevalla.storage/Nexor-logo-large-helle-Schrift.avif" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Nexor Software - Innovative Digital Solutions" />
@@ -97,9 +116,9 @@ const alternateDe = canonicalUrl.href.replace(`/${currentLocale}`, '/de');
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalHref} />
-    <meta name="twitter:title" content={t.title} />
-    <meta name="twitter:description" content={t.description} />
-    <meta name="twitter:image" content="https://nexorstorage-public-yjtox.sevalla.storage/Nexor-logo-large-helle-Schrift.avif" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content="Nexor Software - Innovative Digital Solutions" />
     <meta name="twitter:site" content="@nexorsoftware" />
     <meta name="twitter:creator" content="@nexorsoftware" />

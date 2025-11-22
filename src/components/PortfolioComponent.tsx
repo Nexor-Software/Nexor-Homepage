@@ -190,9 +190,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 									key={index}
 									className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden w-full max-w-md group">
 									<div className="relative">
-										<div className="w-full h-64 bg-white/5 flex items-center justify-center p-4">
-											<img src={project.image} alt={project.title} className="w-4/5 h-4/5 object-contain" />
-										</div>
+                                        <div className="w-full h-64 bg-white/5 flex items-center justify-center p-4">
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                className="w-4/5 h-4/5 object-contain"
+                                                loading="lazy"
+                                                decoding="async"
+                                                width="320"
+                                                height="256"
+                                            />
+                                        </div>
 										<div className="absolute top-4 left-4">
 											<span className="bg-[#30D6C4] text-[#0C1C2C] px-3 py-1 rounded-full text-sm font-medium">
 												{project.category}

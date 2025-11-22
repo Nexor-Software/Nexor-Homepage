@@ -3,9 +3,18 @@ import Layout from "@/layouts/Layout.astro";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Smartphone, Globe, Database, Cloud, Shield } from "lucide-react";
 import HeroTitle from "@/components/HeroTitle";
+
+const pageTitle = "Dienstleistungen | Nexor Software";
+const pageDescription =
+  "Wir bieten umfassende Softwarelösungen, um Ihr Unternehmen zu unterstützen und Ihre digitale Innovation voranzutreiben.";
+const pageKeywords = "Softwaredienstleistungen, Webentwicklung, Sicherheit, Nexor Software";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg">
   {/* Hero Section */}
   <section class="relative pt-32 pb-20 px-8 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>
