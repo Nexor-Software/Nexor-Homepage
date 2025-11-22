@@ -69,6 +69,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			about: 'About',
 			portfolio: 'Portfolio',
 			getQuote: 'Get Quote',
+			toggleMenu: 'Toggle menu',
+			switchLanguage: 'Switch language',
 		},
 		de: {
 			home: 'Startseite',
@@ -76,6 +78,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			about: 'Über uns',
 			portfolio: 'Portfolio',
 			getQuote: 'Angebot anfordern',
+			toggleMenu: 'Menü umschalten',
+			switchLanguage: 'Sprache wechseln',
 		},
 	};
 
@@ -91,11 +95,14 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-20 sm:h-24 gap-3">
 					{/* Logo */}
-					<a href={getLocalizedPath('/')} className="flex items-center space-x-3 min-w-0">
+					<a
+						href={getLocalizedPath('/')}
+						className="flex items-center space-x-3 min-w-0"
+						aria-label="Nexor Software Home">
 						<img
 							src={getPublicAssetUrl('nexor-logo.svg')}
 							alt="Nexor Logo"
-							className="h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0"
+							className="h-16 w-16 sm:h-20 sm:w-20 shrink-0"
 							loading="eager"
 						/>
 						<img
@@ -142,7 +149,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 								variant="ghost"
 								size="sm"
 								onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-								className="text-white hover:text-[#30D6C4] hover:bg-white/10">
+								className="text-white hover:text-[#30D6C4] hover:bg-white/10"
+								aria-label={t.switchLanguage}>
 								<Globe className="h-5 w-5" />
 								<span className="ml-1 uppercase">{currentLocale}</span>
 							</Button>
@@ -175,7 +183,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 								variant="ghost"
 								size="sm"
 								onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-								className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
+								className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2"
+								aria-label={t.switchLanguage}>
 								<Globe className="h-5 w-5" />
 								<span className="ml-1 uppercase">{currentLocale}</span>
 							</Button>
@@ -208,7 +217,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 							variant="ghost"
 							size="sm"
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
-							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
+							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2"
+							aria-label={t.toggleMenu}>
 							{isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
 						</Button>
 					</div>
