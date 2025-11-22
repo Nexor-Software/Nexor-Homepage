@@ -217,7 +217,7 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 				{/* Mobile Navigation */}
 				{isMenuOpen && (
 					<div
-						className={`md:hidden border-t transition-all duration-500 ease-in-out ${
+						className={`xl:hidden border-t transition-all duration-500 ease-in-out ${
 							isTransparent
 								? 'border-white/20 bg-black/20 backdrop-blur-sm'
 								: 'border-white/10 bg-[#0C1C2C]/95 backdrop-blur-sm'
