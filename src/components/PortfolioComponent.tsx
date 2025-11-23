@@ -44,7 +44,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					title: 'Payterminals Website',
 					description:
 						'Professional website design for Payterminals, a technology hardware provider. Created modern, responsive design concepts with focus on user experience and visual appeal.',
-					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
+					technologies: ['Wix', 'Figma', 'UI/UX Design'],
 					category: 'Website',
 					year: '2025',
 					client: 'Payterminals',
@@ -103,7 +103,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					title: 'Payterminals Website',
 					description:
 						'Professionelles Webdesign für Payterminals, einen Technologiehardwareanbieter. Moderne, responsive Designkonzepte mit Fokus auf Benutzerfreundlichkeit und visuelle Attraktivität erstellt.',
-					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
+					technologies: ['Wix', 'Figma', 'UI/UX Design'],
 					category: 'Webseite',
 					year: '2025',
 					client: 'Payterminals',
