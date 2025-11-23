@@ -41,6 +41,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					link: 'https://e-tech24.de/',
 				},
 				{
+					title: 'Payterminals Website',
+					description:
+						'Professional website design for Payterminals, a technology hardware provider. Created modern, responsive design concepts with focus on user experience and visual appeal.',
+					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
+					category: 'Website',
+					year: '2025',
+					client: 'Payterminals',
+					image: 'payterminals.avif',
+					link: 'https://www.payterminals.de',
+				},
+				{
 					title: 'Terminal Software Solution',
 					description:
 						'Custom software development for terminal systems. Robust, efficient software designed for reliable terminal operations and management.',
@@ -89,6 +100,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					link: 'https://e-tech24.de/',
 				},
 				{
+					title: 'Payterminals Website',
+					description:
+						'Professionelles Webdesign für Payterminals, einen Technologiehardwareanbieter. Moderne, responsive Designkonzepte mit Fokus auf Benutzerfreundlichkeit und visuelle Attraktivität erstellt.',
+					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
+					category: 'Webseite',
+					year: '2025',
+					client: 'Payterminals',
+					image: 'payterminals.avif',
+					link: 'https://www.payterminals.de',
+				},
+				{
 					title: 'Terminal Software Lösung',
 					description:
 						'Maßgeschneiderte Softwareentwicklung für Terminalsysteme. Robuste, effiziente Software für zuverlässige Terminalbetriebe und -verwaltung.',
@@ -100,8 +122,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 				},
 				{
 					title: 'Nexor Terminal Dashboard',
-					description:
-						'Dashboard zur Überwachung vom Status und Umsatzes aller Terminals mit Nexor Terminal Software.',
+					description: 'Dashboard zur Überwachung vom Status und Umsatzes aller Terminals mit Nexor Terminal Software.',
 					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
 					category: 'Webseite',
 					year: '2025',
