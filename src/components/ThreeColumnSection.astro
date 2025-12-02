@@ -82,24 +82,24 @@ const sections = [
       {sections.map((section, index) => (
         <Card
           key={section.title}
-          className={`bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/8 transition-all duration-500 rounded-2xl shadow-2xl hover:shadow-[#30D6C4]/10 hover:scale-105 animate-fade-in group`}
+          className={`quarter-border bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/8 transition-all duration-500 rounded-2xl shadow-2xl hover:shadow-[#30D6C4]/10 hover:scale-105 animate-fade-in group overflow-hidden`}
           style={{ animationDelay: `${index * 200}ms` }}>
           <CardHeader className="text-center pb-6">
-            <div className="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
+            <div class="w-16 h-16 bg-[#30D6C4]/10 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:bg-[#30D6C4]/20 transition-colors duration-300">
               <section.icon className="w-8 h-8 text-[#30D6C4]" />
             </div>
             <CardTitle className="text-2xl font-oswald font-normal text-white">{section.title}</CardTitle>
           </CardHeader>
           <CardContent className="text-center space-y-6">
-            <p className="font-inter font-medium text-[#B0C4D4] leading-relaxed text-lg">{section.description}</p>
-            <div className="space-y-3">
+            <p class="font-inter font-medium text-[#B0C4D4] leading-relaxed text-lg">{section.description}</p>
+            <div class="space-y-3">
               {section.features.map((feature: string) => (
                 <div
                   key={feature}
-                  className="flex items-center justify-center space-x-2 text-[#30D6C4] font-medium"
+                  class="flex items-center justify-center space-x-2 text-[#30D6C4] font-medium"
                   data-feature={feature}>
-                  <div className="w-2 h-2 bg-[#30D6C4] rounded-full"></div>
-                  <span className="font-inter">{feature}</span>
+                  <div class="w-2 h-2 bg-[#30D6C4] rounded-full"></div>
+                  <span class="font-inter">{feature}</span>
                 </div>
               ))}
             </div>
