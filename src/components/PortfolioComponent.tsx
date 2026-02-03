@@ -108,7 +108,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					year: '2025',
 					client: 'Payterminals',
 					image: 'payterminals.avif',
-					link: 'https://www.payterminals.de',
+					link: 'https://www.payterminal.de',
 				},
 				{
 					title: 'Terminal Software Lösung',
