@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Calendar, Users } from 'lucide-react';
-import { getUploadThingUrl } from '@/utils/uploadthing';
+import { getPublicAssetUrl } from '@/utils/assets';
 import HeroTitle from './HeroTitle';
 
 interface PortfolioComponentProps {
@@ -39,6 +39,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					client: 'E-Tech24',
 					image: 'FullLogo-01.svg',
 					link: 'https://e-tech24.de/',
+				},
+				{
+					title: 'Payterminals Website',
+					description:
+						'Professional website design for Payterminals, a technology hardware provider. Created modern, responsive design concepts with focus on user experience and visual appeal.',
+					technologies: ['Wix', 'Figma', 'UI/UX Design'],
+					category: 'Website',
+					year: '2025',
+					client: 'Payterminals',
+					image: 'payterminals.avif',
+					link: 'https://www.payterminal.de',
 				},
 				{
 					title: 'Terminal Software Solution',
@@ -89,6 +100,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 					link: 'https://e-tech24.de/',
 				},
 				{
+					title: 'Payterminals Website',
+					description:
+						'Professionelles Webdesign für Payterminals, einen Technologiehardwareanbieter. Moderne, responsive Designkonzepte mit Fokus auf Benutzerfreundlichkeit und visuelle Attraktivität erstellt.',
+					technologies: ['Wix', 'Figma', 'UI/UX Design'],
+					category: 'Webseite',
+					year: '2025',
+					client: 'Payterminals',
+					image: 'payterminals.avif',
+					link: 'https://www.payterminals.de',
+				},
+				{
 					title: 'Terminal Software Lösung',
 					description:
 						'Maßgeschneiderte Softwareentwicklung für Terminalsysteme. Robuste, effiziente Software für zuverlässige Terminalbetriebe und -verwaltung.',
@@ -100,8 +122,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 				},
 				{
 					title: 'Nexor Terminal Dashboard',
-					description:
-						'Dashboard zur Überwachung vom Status und Umsatzes aller Terminals mit Nexor Terminal Software.',
+					description: 'Dashboard zur Überwachung vom Status und Umsatzes aller Terminals mit Nexor Terminal Software.',
 					technologies: ['Next.js', 'TypeScript', 'TailwindCSS'],
 					category: 'Webseite',
 					year: '2025',
@@ -116,7 +137,7 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 	const t = translations[currentLocale as keyof typeof translations] || translations.en;
 	const projects = t.projects.map((project) => ({
 		...project,
-		image: getUploadThingUrl(project.image || 'placeholder.svg'),
+		image: getPublicAssetUrl(project.image || 'placeholder.svg'),
 		link: project.link ?? null,
 	}));
 
@@ -190,9 +211,17 @@ const PortfolioComponent = ({ currentLocale = 'en' }: PortfolioComponentProps) =
 									key={index}
 									className="bg-[#0F2235]/50 backdrop-blur-sm border-[#30D6C4]/10 hover:border-[#30D6C4]/30 hover:shadow-2xl hover:shadow-[#30D6C4]/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden w-full max-w-md group">
 									<div className="relative">
-										<div className="w-full h-64 bg-white/5 flex items-center justify-center p-4">
-											<img src={project.image} alt={project.title} className="w-4/5 h-4/5 object-contain" />
-										</div>
+                                        <div className="w-full h-64 bg-white/5 flex items-center justify-center p-4">
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                className="w-4/5 h-4/5 object-contain"
+                                                loading="lazy"
+                                                decoding="async"
+                                                width="320"
+                                                height="256"
+                                            />
+                                        </div>
 										<div className="absolute top-4 left-4">
 											<span className="bg-[#30D6C4] text-[#0C1C2C] px-3 py-1 rounded-full text-sm font-medium">
 												{project.category}

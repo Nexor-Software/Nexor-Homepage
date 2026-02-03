@@ -1,8 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+
+const pageTitle = "404 | Page Not Found | Nexor Software";
+const pageDescription = "The page you requested could not be found.";
+const pageKeywords = "404, page not found, Nexor Software";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg"
+  noindex={true}>
   <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="text-center">
       <h1 class="text-4xl font-bold mb-4">404</h1>

@@ -1,19 +1,24 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Hero } from "@/components/Hero";
-import { ThreeColumnSection } from "@/components/ThreeColumnSection";
-import { CustomerReview } from "@/components/CustomerReview";
+import ThreeColumnSection from "@/components/ThreeColumnSection.astro";
+import CustomerReview from "@/components/CustomerReview.astro";
 import { LoadingScreen } from "@/components/LoadingScreen";
-import { getUploadThingUrl } from "@/utils/uploadthing";
+import { getPublicAssetUrl } from "@/utils/assets";
+
+const pageTitle = "Nexor Software – Digitale Lösungen für Unternehmen";
+const pageDescription =
+  "Wir entwickeln und vernetzen Ihre Systeme intelligent, damit Sie maximalen Komfort und Nutzen aus Ihrer digitalen Infrastruktur erzielen.";
+const pageKeywords = "Nexor Software, digitale Lösungen, Softwareentwicklung, Webentwicklung, Integration";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg">
   <LoadingScreen client:idle currentLocale="de" />
   <Hero client:load currentLocale="de" />
-  <ThreeColumnSection client:idle currentLocale="de" />
-  <CustomerReview
-    client:visible
-    currentLocale="de"
-    authorImage={getUploadThingUrl('Armen_Chulyakov-min.png')}
-  />
+  <ThreeColumnSection currentLocale="de" />
+  <CustomerReview currentLocale="de" authorImage={getPublicAssetUrl('Armen-Chulyakov.png')} />
 </Layout>

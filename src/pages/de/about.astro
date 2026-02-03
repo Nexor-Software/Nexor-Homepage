@@ -27,9 +27,16 @@ const translations = {
 };
 
 const t = translations[currentLocale];
+const pageTitle = "Über Nexor Software | Digitale Innovation aus Deutschland";
+const pageDescription = t.subtitle;
+const pageKeywords = "Nexor Software, Über uns, Softwareunternehmen, Digitalisierung";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg">
   {/* Hero Section */}
   <section class="relative pt-32 pb-20 px-8 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>

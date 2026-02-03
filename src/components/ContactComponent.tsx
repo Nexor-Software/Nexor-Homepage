@@ -6,8 +6,6 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import HeroTitle from './HeroTitle';
 import { useState, useRef, useEffect } from 'react';
-// Import the server actions wrapper (Astro will tree-shake server code from client bundle)
-// No direct actions import (astro:actions actions object not exported in current version); we'll POST to action endpoint manually.
 
 interface ContactComponentProps {
 	currentLocale?: string;
@@ -223,41 +221,38 @@ const ContactComponent = ({ currentLocale = 'de' }: ContactComponentProps) => {
 										const formData = new FormData(e.target as HTMLFormElement);
 										formData.append('_ts', startTsRef.current || Date.now().toString());
 										try {
-											const actionUrl = '/_actions/send';
-											const response = await fetch(actionUrl, { method: 'POST', body: formData });
-											let raw: any = {};
-											try {
-												raw = await response.json();
-											} catch {
-												/* ignore */
+											const payload = Object.fromEntries(formData.entries());
+
+											// Honeypot field check
+											if (payload.company && typeof payload.company === 'string' && payload.company.trim() !== '') {
+												setMessage({ type: 'success', text: em.defaultSuccess });
+												(e.target as HTMLFormElement).reset();
+												return;
 											}
 
-											// Astro action responses usually shaped as { data: {...} } or { error: {...} }
-											const payload = raw?.data ?? raw; // fallback to top-level
+											const response = await fetch('https://api.nexor-software.de/api/send-email', {
+												method: 'POST',
+												headers: {
+													'Content-Type': 'application/json',
+												},
+												body: JSON.stringify({
+													firstName: payload.firstName,
+													lastName: payload.lastName,
+													email: payload.email,
+													subject: payload.subject,
+													message: payload.message,
+												}),
+											});
 
-											if (!response.ok || raw?.error) {
-												const errMsg = raw?.error?.message || payload?.message || em.defaultError;
+											if (!response.ok) {
+												const raw = await response.json().catch(() => ({}));
+												const errMsg = raw?.message || em.defaultError;
 												setMessage({ type: 'error', text: errMsg });
 												return;
 											}
 
-											const success = payload?.success === true || typeof payload?.id === 'string';
-											const msg = payload?.message || 'Message sent successfully!';
-
-											if (success) {
-												setMessage({ type: 'success', text: msg });
-												(e.target as HTMLFormElement).reset();
-												return;
-											}
-
-											// Fallback heuristic: if we got no error and we have any keys, assume success
-											const hasContent = Object.keys(payload || {}).length > 0;
-											if (hasContent) {
-												setMessage({ type: 'success', text: msg });
-												(e.target as HTMLFormElement).reset();
-											} else {
-												setMessage({ type: 'error', text: em.defaultError });
-											}
+											setMessage({ type: 'success', text: em.defaultSuccess });
+											(e.target as HTMLFormElement).reset();
 										} catch (error: any) {
 											console.error('Form submission error:', error);
 											const errorMessage = error?.message || 'Failed to send message. Please try again.';

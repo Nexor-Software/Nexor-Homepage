@@ -1,0 +1,4 @@
+# Locale-aware routing for Sevalla static hosting
+/de/*   /de/:splat   200
+/en/*   /en/:splat   200
+/*      /de/:splat   308

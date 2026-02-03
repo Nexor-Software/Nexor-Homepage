@@ -1,8 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import PortfolioComponent from "@/components/PortfolioComponent";
+
+const pageTitle = "Portfolio | Nexor Software";
+const pageDescription =
+  "Entdecken Sie Projekte von Nexor Software – Websites, Softwarelösungen und digitale Produkte.";
+const pageKeywords = "Nexor Software Portfolio, Referenzen, Projekte";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg">
   <PortfolioComponent client:load currentLocale="de" />
 </Layout>

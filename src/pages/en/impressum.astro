@@ -1,8 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+
+const pageTitle = "Imprint | Nexor Software";
+const pageDescription = "Legal information and contact details for Nexor Software.";
+const pageKeywords = "imprint, legal, Nexor Software";
 ---
 
-<Layout>
+<Layout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  pageKeywords={pageKeywords}
+  pageOgImage="/og-default.svg">
   {/* Hero Section */}
   <section class="relative pt-32 pb-20 px-8 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-[#0C1C2C] via-[#0F2235] to-[#0C1C2C]"></div>

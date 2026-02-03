@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getUploadThingUrl } from '@/utils/uploadthing';
+import { getPublicAssetUrl } from '@/utils/assets';
 
 interface HeaderProps {
 	currentLocale?: string;
@@ -12,6 +12,15 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 	const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
 	const [isTransparent, setIsTransparent] = useState(true);
 	const [isHomepage, setIsHomepage] = useState(false);
+
+	// Prevent background scroll when the mobile menu is open.
+	useEffect(() => {
+		if (typeof document === 'undefined') return;
+		document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, [isMenuOpen]);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -60,6 +69,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			about: 'About',
 			portfolio: 'Portfolio',
 			getQuote: 'Get Quote',
+			toggleMenu: 'Toggle menu',
+			switchLanguage: 'Switch language',
 		},
 		de: {
 			home: 'Startseite',
@@ -67,6 +78,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 			about: 'Über uns',
 			portfolio: 'Portfolio',
 			getQuote: 'Angebot anfordern',
+			toggleMenu: 'Menü umschalten',
+			switchLanguage: 'Sprache wechseln',
 		},
 	};
 
@@ -80,20 +93,28 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 					: 'bg-[#0C1C2C]/95 backdrop-blur-sm border-b border-white/10'
 			}`}>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex items-center justify-between h-20">
+				<div className="flex items-center justify-between h-20 sm:h-24 gap-3">
 					{/* Logo */}
-					<a href={getLocalizedPath('/')} className="flex items-center space-x-3">
-						<img src={getUploadThingUrl('nexor-logo.svg')} alt="Nexor Logo" className="h-16 w-16" loading="eager" />
+					<a
+						href={getLocalizedPath('/')}
+						className="flex items-center space-x-3 min-w-0"
+						aria-label="Nexor Software Home">
 						<img
-							src={getUploadThingUrl('Nexor-text.avif')}
+							src={getPublicAssetUrl('nexor-logo.svg')}
+							alt="Nexor Logo"
+							className="h-16 w-16 sm:h-20 sm:w-20 shrink-0"
+							loading="eager"
+						/>
+						<img
+							src={getPublicAssetUrl('Nexor-text.avif')}
 							alt="Nexor Software"
-							className="h-48 w-auto"
+							className="h-40 sm:h-44 md:h-46 lg:h-48 xl:h-50 w-auto hidden sm:block"
 							loading="eager"
 						/>
 					</a>
 
 					{/* Desktop Navigation */}
-					<nav className="hidden md:flex items-center space-x-8">
+					<nav className="hidden xl:flex items-center gap-6 xl:gap-8">
 						<a
 							href={getLocalizedPath('/')}
 							className="text-white hover:text-[#30D6C4] transition-colors font-inter text-lg">
@@ -128,7 +149,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 								variant="ghost"
 								size="sm"
 								onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-								className="text-white hover:text-[#30D6C4] hover:bg-white/10">
+								className="text-white hover:text-[#30D6C4] hover:bg-white/10"
+								aria-label={t.switchLanguage}>
 								<Globe className="h-5 w-5" />
 								<span className="ml-1 uppercase">{currentLocale}</span>
 							</Button>
@@ -154,14 +176,15 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 					</nav>
 
 					{/* Mobile menu button */}
-					<div className="md:hidden flex items-center space-x-2">
+					<div className="xl:hidden flex items-center space-x-2">
 						{/* Mobile Language Switcher */}
 						<div className="relative">
 							<Button
 								variant="ghost"
 								size="sm"
 								onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-								className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
+								className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2"
+								aria-label={t.switchLanguage}>
 								<Globe className="h-5 w-5" />
 								<span className="ml-1 uppercase">{currentLocale}</span>
 							</Button>
@@ -194,7 +217,8 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 							variant="ghost"
 							size="sm"
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
-							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2">
+							className="text-white hover:text-[#30D6C4] hover:bg-white/10 p-2"
+							aria-label={t.toggleMenu}>
 							{isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
 						</Button>
 					</div>
@@ -203,12 +227,12 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 				{/* Mobile Navigation */}
 				{isMenuOpen && (
 					<div
-						className={`md:hidden border-t transition-all duration-700 ease-in-out ${
+						className={`xl:hidden border-t transition-all duration-500 ease-in-out ${
 							isTransparent
 								? 'border-white/20 bg-black/20 backdrop-blur-sm'
 								: 'border-white/10 bg-[#0C1C2C]/95 backdrop-blur-sm'
 						}`}>
-						<div className="px-2 pt-2 pb-3 space-y-1">
+						<div className="px-2 pt-2 pb-4 space-y-1">
 							<a
 								href={getLocalizedPath('/')}
 								className="block px-4 py-3 text-white hover:text-[#30D6C4] transition-colors font-inter text-lg rounded-lg hover:bg-white/5"
@@ -233,7 +257,7 @@ export const Header = ({ currentLocale = 'en' }: HeaderProps) => {
 								onClick={() => setIsMenuOpen(false)}>
 								{t.portfolio}
 							</a>
-							<div className="px-4 py-3">
+							<div className="px-4 py-2">
 								<a href={getLocalizedPath('/contact')}>
 									<Button
 										size="sm"

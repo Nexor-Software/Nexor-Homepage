@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Nexor Software</title>
+  <desc id="desc">Nexor Software — Building modern digital solutions</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C1C2C"/>
+      <stop offset="50%" stop-color="#123352"/>
+      <stop offset="100%" stop-color="#0C1C2C"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#30D6C4"/>
+      <stop offset="100%" stop-color="#1BAA98"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="260" cy="180" r="220" fill="url(#accent)" opacity="0.14"/>
+  <circle cx="1000" cy="520" r="260" fill="url(#accent)" opacity="0.08"/>
+  <rect x="120" y="200" width="960" height="230" rx="24" fill="#0F2235" opacity="0.8"/>
+  <rect x="120" y="200" width="960" height="230" rx="24" fill="none" stroke="#30D6C4" stroke-width="2" opacity="0.5"/>
+  <text x="180" y="310" fill="#E7F4F2" font-family="Oswald, 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="600" letter-spacing="2">
+    Nexor Software
+  </text>
+  <text x="180" y="380" fill="#B8D9D3" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="500">
+    Building tomorrow's digital solutions
+  </text>
+  <text x="180" y="430" fill="#30D6C4" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600">
+    Web • Software • Digital Transformation
+  </text>
+</svg>
